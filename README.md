@@ -95,18 +95,18 @@ DEVELOPING
   - [x] NoteTimelineFactory
   - [x] SubjectFactory
   - [x] UserFactory
-- [ ] Create base seeders
-  - [ ] AssignmentSeeder
-  - [ ] AssignmentAttachmentSeeder
-  - [ ] AssignmentStatusSeeder
-  - [ ] AssignmentTimelineSeeder
-  - [ ] ClassMemberSeeder
-  - [ ] ClassroomSeeder
-  - [ ] NoteSeeder
-  - [ ] NoteAttachmentSeeder
-  - [ ] NoteTimelineSeeder
-  - [ ] SubjectSeeder
-  - [ ] UserSeeder
+- [x] Create base seeders
+  - [x] AssignmentAttachmentSeeder
+  - [x] AssignmentSeeder
+  - [x] AssignmentStatusSeeder
+  - [x] AssignmentTimelineSeeder
+  - [x] ClassMemberSeeder
+  - [x] ClassroomSeeder
+  - [x] NoteAttachmentSeeder
+  - [x] NoteSeeder
+  - [x] NoteTimelineSeeder
+  - [x] SubjectSeeder
+  - [x] UserSeeder
 - [ ] Create base middleware
   - [ ] ClassroomLeader
   - [ ] ClassroomMember

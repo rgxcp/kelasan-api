@@ -45,7 +45,7 @@ DEVELOPING
 |     |             |       |             |
 
 ## TODOs
-- [ ] Delete user related boilerplate
+- [x] Delete user related boilerplate
 - [ ] Create base migrations
   - [ ] user
   - [ ] classroom

@@ -107,10 +107,10 @@ DEVELOPING
   - [x] NoteTimelineSeeder
   - [x] SubjectSeeder
   - [x] UserSeeder
-- [ ] Create base middleware
-  - [ ] ClassroomLeader
-  - [ ] ClassroomMember
-  - [ ] NotClassroomMember
+- [x] Create base middleware
+  - [x] ClassroomLeader
+  - [x] ClassroomMember
+  - [x] NotClassroomMember
 - [ ] Create endpoints
   - [ ] GET All assignment
   - [ ] GET Today assignment

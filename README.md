@@ -83,18 +83,18 @@ DEVELOPING
   - [ ] SearchController
   - [ ] SubjectController
   - [ ] UserController
-- [ ] Create base factories
-  - [ ] AssignmentFactory
-  - [ ] AssignmentAttachmentFactory
-  - [ ] AssignmentStatusFactory
-  - [ ] AssignmentTimelineFactory
-  - [ ] ClassMemberFactory
-  - [ ] ClassroomFactory
-  - [ ] NoteFactory
-  - [ ] NoteAttachmentFactory
-  - [ ] NoteTimelineFactory
-  - [ ] SubjectFactory
-  - [ ] UserFactory
+- [x] Create base factories
+  - [x] AssignmentAttachmentFactory
+  - [x] AssignmentFactory
+  - [x] AssignmentStatusFactory
+  - [x] AssignmentTimelineFactory
+  - [x] ClassMemberFactory
+  - [x] ClassroomFactory
+  - [x] NoteAttachmentFactory
+  - [x] NoteFactory
+  - [x] NoteTimelineFactory
+  - [x] SubjectFactory
+  - [x] UserFactory
 - [ ] Create base seeders
   - [ ] AssignmentSeeder
   - [ ] AssignmentAttachmentSeeder

@@ -58,18 +58,18 @@ DEVELOPING
   - [x] note
   - [x] note_attachment
   - [x] note_timeline
-- [ ] Create base models
-  - [ ] Assignment
-  - [ ] AssignmentAttachment
-  - [ ] AssignmentStatus
-  - [ ] AssignmentTimeline
-  - [ ] ClassMember
-  - [ ] Classroom
-  - [ ] Note
-  - [ ] NoteAttachment
-  - [ ] NoteTimeline
-  - [ ] Subject
-  - [ ] User
+- [x] Create base models
+  - [x] Assignment
+  - [x] AssignmentAttachment
+  - [x] AssignmentStatus
+  - [x] AssignmentTimeline
+  - [x] ClassMember
+  - [x] Classroom
+  - [x] Note
+  - [x] NoteAttachment
+  - [x] NoteTimeline
+  - [x] Subject
+  - [x] User
 - [ ] Create base controllers
   - [ ] AssignmentController
   - [ ] AssignmentAttachmentController

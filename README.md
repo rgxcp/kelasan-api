@@ -102,15 +102,9 @@ DEVELOPING
   - [x] Subject
   - [x] User
 - [x] Create base controllers
-  - [x] AssignmentAttachmentController
   - [x] AssignmentController
-  - [x] AssignmentStatusController
-  - [x] AssignmentTimelineController
-  - [x] ClassMemberController
   - [x] ClassroomController
-  - [x] NoteAttachmentController
   - [x] NoteController
-  - [x] NoteTimelineController
   - [x] SearchController
   - [x] SubjectController
   - [x] UserController
@@ -191,18 +185,12 @@ DEVELOPING
   - [ ] note_attachment
   - [ ] note_timeline
 - [ ] Fill base controllers
-  - [ ] AssignmentController
-  - [ ] AssignmentAttachmentController
-  - [ ] AssignmentStatusController
-  - [ ] AssignmentTimelineController
-  - [ ] ClassMemberController
-  - [ ] ClassroomController
-  - [ ] NoteController
-  - [ ] NoteAttachmentController
-  - [ ] NoteTimelineController
-  - [ ] SearchController
-  - [ ] SubjectController
-  - [ ] UserController
+  - [ ] AssignmentController `0/7`
+  - [ ] ClassroomController `0/9`
+  - [ ] NoteController `0/5`
+  - [ ] SearchController `0/1`
+  - [ ] SubjectController `0/5`
+  - [ ] UserController `0/8`
 - [ ] Fill base models
   - [ ] Assignment
   - [ ] AssignmentAttachment

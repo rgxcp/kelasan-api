@@ -185,12 +185,12 @@ DEVELOPING
   - [ ] note_attachment
   - [ ] note_timeline
 - [ ] Fill base controllers
-  - [ ] AssignmentController `0/7`
-  - [ ] ClassroomController `0/9`
-  - [ ] NoteController `0/5`
-  - [ ] SearchController `0/1`
-  - [ ] SubjectController `0/5`
-  - [ ] UserController `0/8`
+  - [ ] `0/7` AssignmentController
+  - [ ] `0/9` ClassroomController
+  - [ ] `0/5` NoteController
+  - [ ] `0/1` SearchController
+  - [ ] `0/5` SubjectController
+  - [ ] `0/8` UserController
 - [ ] Fill base models
   - [ ] Assignment
   - [ ] AssignmentAttachment

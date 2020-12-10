@@ -25,24 +25,55 @@ DEVELOPING
 
 ## Endpoints
 ### GET
-| URL | Description | Param | Return Type |
-|-----|-------------|-------|-------------|
-|     |             |       |             |
+| URL                                                                    | Description                    | Param | Return Type |
+|------------------------------------------------------------------------|--------------------------------|-------|-------------|
+| `/api/v1/classroom/{classroom_id}`                                     | Show classroom detail          |       |             |
+| `/api/v1/classroom/{classroom_id}/invitation-code`                     | Show classroom invitation code |       |             |
+| `/api/v1/classroom/{classroom_id}/assignments`                         | Show classroom assignments     |       |             |
+| `/api/v1/classroom/{classroom_id}/members`                             | Show classroom members         |       |             |
+| `/api/v1/classroom/{classroom_id}/notes`                               | Show classroom notes           |       |             |
+| `/api/v1/classroom/{classroom_id}/subjects`                            | Show classroom subjects        |       |             |
+| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}`          | Show assignment detail         |       |             |
+| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}/status`   | Show assignment status         |       |             |
+| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}/timeline` | Show assignment timeline       |       |             |
+| `/api/v1/classroom/{classroom_id}/note/{note_id}`                      | Show note detail               |       |             |
+| `/api/v1/classroom/{classroom_id}/note/{note_id}/timeline`             | Show note timeline             |       |             |
+| `/api/v1/classroom/{classroom_id}/subject/{subject_id}`                | Show subject detail            |       |             |
+| `/api/v1/classroom/{classroom_id}/subject/{subject_id}/assignments`    | Show subject assignments       |       |             |
+| `/api/v1/search`                                                       | Search data                    |       |             |
+| `/api/v1/user/self`                                                    | Show self profile detail       |       |             |
+| `/api/v1/user/self/assignments`                                        | Show self profile assignments  |       |             |
+| `/api/v1/user/self/classrooms`                                         | Show self profile classrooms   |       |             |
+| `/api/v1/user/self/subjects`                                           | Show self profile subjects     |       |             |
 
 ### POST
-| URL | Description | Param | Return Type |
-|-----|-------------|-------|-------------|
-|     |             |       |             |
+| URL                                           | Description       | Param | Return Type |
+|-----------------------------------------------|-------------------|-------|-------------|
+| `/api/v1/classroom`                           | Create classroom  |       |             |
+| `/api/v1/classroom/join`                      | Join classroom    |       |             |
+| `/api/v1/classroom/{classroom_id}/assignment` | Create assignment |       |             |
+| `/api/v1/classroom/{classroom_id}/note`       | Create note       |       |             |
+| `/api/v1/classroom/{classroom_id}/subject`    | Create subject    |       |             |
+| `/api/v1/user/sign-up`                        | Sign up           |       |             |
+| `/api/v1/user/sign-in`                        | Sign in           |       |             |
 
 ### PUT
-| URL | Description | Param | Return Type |
-|-----|-------------|-------|-------------|
-|     |             |       |             |
+| URL                                                                         | Description              | Param | Return Type |
+|-----------------------------------------------------------------------------|--------------------------|-------|-------------|
+| `/api/v1/classroom/{classroom_id}`                                          | Rename classroom         |       |             |
+| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}`               | Update assignment        |       |             |
+| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}/change-status` | Change assignment status |       |             |
+| `/api/v1/classroom/{classroom_id}/note/{note_id}`                           | Update note              |       |             |
+| `/api/v1/classroom/{classroom_id}/subject/{subject_id}`                     | Rename subject           |       |             |
+| `/api/v1/user/self`                                                         | Update self profile      |       |             |
 
 ### DELETE
-| URL | Description | Param | Return Type |
-|-----|-------------|-------|-------------|
-|     |             |       |             |
+| URL                                                           | Description       | Param | Return Type |
+|---------------------------------------------------------------|-------------------|-------|-------------|
+| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}` | Remove assignment |       |             |
+| `/api/v1/classroom/{classroom_id}/note/{note_id}`             | Remove note       |       |             |
+| `/api/v1/classroom/{classroom_id}/subject/{subject_id}`       | Remove subject    |       |             |
+| `/api/v1/user/self/sign-out`                                  | Sign out          |       |             |
 
 ## TODOs
 - [x] Delete user related boilerplate
@@ -111,52 +142,42 @@ DEVELOPING
   - [x] ClassroomLeader
   - [x] ClassroomMember
   - [x] NotClassroomMember
-- [ ] Create endpoints
-  - [ ] GET All assignment
-  - [ ] GET Today assignment
-  - [ ] GET Tomorrow assignment
-  - [ ] GET Next week assignment
-  - [ ] GET Completed assignment
-  - [ ] GET Uncompleted assignment
-  - [ ] GET Assignment detail
-  - [ ] GET Assignment status
-  - [ ] GET Assignment timeline
-  - [ ] GET Classroom detail
-  - [ ] GET Classroom invitation code
-  - [ ] GET Classroom member
-  - [ ] GET Classroom subject
-  - [ ] GET Classroom assignment
-  - [ ] GET Classroom completed assignment
-  - [ ] GET Classroom uncompleted assignment
-  - [ ] GET Classroom assignment status
-  - [ ] GET Classroom note
-  - [ ] GET Note detail
-  - [ ] GET Note timeline
-  - [ ] GET Search by
-  - [ ] GET Subject detail
-  - [ ] GET Subject assignment
-  - [ ] GET Subject completed assignment
-  - [ ] GET Subject uncompleted assignment
-  - [ ] GET Subject assignment status
-  - [ ] GET Self profile detail
-  - [ ] GET Self classroom
-  - [ ] POST Create assignment
-  - [ ] POST Change assignment status
-  - [ ] POST Create classroom
-  - [ ] POST Join classroom
-  - [ ] POST Create note
-  - [ ] POST Create subject
-  - [ ] POST Sign up
-  - [ ] POST Sign in
-  - [ ] PUT Update assignment
-  - [ ] PUT Rename classroom
-  - [ ] PUT Update note
-  - [ ] PUT Rename subject
-  - [ ] PUT Update self profile
-  - [ ] DELETE Remove assignment
-  - [ ] DELETE Remove note
-  - [ ] DELETE Remove subject
-  - [ ] DELETE Sign out
+- [x] Create endpoints
+  - [x] GET Classroom detail
+  - [x] GET Classroom invitation code
+  - [x] GET Classroom assignments
+  - [x] GET Classroom members
+  - [x] GET Classroom notes
+  - [x] GET Classroom subjects
+  - [x] GET Assignment detail
+  - [x] GET Assignment status
+  - [x] GET Assignment timeline
+  - [x] GET Note detail
+  - [x] GET Note timeline
+  - [x] GET Subject detail
+  - [x] GET Subject assignments
+  - [x] GET Search data
+  - [x] GET Self profile detail
+  - [x] GET Self profile assignments
+  - [x] GET Self profile classrooms
+  - [x] GET Self profile subjects
+  - [x] POST Create classroom
+  - [x] POST Join classroom
+  - [x] POST Create assignment
+  - [x] POST Create note
+  - [x] POST Create subject
+  - [x] POST Sign up
+  - [x] POST Sign in
+  - [x] PUT Rename classroom
+  - [x] PUT Update assignment
+  - [x] PUT Change assignment status
+  - [x] PUT Update note
+  - [x] PUT Rename subject
+  - [x] PUT Update self profile
+  - [x] DELETE Remove assignment
+  - [x] DELETE Remove note
+  - [x] DELETE Remove subject
+  - [x] DELETE Sign out
 - [ ] Fill base migrations
   - [ ] user
   - [ ] classroom

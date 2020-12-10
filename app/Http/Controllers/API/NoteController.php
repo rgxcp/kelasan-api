@@ -8,58 +8,23 @@ use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function create(Request $request)
     {
-        //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function detail(Note $note)
     {
-        //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Note $note)
+    public function timeline()
     {
-        //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Note $note)
     {
-        //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Note $note)
+    public function delete(Note $note)
     {
-        //
     }
 }

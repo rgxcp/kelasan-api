@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     // Classroom
-    Route::prefix('classroom')->group(function () {
+    Route::prefix('classrooms')->group(function () {
         Route::post('', [ClassroomController::class, 'create']);
         Route::post('join', [ClassroomController::class, 'join']);
         Route::prefix('{classroom_id}')->group(function () {
@@ -35,7 +35,7 @@ Route::prefix('v1')->group(function () {
             Route::put('', [ClassroomController::class, 'rename']);
 
             // Assignment
-            Route::prefix('assignment')->group(function () {
+            Route::prefix('assignments')->group(function () {
                 Route::post('', [AssignmentController::class, 'create']);
                 Route::prefix('{assignment_id}')->group(function () {
                     Route::get('', [AssignmentController::class, 'detail']);
@@ -48,7 +48,7 @@ Route::prefix('v1')->group(function () {
             });
 
             // Note
-            Route::prefix('note')->group(function () {
+            Route::prefix('notes')->group(function () {
                 Route::post('', [NoteController::class, 'create']);
                 Route::prefix('{note_id}')->group(function () {
                     Route::get('', [NoteController::class, 'detail']);
@@ -59,7 +59,7 @@ Route::prefix('v1')->group(function () {
             });
 
             // Subject
-            Route::prefix('subject')->group(function () {
+            Route::prefix('subjects')->group(function () {
                 Route::post('', [SubjectController::class, 'create']);
                 Route::prefix('{subject_id}')->group(function () {
                     Route::get('', [SubjectController::class, 'detail']);
@@ -75,7 +75,7 @@ Route::prefix('v1')->group(function () {
     Route::get('search', [SearchController::class, 'search']);
 
     // User
-    Route::prefix('user')->group(function () {
+    Route::prefix('users')->group(function () {
         Route::post('sign-up', [UserController::class, 'signUp']);
         Route::post('sign-in', [UserController::class, 'signIn']);
         Route::prefix('self')->group(function () {

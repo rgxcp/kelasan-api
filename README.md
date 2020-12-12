@@ -25,55 +25,55 @@ DEVELOPING
 
 ## Endpoints
 ### GET
-| URL                                                                    | Description                    | Param | Return Type |
-|------------------------------------------------------------------------|--------------------------------|-------|-------------|
-| `/api/v1/classroom/{classroom_id}`                                     | Show classroom detail          |       |             |
-| `/api/v1/classroom/{classroom_id}/invitation-code`                     | Show classroom invitation code |       |             |
-| `/api/v1/classroom/{classroom_id}/assignments`                         | Show classroom assignments     |       |             |
-| `/api/v1/classroom/{classroom_id}/members`                             | Show classroom members         |       |             |
-| `/api/v1/classroom/{classroom_id}/notes`                               | Show classroom notes           |       |             |
-| `/api/v1/classroom/{classroom_id}/subjects`                            | Show classroom subjects        |       |             |
-| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}`          | Show assignment detail         |       |             |
-| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}/status`   | Show assignment status         |       |             |
-| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}/timeline` | Show assignment timeline       |       |             |
-| `/api/v1/classroom/{classroom_id}/note/{note_id}`                      | Show note detail               |       |             |
-| `/api/v1/classroom/{classroom_id}/note/{note_id}/timeline`             | Show note timeline             |       |             |
-| `/api/v1/classroom/{classroom_id}/subject/{subject_id}`                | Show subject detail            |       |             |
-| `/api/v1/classroom/{classroom_id}/subject/{subject_id}/assignments`    | Show subject assignments       |       |             |
-| `/api/v1/search`                                                       | Search data                    |       |             |
-| `/api/v1/user/self`                                                    | Show self profile detail       |       |             |
-| `/api/v1/user/self/assignments`                                        | Show self profile assignments  |       |             |
-| `/api/v1/user/self/classrooms`                                         | Show self profile classrooms   |       |             |
-| `/api/v1/user/self/subjects`                                           | Show self profile subjects     |       |             |
+| URL                                                                      | Description                    | Param | Return Type |
+|--------------------------------------------------------------------------|--------------------------------|-------|-------------|
+| `/api/v1/classrooms/{classroom_id}`                                      | Show classroom detail          |       |             |
+| `/api/v1/classrooms/{classroom_id}/invitation-code`                      | Show classroom invitation code |       |             |
+| `/api/v1/classrooms/{classroom_id}/assignments`                          | Show classroom assignments     |       |             |
+| `/api/v1/classrooms/{classroom_id}/members`                              | Show classroom members         |       |             |
+| `/api/v1/classrooms/{classroom_id}/notes`                                | Show classroom notes           |       |             |
+| `/api/v1/classrooms/{classroom_id}/subjects`                             | Show classroom subjects        |       |             |
+| `/api/v1/classrooms/{classroom_id}/assignments/{assignment_id}`          | Show assignment detail         |       |             |
+| `/api/v1/classrooms/{classroom_id}/assignments/{assignment_id}/status`   | Show assignment status         |       |             |
+| `/api/v1/classrooms/{classroom_id}/assignments/{assignment_id}/timeline` | Show assignment timeline       |       |             |
+| `/api/v1/classrooms/{classroom_id}/notes/{note_id}`                      | Show note detail               |       |             |
+| `/api/v1/classrooms/{classroom_id}/notes/{note_id}/timeline`             | Show note timeline             |       |             |
+| `/api/v1/classrooms/{classroom_id}/subjects/{subject_id}`                | Show subject detail            |       |             |
+| `/api/v1/classrooms/{classroom_id}/subjects/{subject_id}/assignments`    | Show subject assignments       |       |             |
+| `/api/v1/search`                                                         | Search data                    |       |             |
+| `/api/v1/users/self`                                                     | Show self profile detail       |       |             |
+| `/api/v1/users/self/assignments`                                         | Show self profile assignments  |       |             |
+| `/api/v1/users/self/classrooms`                                          | Show self profile classrooms   |       |             |
+| `/api/v1/users/self/subjects`                                            | Show self profile subjects     |       |             |
 
 ### POST
-| URL                                           | Description       | Param | Return Type |
-|-----------------------------------------------|-------------------|-------|-------------|
-| `/api/v1/classroom`                           | Create classroom  |       |             |
-| `/api/v1/classroom/join`                      | Join classroom    |       |             |
-| `/api/v1/classroom/{classroom_id}/assignment` | Create assignment |       |             |
-| `/api/v1/classroom/{classroom_id}/note`       | Create note       |       |             |
-| `/api/v1/classroom/{classroom_id}/subject`    | Create subject    |       |             |
-| `/api/v1/user/sign-up`                        | Sign up           |       |             |
-| `/api/v1/user/sign-in`                        | Sign in           |       |             |
+| URL                                             | Description       | Param | Return Type |
+|-------------------------------------------------|-------------------|-------|-------------|
+| `/api/v1/classrooms`                            | Create classroom  |       |             |
+| `/api/v1/classrooms/join`                       | Join classroom    |       |             |
+| `/api/v1/classrooms/{classroom_id}/assignments` | Create assignment |       |             |
+| `/api/v1/classrooms/{classroom_id}/notes`       | Create note       |       |             |
+| `/api/v1/classrooms/{classroom_id}/subjects`    | Create subject    |       |             |
+| `/api/v1/users/sign-up`                         | Sign up           |       |             |
+| `/api/v1/users/sign-in`                         | Sign in           |       |             |
 
 ### PUT
-| URL                                                                         | Description              | Param | Return Type |
-|-----------------------------------------------------------------------------|--------------------------|-------|-------------|
-| `/api/v1/classroom/{classroom_id}`                                          | Rename classroom         |       |             |
-| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}`               | Update assignment        |       |             |
-| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}/change-status` | Change assignment status |       |             |
-| `/api/v1/classroom/{classroom_id}/note/{note_id}`                           | Update note              |       |             |
-| `/api/v1/classroom/{classroom_id}/subject/{subject_id}`                     | Rename subject           |       |             |
-| `/api/v1/user/self`                                                         | Update self profile      |       |             |
+| URL                                                                           | Description              | Param | Return Type |
+|-------------------------------------------------------------------------------|--------------------------|-------|-------------|
+| `/api/v1/classrooms/{classroom_id}`                                           | Rename classroom         |       |             |
+| `/api/v1/classrooms/{classroom_id}/assignments/{assignment_id}`               | Update assignment        |       |             |
+| `/api/v1/classrooms/{classroom_id}/assignments/{assignment_id}/change-status` | Change assignment status |       |             |
+| `/api/v1/classrooms/{classroom_id}/notes/{note_id}`                           | Update note              |       |             |
+| `/api/v1/classrooms/{classroom_id}/subjects/{subject_id}`                     | Rename subject           |       |             |
+| `/api/v1/users/self`                                                          | Update self profile      |       |             |
 
 ### DELETE
-| URL                                                           | Description       | Param | Return Type |
-|---------------------------------------------------------------|-------------------|-------|-------------|
-| `/api/v1/classroom/{classroom_id}/assignment/{assignment_id}` | Remove assignment |       |             |
-| `/api/v1/classroom/{classroom_id}/note/{note_id}`             | Remove note       |       |             |
-| `/api/v1/classroom/{classroom_id}/subject/{subject_id}`       | Remove subject    |       |             |
-| `/api/v1/user/self/sign-out`                                  | Sign out          |       |             |
+| URL                                                             | Description       | Param | Return Type |
+|-----------------------------------------------------------------|-------------------|-------|-------------|
+| `/api/v1/classrooms/{classroom_id}/assignments/{assignment_id}` | Remove assignment |       |             |
+| `/api/v1/classrooms/{classroom_id}/notes/{note_id}`             | Remove note       |       |             |
+| `/api/v1/classrooms/{classroom_id}/subjects/{subject_id}`       | Remove subject    |       |             |
+| `/api/v1/users/self/sign-out`                                   | Sign out          |       |             |
 
 ## TODOs
 - [x] Delete user related boilerplate

@@ -14,8 +14,13 @@ class CreateNoteTimelinesTable extends Migration
     public function up()
     {
         Schema::create('note_timelines', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('note_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained();
+            $table->enum('type', ['CREATED', 'UPDATED'])->default('CREATED');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

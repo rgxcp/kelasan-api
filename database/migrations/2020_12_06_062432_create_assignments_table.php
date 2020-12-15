@@ -14,8 +14,16 @@ class CreateAssignmentsTable extends Migration
     public function up()
     {
         Schema::create('assignments', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
+            $table->foreignId('created_by')->constrained('users');
+            $table->longText('detail');
+            $table->enum('type', ['INDIVIDUAL', 'GROUP'])->default('INDIVIDUAL');
+            $table->dateTime('start')->nullable();
+            $table->dateTime('deadline')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

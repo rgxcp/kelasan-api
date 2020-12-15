@@ -14,8 +14,13 @@ class CreateNoteAttachmentsTable extends Migration
     public function up()
     {
         Schema::create('note_attachments', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('note_id')->constrained()->onDelete('cascade');
+            $table->foreignId('uploaded_by')->constrained('users');
+            $table->string('direct_link');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

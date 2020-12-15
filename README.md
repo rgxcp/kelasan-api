@@ -172,18 +172,18 @@ DEVELOPING
   - [x] DELETE Remove note
   - [x] DELETE Remove subject
   - [x] DELETE Sign out
-- [ ] Fill base migrations
-  - [ ] user
-  - [ ] classroom
-  - [ ] class_member
-  - [ ] subject
-  - [ ] assignment
-  - [ ] assignment_attachment
-  - [ ] assignment_status
-  - [ ] assignment_timeline
-  - [ ] note
-  - [ ] note_attachment
-  - [ ] note_timeline
+- [x] Fill base migrations
+  - [x] user
+  - [x] classroom
+  - [x] class_member
+  - [x] subject
+  - [x] assignment
+  - [x] assignment_attachment
+  - [x] assignment_status
+  - [x] assignment_timeline
+  - [x] note
+  - [x] note_attachment
+  - [x] note_timeline
 - [ ] Fill base controllers
   - [ ] `0/7` AssignmentController
   - [ ] `0/9` ClassroomController

@@ -14,8 +14,12 @@ class CreateNotesTable extends Migration
     public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('created_by')->constrained('users');
+            $table->longText('detail');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -14,7 +14,10 @@ class CreateClassMembersTable extends Migration
     public function up()
     {
         Schema::create('class_members', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->enum('role', ['LEADER', 'STUDENT'])->default('STUDENT');
             $table->timestamps();
         });
     }

@@ -76,11 +76,11 @@ DEVELOPING
 | `/api/v1/users/self/sign-out`                                   | Sign out          |       |             |
 
 ## TODOs
-Total Tasks : `225`
+Total Tasks : `260`
 
 Completed Tasks : `143`
 
-Progress : `63.55%`
+Progress : `55%`
 
 - [x] Delete user related boilerplate
 - [x] Create base migrations
@@ -204,12 +204,47 @@ Progress : `63.55%`
   - [x] note_attachment
   - [x] note_timeline
 - [ ] Fill base controllers
-  - [ ] `0/7` AssignmentController
-  - [ ] `0/9` ClassroomController
-  - [ ] `0/5` NoteController
-  - [ ] `0/1` SearchController
-  - [ ] `0/5` SubjectController
-  - [ ] `0/8` UserController
+  - [ ] AssignmentController
+    - [ ] `detail()`
+    - [ ] `status()`
+    - [ ] `timeline()`
+    - [ ] `create()`
+    - [ ] `update()`
+    - [ ] `changeStatus()`
+    - [ ] `delete()`
+  - [ ] ClassroomController
+    - [ ] `detail()`
+    - [ ] `invitationCode()`
+    - [ ] `assignments()`
+    - [ ] `members()`
+    - [ ] `notes()`
+    - [ ] `subjects()`
+    - [ ] `create()`
+    - [ ] `join()`
+    - [ ] `rename()`
+  - [ ] NoteController
+    - [ ] `detail()`
+    - [ ] `timeline()`
+    - [ ] `create()`
+    - [ ] `update()`
+    - [ ] `delete()`
+  - [ ] SearchController
+    - [ ] `search()`
+  - [ ] SubjectController
+    - [ ] `detail()`
+    - [ ] `assignments()`
+    - [ ] `create()`
+    - [ ] `rename()`
+    - [ ] `delete()`
+  - [ ] UserController
+    - [ ] `detail()`
+    - [ ] `assignments()`
+    - [ ] `classrooms()`
+    - [ ] `subjects()`
+    - [ ] `signUp()`
+    - [ ] `signIn()`
+    - [ ] `update()`
+    - [ ] `signOut()`
 - [ ] Fill base models
   - [ ] Assignment
     - [x] Fillable Properties

@@ -108,19 +108,19 @@ DEVELOPING
   - [x] SearchController
   - [x] SubjectController
   - [x] UserController
-- [ ] Create base requests
-  - [ ] CreateAssignmentRequest
-  - [ ] CreateClassroomRequest
-  - [ ] CreateNoteRequest
-  - [ ] CreateSubjectRequest
-  - [ ] JoinClassroomRequest
-  - [ ] RenameClassroomRequest
-  - [ ] RenameSubjectRequest
-  - [ ] SignInRequest
-  - [ ] SignUpRequest
-  - [ ] UpdateAssignmentRequest
-  - [ ] UpdateNoteRequest
-  - [ ] UpdateProfileRequest
+- [x] Create base requests
+  - [x] CreateAssignmentRequest
+  - [x] CreateClassroomRequest
+  - [x] CreateNoteRequest
+  - [x] CreateSubjectRequest
+  - [x] JoinClassroomRequest
+  - [x] RenameClassroomRequest
+  - [x] RenameSubjectRequest
+  - [x] SignInRequest
+  - [x] SignUpRequest
+  - [x] UpdateAssignmentRequest
+  - [x] UpdateProfileRequest
+  - [x] UpdateNoteRequest
 - [x] Create base factories
   - [x] AssignmentAttachmentFactory
   - [x] AssignmentFactory

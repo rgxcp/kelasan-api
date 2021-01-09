@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class NoteAttachment extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'direct_link'
+    ];
 }

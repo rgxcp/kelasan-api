@@ -193,57 +193,57 @@ DEVELOPING
   - [ ] `0/8` UserController
 - [ ] Fill base models
   - [ ] Assignment
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] AssignmentAttachment
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] AssignmentStatus
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] AssignmentTimeline
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] ClassMember
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] Classroom
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] Note
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] NoteAttachment
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] NoteTimeline
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] Subject
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] User
-    - [ ] Fillable Properties
+    - [x] Fillable Properties
     - [ ] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors

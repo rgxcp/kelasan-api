@@ -108,6 +108,19 @@ DEVELOPING
   - [x] SearchController
   - [x] SubjectController
   - [x] UserController
+- [ ] Create base requests
+  - [ ] CreateAssignmentRequest
+  - [ ] CreateClassroomRequest
+  - [ ] CreateNoteRequest
+  - [ ] CreateSubjectRequest
+  - [ ] JoinClassroomRequest
+  - [ ] RenameClassroomRequest
+  - [ ] RenameSubjectRequest
+  - [ ] SignInRequest
+  - [ ] SignUpRequest
+  - [ ] UpdateAssignmentRequest
+  - [ ] UpdateNoteRequest
+  - [ ] UpdateProfileRequest
 - [x] Create base factories
   - [x] AssignmentAttachmentFactory
   - [x] AssignmentFactory
@@ -247,6 +260,19 @@ DEVELOPING
     - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
+- [ ] Fill base requests
+  - [ ] CreateAssignmentRequest
+  - [ ] CreateClassroomRequest
+  - [ ] CreateNoteRequest
+  - [ ] CreateSubjectRequest
+  - [ ] JoinClassroomRequest
+  - [ ] RenameClassroomRequest
+  - [ ] RenameSubjectRequest
+  - [ ] SignInRequest
+  - [ ] SignUpRequest
+  - [ ] UpdateAssignmentRequest
+  - [ ] UpdateNoteRequest
+  - [ ] UpdateProfileRequest
 - [ ] Fill base middleware
   - [ ] ClassroomLeader
   - [ ] ClassroomMember

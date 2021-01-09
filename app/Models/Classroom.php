@@ -12,4 +12,8 @@ class Classroom extends Model
     protected $fillable = [
         'name'
     ];
+
+    protected $hidden = [
+        'invitation_code'
+    ];
 }

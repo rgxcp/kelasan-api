@@ -194,57 +194,57 @@ DEVELOPING
 - [ ] Fill base models
   - [ ] Assignment
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] AssignmentAttachment
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] AssignmentStatus
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] AssignmentTimeline
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] ClassMember
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] Classroom
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] Note
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] NoteAttachment
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] NoteTimeline
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] Subject
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
   - [ ] User
     - [x] Fillable Properties
-    - [ ] Hidden Properties
+    - [x] Hidden Properties
     - [ ] Relationships
     - [ ] Accessors
 - [ ] Fill base middleware

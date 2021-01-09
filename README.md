@@ -76,6 +76,12 @@ DEVELOPING
 | `/api/v1/users/self/sign-out`                                   | Sign out          |       |             |
 
 ## TODOs
+Total Tasks : `225`
+
+Completed Tasks : `143`
+
+Progress : `63.55%`
+
 - [x] Delete user related boilerplate
 - [x] Create base migrations
   - [x] user

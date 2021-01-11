@@ -76,13 +76,14 @@ DEVELOPING
 | `/api/v1/users/self/sign-out`                                   | Sign out          |       |             |
 
 ## TODOs
-Total Tasks : `260`
+Total Tasks : `261`
 
-Completed Tasks : `143`
+Completed Tasks : `144`
 
-Progress : `55%`
+Progress : `55.17%`
 
 - [x] Delete user related boilerplate
+- [x] Change app timezone
 - [x] Create base migrations
   - [x] user
   - [x] classroom

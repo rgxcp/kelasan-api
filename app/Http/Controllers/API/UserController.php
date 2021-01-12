@@ -123,6 +123,29 @@ class UserController extends Controller
         ]);
     }
 
+    public function changePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'new_password' => 'required|string|min:8',
+            'confirm_password' => 'required|string|min:8|same:new_password'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'Failed',
+                'reasons' => $validator->errors()
+            ]);
+        }
+
+        $request->user()->update([
+            'password' => Hash::make($request->confirm_password)
+        ]);
+
+        return response()->json([
+            'status' => 'Success'
+        ]);
+    }
+
     public function signOut(Request $request)
     {
         $request->user()->currentAccessToken()->delete();

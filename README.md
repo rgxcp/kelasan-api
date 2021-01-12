@@ -66,6 +66,7 @@ DEVELOPING
 | `/api/v1/classrooms/{classroom_id}/notes/{note_id}`                           | Update note              |       |             |
 | `/api/v1/classrooms/{classroom_id}/subjects/{subject_id}`                     | Rename subject           |       |             |
 | `/api/v1/users/self`                                                          | Update self profile      |       |             |
+| `/api/v1/users/self/change-password`                                          | Change self password     |       |             |
 
 ### DELETE
 | URL                                                             | Description             | Param | Return Type |
@@ -77,11 +78,11 @@ DEVELOPING
 | `/api/v1/users/self/sign-out-all`                               | Sign out all devices    |       |             |
 
 ## TODOs
-Total Tasks : `263`
+Total Tasks : `265`
 
-Completed Tasks : `150`
+Completed Tasks : `152`
 
-Progress : `57.03%`
+Progress : `57.35%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
@@ -189,6 +190,7 @@ Progress : `57.03%`
   - [x] PUT Update note
   - [x] PUT Rename subject
   - [x] PUT Update self profile
+  - [x] PUT Change self password
   - [x] DELETE Remove assignment
   - [x] DELETE Remove note
   - [x] DELETE Remove subject
@@ -247,6 +249,7 @@ Progress : `57.03%`
     - [x] `signUp()`
     - [x] `signIn()`
     - [x] `update()`
+    - [x] `changePassword()`
     - [x] `signOut()`
     - [x] `signOutAll()`
 - [ ] Fill base models

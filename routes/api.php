@@ -84,6 +84,7 @@ Route::prefix('v1')->group(function () {
             Route::get('classrooms', [UserController::class, 'classrooms']);
             Route::get('subjects', [UserController::class, 'subjects']);
             Route::put('', [UserController::class, 'update']);
+            Route::put('change-password', [UserController::class, 'changePassword']);
             Route::delete('sign-out', [UserController::class, 'signOut']);
             Route::delete('sign-out-all', [UserController::class, 'signOutAll']);
         });

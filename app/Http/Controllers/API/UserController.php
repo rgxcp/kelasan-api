@@ -43,9 +43,9 @@ class UserController extends Controller
         }
 
         $user = User::create([
-            'full_name' => $request['full_name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password'])
+            'full_name' => $request->full_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
 
         $token = $user->createToken('bearer');

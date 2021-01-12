@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function signIn()
-    {
-    }
-
     public function detail(User $user)
     {
     }
@@ -50,6 +46,42 @@ class UserController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password'])
         ]);
+
+        $token = $user->createToken('bearer');
+
+        $collection = collect([
+            'user' => $user,
+            'token' => $token
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $collection
+        ]);
+    }
+
+    public function signIn(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'Failed',
+                'reasons' => $validator->errors()
+            ]);
+        }
+
+        $user = User::where('email', $request->email)->firstOrFail();
+
+        if (!Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'status' => 'Failed',
+                'reason' => 'Unauthorized'
+            ]);
+        }
 
         $token = $user->createToken('bearer');
 

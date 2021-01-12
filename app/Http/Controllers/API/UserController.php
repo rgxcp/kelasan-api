@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -96,8 +97,31 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
+        $user = Auth::user();
+
+        $validator = Validator::make($request->all(), [
+            'full_name' => 'required|string|max:30',
+            'email' => 'required|email|max:50|unique:users,email,' . $user->id
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'Failed',
+                'reasons' => $validator->errors()
+            ]);
+        }
+
+        $user->update([
+            'full_name' => $request->full_name,
+            'email' => $request->email
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $user
+        ]);
     }
 
     public function signOut()

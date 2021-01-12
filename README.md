@@ -78,9 +78,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `261`
 
-Completed Tasks : `146`
+Completed Tasks : `147`
 
-Progress : `55.93%`
+Progress : `56.32%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
@@ -244,7 +244,7 @@ Progress : `55.93%`
     - [ ] `subjects()`
     - [x] `signUp()`
     - [x] `signIn()`
-    - [ ] `update()`
+    - [x] `update()`
     - [ ] `signOut()`
 - [ ] Fill base models
   - [ ] Assignment

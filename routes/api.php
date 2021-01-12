@@ -78,7 +78,7 @@ Route::prefix('v1')->group(function () {
     Route::prefix('users')->group(function () {
         Route::post('sign-up', [UserController::class, 'signUp']);
         Route::post('sign-in', [UserController::class, 'signIn']);
-        Route::prefix('self')->group(function () {
+        Route::middleware('auth:sanctum')->prefix('self')->group(function () {
             Route::get('', [UserController::class, 'detail']);
             Route::get('assignments', [UserController::class, 'assignments']);
             Route::get('classrooms', [UserController::class, 'classrooms']);

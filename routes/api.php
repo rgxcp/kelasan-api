@@ -85,6 +85,7 @@ Route::prefix('v1')->group(function () {
             Route::get('subjects', [UserController::class, 'subjects']);
             Route::put('', [UserController::class, 'update']);
             Route::delete('sign-out', [UserController::class, 'signOut']);
+            Route::delete('sign-out-all', [UserController::class, 'signOutAll']);
         });
     });
 });

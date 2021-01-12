@@ -68,19 +68,20 @@ DEVELOPING
 | `/api/v1/users/self`                                                          | Update self profile      |       |             |
 
 ### DELETE
-| URL                                                             | Description       | Param | Return Type |
-|-----------------------------------------------------------------|-------------------|-------|-------------|
-| `/api/v1/classrooms/{classroom_id}/assignments/{assignment_id}` | Remove assignment |       |             |
-| `/api/v1/classrooms/{classroom_id}/notes/{note_id}`             | Remove note       |       |             |
-| `/api/v1/classrooms/{classroom_id}/subjects/{subject_id}`       | Remove subject    |       |             |
-| `/api/v1/users/self/sign-out`                                   | Sign out          |       |             |
+| URL                                                             | Description             | Param | Return Type |
+|-----------------------------------------------------------------|-------------------------|-------|-------------|
+| `/api/v1/classrooms/{classroom_id}/assignments/{assignment_id}` | Remove assignment       |       |             |
+| `/api/v1/classrooms/{classroom_id}/notes/{note_id}`             | Remove note             |       |             |
+| `/api/v1/classrooms/{classroom_id}/subjects/{subject_id}`       | Remove subject          |       |             |
+| `/api/v1/users/self/sign-out`                                   | Sign out current device |       |             |
+| `/api/v1/users/self/sign-out-all`                               | Sign out all devices    |       |             |
 
 ## TODOs
-Total Tasks : `261`
+Total Tasks : `263`
 
-Completed Tasks : `148`
+Completed Tasks : `150`
 
-Progress : `56.70%`
+Progress : `57.03%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
@@ -191,7 +192,8 @@ Progress : `56.70%`
   - [x] DELETE Remove assignment
   - [x] DELETE Remove note
   - [x] DELETE Remove subject
-  - [x] DELETE Sign out
+  - [x] DELETE Sign out current device
+  - [x] DELETE Sign out all devices
 - [x] Fill base migrations
   - [x] user
   - [x] classroom
@@ -246,6 +248,7 @@ Progress : `56.70%`
     - [x] `signIn()`
     - [x] `update()`
     - [x] `signOut()`
+    - [x] `signOutAll()`
 - [ ] Fill base models
   - [ ] Assignment
     - [x] Fillable Properties

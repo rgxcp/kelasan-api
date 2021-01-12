@@ -131,4 +131,13 @@ class UserController extends Controller
             'status' => 'Success'
         ]);
     }
+
+    public function signOutAll(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'status' => 'Success'
+        ]);
+    }
 }

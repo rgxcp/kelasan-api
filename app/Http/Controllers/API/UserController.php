@@ -124,7 +124,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function signOut()
+    public function signOut(Request $request)
     {
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'status' => 'Success'
+        ]);
     }
 }

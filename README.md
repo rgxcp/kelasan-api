@@ -80,9 +80,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `268`
 
-Completed Tasks : `160`
+Completed Tasks : `162`
 
-Progress : `59.70%`
+Progress : `60.44%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
@@ -324,9 +324,9 @@ Progress : `59.70%`
   - [ ] UpdateAssignmentRequest
   - [ ] UpdateNoteRequest
   - [ ] UpdateProfileRequest
-- [ ] Fill base middleware
+- [x] Fill base middleware
   - [x] ClassroomLeader
-  - [ ] ClassroomMember
+  - [x] ClassroomMember
   - [x] NotClassroomMember
 - [ ] Fill base factories
   - [ ] AssignmentFactory

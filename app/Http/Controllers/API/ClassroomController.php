@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\ClassMember;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -63,9 +64,20 @@ class ClassroomController extends Controller
             'invitation_code' => $invitationCode
         ])->makeVisible('invitation_code');
 
+        $classMember = ClassMember::create([
+            'classroom_id' => $classroom->id,
+            'user_id' => $classroom->leader,
+            'role' => 'LEADER'
+        ]);
+
+        $collection = collect([
+            'classroom' => $classroom,
+            'class_member' => $classMember
+        ]);
+
         return response()->json([
             'status' => 'Success',
-            'result' => $classroom
+            'result' => $collection
         ]);
     }
 

@@ -10,7 +10,9 @@ class Classroom extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'leader',
+        'name',
+        'invitation_code'
     ];
 
     protected $hidden = [

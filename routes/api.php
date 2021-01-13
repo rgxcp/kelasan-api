@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     // Classroom
-    Route::prefix('classrooms')->group(function () {
+    Route::middleware('auth:sanctum')->prefix('classrooms')->group(function () {
         Route::post('', [ClassroomController::class, 'create']);
         Route::post('join', [ClassroomController::class, 'join']);
         Route::prefix('{classroom_id}')->group(function () {

@@ -78,14 +78,15 @@ DEVELOPING
 | `/api/v1/users/self/sign-out-all`                               | Sign out all devices    |       |             |
 
 ## TODOs
-Total Tasks : `265`
+Total Tasks : `268`
 
-Completed Tasks : `157`
+Completed Tasks : `158`
 
-Progress : `59.24%`
+Progress : `58.95%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
+- [x] Configure ModelNotFoundException on handler
 - [x] Create base migrations
   - [x] user
   - [x] classroom
@@ -196,6 +197,8 @@ Progress : `59.24%`
   - [x] DELETE Remove subject
   - [x] DELETE Sign out current device
   - [x] DELETE Sign out all devices
+- [ ] Assign middleware on route
+- [ ] Register middleware on kernel
 - [x] Fill base migrations
   - [x] user
   - [x] classroom

@@ -19,4 +19,30 @@ class Assignment extends Model
         'start',
         'deadline'
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($assignments) {
+            $assignments->assignmentAttachments()->delete();
+            $assignments->assignmentStatuses()->delete();
+            $assignments->assignmentTimelines()->delete();
+        });
+    }
+
+    public function assignmentAttachments()
+    {
+        return $this->hasMany(AssignmentAttachment::class);
+    }
+
+    public function assignmentStatuses()
+    {
+        return $this->hasMany(AssignmentStatus::class);
+    }
+
+    public function assignmentTimelines()
+    {
+        return $this->hasMany(AssignmentTimeline::class);
+    }
 }

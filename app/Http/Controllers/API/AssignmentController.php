@@ -109,7 +109,17 @@ class AssignmentController extends Controller
     {
     }
 
-    public function delete(Assignment $assignment)
+    public function delete($classroom_id, $assignment_id)
     {
+        $assignment = Assignment::where([
+            'id' => $assignment_id,
+            'classroom_id' => $classroom_id
+        ])->firstOrFail();
+
+        $assignment->delete();
+
+        return response()->json([
+            'status' => 'Success'
+        ]);
     }
 }

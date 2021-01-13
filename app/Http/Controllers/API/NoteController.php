@@ -84,7 +84,17 @@ class NoteController extends Controller
         ]);
     }
 
-    public function delete(Note $note)
+    public function delete($classroom_id, $note_id)
     {
+        $note = Note::where([
+            'id' => $note_id,
+            'classroom_id' => $classroom_id
+        ])->firstOrFail();
+
+        $note->delete();
+
+        return response()->json([
+            'status' => 'Success'
+        ]);
     }
 }

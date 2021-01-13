@@ -37,7 +37,7 @@ class ClassroomController extends Controller
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string'
+            'name' => 'required|string|max:20'
         ]);
 
         if ($validator->fails()) {
@@ -95,7 +95,7 @@ class ClassroomController extends Controller
         $classroom = Classroom::findOrFail($classroom_id);
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string'
+            'name' => 'required|string|max:20'
         ]);
 
         if ($validator->fails()) {

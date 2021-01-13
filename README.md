@@ -80,9 +80,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `265`
 
-Completed Tasks : `153`
+Completed Tasks : `155`
 
-Progress : `57.73%`
+Progress : `58.49%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
@@ -225,7 +225,7 @@ Progress : `57.73%`
     - [ ] `notes()`
     - [ ] `subjects()`
     - [x] `create()`
-    - [ ] `join()`
+    - [x] `join()`
     - [ ] `rename()`
   - [ ] NoteController
     - [ ] `detail()`
@@ -324,7 +324,7 @@ Progress : `57.73%`
 - [ ] Fill base middleware
   - [ ] ClassroomLeader
   - [ ] ClassroomMember
-  - [ ] NotClassroomMember
+  - [x] NotClassroomMember
 - [ ] Fill base factories
   - [ ] AssignmentFactory
   - [ ] AssignmentAttachmentFactory

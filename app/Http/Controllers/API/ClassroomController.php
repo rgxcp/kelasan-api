@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ClassroomController extends Controller
 {
-    public function join()
-    {
-    }
-
     public function detail(Classroom $classroom)
     {
     }
@@ -78,6 +74,19 @@ class ClassroomController extends Controller
         return response()->json([
             'status' => 'Success',
             'result' => $collection
+        ]);
+    }
+
+    public function join(Request $request)
+    {
+        $classMember = ClassMember::create([
+            'classroom_id' => $request->classroom_id,
+            'user_id' => $request->user()->id
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $classMember
         ]);
     }
 

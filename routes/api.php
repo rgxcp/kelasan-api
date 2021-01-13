@@ -25,14 +25,14 @@ Route::prefix('v1')->group(function () {
     Route::middleware('auth:sanctum')->prefix('classrooms')->group(function () {
         Route::post('', [ClassroomController::class, 'create']);
         Route::middleware('notClassroomMember')->post('join', [ClassroomController::class, 'join']);
-        Route::prefix('{classroom_id}')->group(function () {
+        Route::middleware('classroomMember')->prefix('{classroom_id}')->group(function () {
             Route::get('', [ClassroomController::class, 'detail']);
             Route::get('invitation-code', [ClassroomController::class, 'invitationCode']);
             Route::get('assignments', [ClassroomController::class, 'assignments']);
             Route::get('members', [ClassroomController::class, 'members']);
             Route::get('notes', [ClassroomController::class, 'notes']);
             Route::get('subjects', [ClassroomController::class, 'subjects']);
-            Route::middleware('classroomLeader')->put('', [ClassroomController::class, 'rename']);
+            Route::put('', [ClassroomController::class, 'rename']);
 
             // Assignment
             Route::prefix('assignments')->group(function () {
@@ -43,7 +43,7 @@ Route::prefix('v1')->group(function () {
                     Route::get('timeline', [AssignmentController::class, 'timeline']);
                     Route::put('', [AssignmentController::class, 'update']);
                     Route::put('change-status', [AssignmentController::class, 'changeStatus']);
-                    Route::delete('', [AssignmentController::class, 'delete']);
+                    Route::middleware('classroomLeader')->delete('', [AssignmentController::class, 'delete']);
                 });
             });
 
@@ -54,7 +54,7 @@ Route::prefix('v1')->group(function () {
                     Route::get('', [NoteController::class, 'detail']);
                     Route::get('timeline', [NoteController::class, 'timeline']);
                     Route::put('', [NoteController::class, 'update']);
-                    Route::delete('', [NoteController::class, 'delete']);
+                    Route::middleware('classroomLeader')->delete('', [NoteController::class, 'delete']);
                 });
             });
 
@@ -65,14 +65,14 @@ Route::prefix('v1')->group(function () {
                     Route::get('', [SubjectController::class, 'detail']);
                     Route::get('assignments', [SubjectController::class, 'assignments']);
                     Route::put('', [SubjectController::class, 'rename']);
-                    Route::delete('', [SubjectController::class, 'delete']);
+                    Route::middleware('classroomLeader')->delete('', [SubjectController::class, 'delete']);
                 });
             });
         });
     });
 
     // Search
-    Route::get('search', [SearchController::class, 'search']);
+    Route::middleware('auth:sanctum')->get('search', [SearchController::class, 'search']);
 
     // User
     Route::prefix('users')->group(function () {

@@ -80,9 +80,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `268`
 
-Completed Tasks : `159`
+Completed Tasks : `160`
 
-Progress : `59.32%`
+Progress : `59.70%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
@@ -197,7 +197,7 @@ Progress : `59.32%`
   - [x] DELETE Remove subject
   - [x] DELETE Sign out current device
   - [x] DELETE Sign out all devices
-- [ ] Assign middleware on route
+- [x] Assign middleware on route
 - [x] Register middleware on kernel
 - [x] Fill base migrations
   - [x] user

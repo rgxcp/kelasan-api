@@ -49,8 +49,39 @@ class NoteController extends Controller
         ]);
     }
 
-    public function update(Request $request, Note $note)
+    public function update(Request $request, $classroom_id, $note_id)
     {
+        $note = Note::where([
+            'id' => $note_id,
+            'classroom_id' => $classroom_id
+        ])->firstOrFail();
+
+        $validator = Validator::make($request->all(), [
+            'detail' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'Failed',
+                'reasons' => $validator->errors()
+            ]);
+        }
+
+        $note->update([
+            'detail' => $request->detail
+        ]);
+
+        NoteTimeline::create([
+            'classroom_id' => $classroom_id,
+            'note_id' => $note->id,
+            'user_id' => $request->user()->id,
+            'type' => 'UPDATED'
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $note
+        ]);
     }
 
     public function delete(Note $note)

@@ -42,8 +42,32 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function rename(Request $request, Subject $subject)
+    public function rename(Request $request, $classroom_id, $subject_id)
     {
+        $subject = Subject::where([
+            'id' => $subject_id,
+            'classroom_id' => $classroom_id
+        ])->firstOrFail();
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:50'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'Failed',
+                'reasons' => $validator->errors()
+            ]);
+        }
+
+        $subject->update([
+            'name' => $request->name
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $subject
+        ]);
     }
 
     public function delete(Subject $subject)

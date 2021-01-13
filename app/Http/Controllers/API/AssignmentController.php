@@ -61,8 +61,48 @@ class AssignmentController extends Controller
         ]);
     }
 
-    public function update(Request $request, Assignment $assignment)
+    public function update(Request $request, $classroom_id, $assignment_id)
     {
+        $assignment = Assignment::where([
+            'id' => $assignment_id,
+            'classroom_id' => $classroom_id
+        ])->firstOrFail();
+
+        $validator = Validator::make($request->all(), [
+            'subject_id' => 'required|integer|exists:subjects,id',
+            'detail' => 'required|string',
+            'type' => 'required|in:INDIVIDUAL,GROUP',
+            'start' => 'date',
+            'deadline' => 'date|after:start'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'Failed',
+                'reasons' => $validator->errors()
+            ]);
+        }
+
+        $assignment->update([
+            'subject_id' => $request->subject_id,
+            'created_by' => $request->user()->id,
+            'detail' => $request->detail,
+            'type' => $request->type,
+            'start' => $request->start,
+            'deadline' => $request->deadline
+        ]);
+
+        AssignmentTimeline::create([
+            'classroom_id' => $classroom_id,
+            'assignment_id' => $assignment->id,
+            'user_id' => $request->user()->id,
+            'type' => 'UPDATED'
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $assignment
+        ]);
     }
 
     public function changeStatus()

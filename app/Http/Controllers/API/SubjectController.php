@@ -70,7 +70,17 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function delete(Subject $subject)
+    public function delete($classroom_id, $subject_id)
     {
+        $subject = Subject::where([
+            'id' => $subject_id,
+            'classroom_id' => $classroom_id
+        ])->firstOrFail();
+
+        $subject->delete();
+
+        return response()->json([
+            'status' => 'Success'
+        ]);
     }
 }

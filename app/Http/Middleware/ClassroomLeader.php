@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Classroom;
+use App\Models\ClassMember;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -17,9 +17,11 @@ class ClassroomLeader
      */
     public function handle(Request $request, Closure $next)
     {
-        $classroom = Classroom::findOrFail($request->route('classroom_id'));
-
-        $classLeader = $classroom->leader == $request->user()->id;
+        $classLeader = ClassMember::where([
+            'classroom_id' => $request->route('classroom_id'),
+            'user_id' => $request->user()->id,
+            'role' => 'LEADER'
+        ])->exists();
 
         if (!$classLeader) {
             return response()->json([
@@ -28,8 +30,6 @@ class ClassroomLeader
             ]);
         }
 
-        return $next($request->merge([
-            'classroom' => $classroom
-        ]));
+        return $next($request);
     }
 }

@@ -90,8 +90,10 @@ class ClassroomController extends Controller
         ]);
     }
 
-    public function rename(Request $request)
+    public function rename(Request $request, $classroom_id)
     {
+        $classroom = Classroom::findOrFail($classroom_id);
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string'
         ]);
@@ -103,13 +105,13 @@ class ClassroomController extends Controller
             ]);
         }
 
-        $request->classroom->update([
+        $classroom->update([
             'name' => $request->name
         ]);
 
         return response()->json([
             'status' => 'Success',
-            'result' => $request->classroom
+            'result' => $classroom
         ]);
     }
 }

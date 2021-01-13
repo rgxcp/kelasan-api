@@ -90,7 +90,26 @@ class ClassroomController extends Controller
         ]);
     }
 
-    public function rename(Request $request, Classroom $classroom)
+    public function rename(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'Failed',
+                'reasons' => $validator->errors()
+            ]);
+        }
+
+        $request->classroom->update([
+            'name' => $request->name
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $request->classroom
+        ]);
     }
 }

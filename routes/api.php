@@ -32,7 +32,7 @@ Route::prefix('v1')->group(function () {
             Route::get('members', [ClassroomController::class, 'members']);
             Route::get('notes', [ClassroomController::class, 'notes']);
             Route::get('subjects', [ClassroomController::class, 'subjects']);
-            Route::put('', [ClassroomController::class, 'rename']);
+            Route::middleware('classroomLeader')->put('', [ClassroomController::class, 'rename']);
 
             // Assignment
             Route::prefix('assignments')->group(function () {

@@ -81,7 +81,8 @@ class ClassroomController extends Controller
     {
         $classMember = ClassMember::create([
             'classroom_id' => $request->classroom_id,
-            'user_id' => $request->user()->id
+            'user_id' => $request->user()->id,
+            'role' => 'STUDENT'
         ]);
 
         return response()->json([

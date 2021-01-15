@@ -41,10 +41,10 @@ DEVELOPING
 | `/api/v1/classrooms/{classroom}/subjects/{subject}`                | Show subject detail            |       |             |
 | `/api/v1/classrooms/{classroom}/subjects/{subject}/assignments`    | Show subject assignments       |       |             |
 | `/api/v1/search`                                                   | Search data                    |       |             |
-| `/api/v1/users/{user}`                                             | Show self profile detail       |       |             |
-| `/api/v1/users/{user}/assignments`                                 | Show self profile assignments  |       |             |
-| `/api/v1/users/{user}/classrooms`                                  | Show self profile classrooms   |       |             |
-| `/api/v1/users/{user}/subjects`                                    | Show self profile subjects     |       |             |
+| `/api/v1/users/self`                                               | Show self profile detail       |       |             |
+| `/api/v1/users/self/assignments`                                   | Show self profile assignments  |       |             |
+| `/api/v1/users/self/classrooms`                                    | Show self profile classrooms   |       |             |
+| `/api/v1/users/self/subjects`                                      | Show self profile subjects     |       |             |
 
 ### POST
 | URL                                          | Description       | Param | Return Type |
@@ -65,8 +65,8 @@ DEVELOPING
 | `/api/v1/classrooms/{classroom}/assignments/{assignment}/change-status` | Change assignment status |       |             |
 | `/api/v1/classrooms/{classroom}/notes/{note}`                           | Update note              |       |             |
 | `/api/v1/classrooms/{classroom}/subjects/{subject}`                     | Rename subject           |       |             |
-| `/api/v1/users/{user}`                                                  | Update self profile      |       |             |
-| `/api/v1/users/{user}/change-password`                                  | Change self password     |       |             |
+| `/api/v1/users/self`                                                    | Update self profile      |       |             |
+| `/api/v1/users/self/change-password`                                    | Change self password     |       |             |
 
 ### DELETE
 | URL                                                       | Description             | Param | Return Type |
@@ -74,8 +74,8 @@ DEVELOPING
 | `/api/v1/classrooms/{classroom}/assignments/{assignment}` | Remove assignment       |       |             |
 | `/api/v1/classrooms/{classroom}/notes/{note}`             | Remove note             |       |             |
 | `/api/v1/classrooms/{classroom}/subjects/{subject}`       | Remove subject          |       |             |
-| `/api/v1/users/{user}/sign-out`                           | Sign out current device |       |             |
-| `/api/v1/users/{user}/sign-out-all`                       | Sign out all devices    |       |             |
+| `/api/v1/users/self/sign-out`                             | Sign out current device |       |             |
+| `/api/v1/users/self/sign-out-all`                         | Sign out all devices    |       |             |
 
 ## TODOs
 Total Tasks : `270`

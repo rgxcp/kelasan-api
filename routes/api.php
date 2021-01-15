@@ -24,8 +24,8 @@ Route::prefix('v1')->group(function () {
     // Classroom
     Route::middleware('auth:sanctum')->prefix('classrooms')->group(function () {
         Route::post('', [ClassroomController::class, 'create']);
-        Route::middleware('notClassroomMember')->post('join', [ClassroomController::class, 'join']);
-        Route::middleware('classroomMember')->prefix('{classroom_id}')->group(function () {
+        Route::middleware('nonmember')->post('join', [ClassroomController::class, 'join']);
+        Route::middleware('member')->prefix('{classroom_id}')->group(function () {
             Route::get('', [ClassroomController::class, 'detail']);
             Route::get('invitation-code', [ClassroomController::class, 'invitationCode']);
             Route::get('assignments', [ClassroomController::class, 'assignments']);
@@ -43,7 +43,7 @@ Route::prefix('v1')->group(function () {
                     Route::get('timeline', [AssignmentController::class, 'timeline']);
                     Route::put('', [AssignmentController::class, 'update']);
                     Route::put('change-status', [AssignmentController::class, 'changeStatus']);
-                    Route::middleware('classroomLeader')->delete('', [AssignmentController::class, 'delete']);
+                    Route::middleware('leader')->delete('', [AssignmentController::class, 'delete']);
                 });
             });
 
@@ -54,7 +54,7 @@ Route::prefix('v1')->group(function () {
                     Route::get('', [NoteController::class, 'detail']);
                     Route::get('timeline', [NoteController::class, 'timeline']);
                     Route::put('', [NoteController::class, 'update']);
-                    Route::middleware('classroomLeader')->delete('', [NoteController::class, 'delete']);
+                    Route::middleware('leader')->delete('', [NoteController::class, 'delete']);
                 });
             });
 
@@ -65,7 +65,7 @@ Route::prefix('v1')->group(function () {
                     Route::get('', [SubjectController::class, 'detail']);
                     Route::get('assignments', [SubjectController::class, 'assignments']);
                     Route::put('', [SubjectController::class, 'rename']);
-                    Route::middleware('classroomLeader')->delete('', [SubjectController::class, 'delete']);
+                    Route::middleware('leader')->delete('', [SubjectController::class, 'delete']);
                 });
             });
         });

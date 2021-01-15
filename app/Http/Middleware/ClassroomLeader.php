@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\ClassMember;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -17,11 +16,7 @@ class ClassroomLeader
      */
     public function handle(Request $request, Closure $next)
     {
-        $classLeader = ClassMember::where([
-            'classroom_id' => $request->route('classroom_id'),
-            'user_id' => $request->user()->id,
-            'role' => 'LEADER'
-        ])->exists();
+        $classLeader = $request->classroom->leader == $request->user()->id;
 
         if (!$classLeader) {
             return response()->json([

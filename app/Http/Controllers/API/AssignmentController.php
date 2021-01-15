@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Assignment;
 use App\Models\AssignmentTimeline;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -61,12 +62,16 @@ class AssignmentController extends Controller
         ]);
     }
 
-    public function update(Request $request, $classroom_id, $assignment_id)
+    public function update(Request $request, Classroom $classroom, Assignment $assignment)
     {
-        $assignment = Assignment::where([
-            'id' => $assignment_id,
-            'classroom_id' => $classroom_id
-        ])->firstOrFail();
+        $belongToClass = $assignment->classroom_id == $classroom->id;
+
+        if (!$belongToClass) {
+            return response()->json([
+                'status' => 'Failed',
+                'reason' => 'Unauthorized'
+            ]);
+        }
 
         $validator = Validator::make($request->all(), [
             'subject_id' => 'required|integer|exists:subjects,id',
@@ -93,7 +98,7 @@ class AssignmentController extends Controller
         ]);
 
         AssignmentTimeline::create([
-            'classroom_id' => $classroom_id,
+            'classroom_id' => $classroom->id,
             'assignment_id' => $assignment->id,
             'user_id' => $request->user()->id,
             'type' => 'UPDATED'
@@ -109,12 +114,16 @@ class AssignmentController extends Controller
     {
     }
 
-    public function delete($classroom_id, $assignment_id)
+    public function delete(Classroom $classroom, Assignment $assignment)
     {
-        $assignment = Assignment::where([
-            'id' => $assignment_id,
-            'classroom_id' => $classroom_id
-        ])->firstOrFail();
+        $belongToClass = $assignment->classroom_id == $classroom->id;
+
+        if (!$belongToClass) {
+            return response()->json([
+                'status' => 'Failed',
+                'reason' => 'Unauthorized'
+            ]);
+        }
 
         $assignment->delete();
 

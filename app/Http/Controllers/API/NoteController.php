@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classroom;
 use App\Models\Note;
 use App\Models\NoteTimeline;
 use Illuminate\Http\Request;
@@ -49,12 +50,16 @@ class NoteController extends Controller
         ]);
     }
 
-    public function update(Request $request, $classroom_id, $note_id)
+    public function update(Request $request, Classroom $classroom, Note $note)
     {
-        $note = Note::where([
-            'id' => $note_id,
-            'classroom_id' => $classroom_id
-        ])->firstOrFail();
+        $belongToClass = $note->classroom_id == $classroom->id;
+
+        if (!$belongToClass) {
+            return response()->json([
+                'status' => 'Failed',
+                'reason' => 'Unauthorized'
+            ]);
+        }
 
         $validator = Validator::make($request->all(), [
             'detail' => 'required|string'
@@ -72,7 +77,7 @@ class NoteController extends Controller
         ]);
 
         NoteTimeline::create([
-            'classroom_id' => $classroom_id,
+            'classroom_id' => $classroom->id,
             'note_id' => $note->id,
             'user_id' => $request->user()->id,
             'type' => 'UPDATED'
@@ -84,12 +89,16 @@ class NoteController extends Controller
         ]);
     }
 
-    public function delete($classroom_id, $note_id)
+    public function delete(Classroom $classroom, Note $note)
     {
-        $note = Note::where([
-            'id' => $note_id,
-            'classroom_id' => $classroom_id
-        ])->firstOrFail();
+        $belongToClass = $note->classroom_id == $classroom->id;
+
+        if (!$belongToClass) {
+            return response()->json([
+                'status' => 'Failed',
+                'reason' => 'Unauthorized'
+            ]);
+        }
 
         $note->delete();
 

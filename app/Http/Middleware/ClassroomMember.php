@@ -18,7 +18,7 @@ class ClassroomMember
     public function handle(Request $request, Closure $next)
     {
         $classMember = ClassMember::where([
-            'classroom_id' => $request->route('classroom_id'),
+            'classroom_id' => $request->classroom->id,
             'user_id' => $request->user()->id
         ])->exists();
 

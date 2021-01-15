@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classroom;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -42,12 +43,16 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function rename(Request $request, $classroom_id, $subject_id)
+    public function rename(Request $request, Classroom $classroom, Subject $subject)
     {
-        $subject = Subject::where([
-            'id' => $subject_id,
-            'classroom_id' => $classroom_id
-        ])->firstOrFail();
+        $belongToClass = $subject->classroom_id == $classroom->id;
+
+        if (!$belongToClass) {
+            return response()->json([
+                'status' => 'Failed',
+                'reason' => 'Unauthorized'
+            ]);
+        }
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:50'
@@ -70,12 +75,16 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function delete($classroom_id, $subject_id)
+    public function delete(Classroom $classroom, Subject $subject)
     {
-        $subject = Subject::where([
-            'id' => $subject_id,
-            'classroom_id' => $classroom_id
-        ])->firstOrFail();
+        $belongToClass = $subject->classroom_id == $classroom->id;
+
+        if (!$belongToClass) {
+            return response()->json([
+                'status' => 'Failed',
+                'reason' => 'Unauthorized'
+            ]);
+        }
 
         $subject->delete();
 

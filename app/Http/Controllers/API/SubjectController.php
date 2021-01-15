@@ -45,15 +45,6 @@ class SubjectController extends Controller
 
     public function rename(Request $request, Classroom $classroom, Subject $subject)
     {
-        $belongToClass = $subject->classroom_id == $classroom->id;
-
-        if (!$belongToClass) {
-            return response()->json([
-                'status' => 'Failed',
-                'reason' => 'Unauthorized'
-            ]);
-        }
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:50'
         ]);
@@ -77,15 +68,6 @@ class SubjectController extends Controller
 
     public function delete(Classroom $classroom, Subject $subject)
     {
-        $belongToClass = $subject->classroom_id == $classroom->id;
-
-        if (!$belongToClass) {
-            return response()->json([
-                'status' => 'Failed',
-                'reason' => 'Unauthorized'
-            ]);
-        }
-
         $subject->delete();
 
         return response()->json([

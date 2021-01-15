@@ -64,15 +64,6 @@ class AssignmentController extends Controller
 
     public function update(Request $request, Classroom $classroom, Assignment $assignment)
     {
-        $belongToClass = $assignment->classroom_id == $classroom->id;
-
-        if (!$belongToClass) {
-            return response()->json([
-                'status' => 'Failed',
-                'reason' => 'Unauthorized'
-            ]);
-        }
-
         $validator = Validator::make($request->all(), [
             'subject_id' => 'required|integer|exists:subjects,id',
             'detail' => 'required|string',
@@ -116,15 +107,6 @@ class AssignmentController extends Controller
 
     public function delete(Classroom $classroom, Assignment $assignment)
     {
-        $belongToClass = $assignment->classroom_id == $classroom->id;
-
-        if (!$belongToClass) {
-            return response()->json([
-                'status' => 'Failed',
-                'reason' => 'Unauthorized'
-            ]);
-        }
-
         $assignment->delete();
 
         return response()->json([

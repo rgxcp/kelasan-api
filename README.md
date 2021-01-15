@@ -78,11 +78,11 @@ DEVELOPING
 | `/api/v1/users/{user}/sign-out-all`                       | Sign out all devices    |       |             |
 
 ## TODOs
-Total Tasks : `268`
+Total Tasks : `270`
 
-Completed Tasks : `171`
+Completed Tasks : `173`
 
-Progress : `63.80%`
+Progress : `64.07%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
@@ -156,6 +156,7 @@ Progress : `63.80%`
   - [x] SubjectSeeder
   - [x] UserSeeder
 - [x] Create base middleware
+  - [x] BelongToClass
   - [x] ClassroomLeader
   - [x] ClassroomMember
   - [x] NotClassroomMember
@@ -325,6 +326,7 @@ Progress : `63.80%`
   - [ ] UpdateNoteRequest
   - [ ] UpdateProfileRequest
 - [x] Fill base middleware
+  - [x] BelongToClass
   - [x] ClassroomLeader
   - [x] ClassroomMember
   - [x] NotClassroomMember

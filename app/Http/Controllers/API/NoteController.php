@@ -52,15 +52,6 @@ class NoteController extends Controller
 
     public function update(Request $request, Classroom $classroom, Note $note)
     {
-        $belongToClass = $note->classroom_id == $classroom->id;
-
-        if (!$belongToClass) {
-            return response()->json([
-                'status' => 'Failed',
-                'reason' => 'Unauthorized'
-            ]);
-        }
-
         $validator = Validator::make($request->all(), [
             'detail' => 'required|string'
         ]);
@@ -91,15 +82,6 @@ class NoteController extends Controller
 
     public function delete(Classroom $classroom, Note $note)
     {
-        $belongToClass = $note->classroom_id == $classroom->id;
-
-        if (!$belongToClass) {
-            return response()->json([
-                'status' => 'Failed',
-                'reason' => 'Unauthorized'
-            ]);
-        }
-
         $note->delete();
 
         return response()->json([

@@ -37,7 +37,7 @@ Route::prefix('v1')->group(function () {
             // Assignment
             Route::prefix('assignments')->group(function () {
                 Route::post('', [AssignmentController::class, 'create']);
-                Route::prefix('{assignment}')->group(function () {
+                Route::middleware('owner')->prefix('{assignment}')->group(function () {
                     Route::get('', [AssignmentController::class, 'detail']);
                     Route::get('status', [AssignmentController::class, 'status']);
                     Route::get('timeline', [AssignmentController::class, 'timeline']);
@@ -50,7 +50,7 @@ Route::prefix('v1')->group(function () {
             // Note
             Route::prefix('notes')->group(function () {
                 Route::post('', [NoteController::class, 'create']);
-                Route::prefix('{note}')->group(function () {
+                Route::middleware('owner')->prefix('{note}')->group(function () {
                     Route::get('', [NoteController::class, 'detail']);
                     Route::get('timeline', [NoteController::class, 'timeline']);
                     Route::put('', [NoteController::class, 'update']);
@@ -61,7 +61,7 @@ Route::prefix('v1')->group(function () {
             // Subject
             Route::prefix('subjects')->group(function () {
                 Route::post('', [SubjectController::class, 'create']);
-                Route::prefix('{subject}')->group(function () {
+                Route::middleware('owner')->prefix('{subject}')->group(function () {
                     Route::get('', [SubjectController::class, 'detail']);
                     Route::get('assignments', [SubjectController::class, 'assignments']);
                     Route::put('', [SubjectController::class, 'rename']);

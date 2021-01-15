@@ -19,8 +19,17 @@ class AssignmentController extends Controller
     {
     }
 
-    public function timeline()
+    public function timeline(Classroom $classroom, Assignment $assignment)
     {
+        $timeline = AssignmentTimeline::with('user')
+            ->where('assignment_id', $assignment->id)
+            ->orderByDesc('id')
+            ->paginate(30);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $timeline
+        ]);
     }
 
     public function create(Request $request, $classroom_id)

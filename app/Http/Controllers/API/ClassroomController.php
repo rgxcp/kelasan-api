@@ -14,8 +14,12 @@ class ClassroomController extends Controller
     {
     }
 
-    public function invitationCode()
+    public function invitationCode(Classroom $classroom)
     {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $classroom->only('invitation_code')
+        ]);
     }
 
     public function assignments()

@@ -18,7 +18,7 @@ class CreateAssignmentStatusesTable extends Migration
             $table->foreignId('classroom_id')->constrained();
             $table->foreignId('assignment_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
-            $table->boolean('completed')->default(false);
+            $table->enum('state', ['UNCOMPLETED', 'DOING', 'COMPLETED'])->default('UNCOMPLETED');
             $table->timestamps();
             $table->softDeletes();
         });

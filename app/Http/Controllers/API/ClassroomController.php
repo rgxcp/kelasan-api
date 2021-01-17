@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\ClassMember;
 use App\Models\Classroom;
+use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -44,8 +45,17 @@ class ClassroomController extends Controller
         ]);
     }
 
-    public function notes()
+    public function notes(Classroom $classroom)
     {
+        $notes = Note::with('createdBy')
+            ->where('classroom_id', $classroom->id)
+            ->orderByDesc('updated_at')
+            ->paginate(30);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $notes
+        ]);
     }
 
     public function subjects()

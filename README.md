@@ -80,9 +80,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `270`
 
-Completed Tasks : `184`
+Completed Tasks : `186`
 
-Progress : `68.14%`
+Progress : `68.88%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
@@ -221,10 +221,10 @@ Progress : `68.14%`
     - [x] `update()`
     - [ ] `changeStatus()`
     - [x] `delete()`
-  - [ ] ClassroomController
+  - [x] ClassroomController
     - [x] `detail()`
     - [x] `invitationCode()`
-    - [ ] `assignments()`
+    - [x] `assignments()`
     - [x] `members()`
     - [x] `notes()`
     - [x] `subjects()`

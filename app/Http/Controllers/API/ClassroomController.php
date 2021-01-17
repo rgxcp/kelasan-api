@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Assignment;
 use App\Models\ClassMember;
 use App\Models\Classroom;
 use App\Models\Note;
@@ -30,8 +31,18 @@ class ClassroomController extends Controller
         ]);
     }
 
-    public function assignments()
+    public function assignments(Classroom $classroom)
     {
+        $assignments = Assignment::with([
+            'createdBy', 'subject'
+        ])->where('classroom_id', $classroom->id)
+            ->orderBy('deadline')
+            ->paginate(30);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $assignments
+        ]);
     }
 
     public function members(Classroom $classroom)

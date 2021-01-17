@@ -15,8 +15,17 @@ class NoteController extends Controller
     {
     }
 
-    public function timeline()
+    public function timeline(Classroom $classroom, Note $note)
     {
+        $timeline = NoteTimeline::with('user')
+            ->where('note_id', $note->id)
+            ->orderByDesc('id')
+            ->paginate(30);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $timeline
+        ]);
     }
 
     public function create(Request $request, $classroom_id)

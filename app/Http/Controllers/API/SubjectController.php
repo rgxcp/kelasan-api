@@ -10,8 +10,14 @@ use Illuminate\Support\Facades\Validator;
 
 class SubjectController extends Controller
 {
-    public function detail(Subject $subject)
+    public function detail(Classroom $classroom, Subject $subject)
     {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $subject->load([
+                'createdBy'
+            ])
+        ]);
     }
 
     public function assignments()

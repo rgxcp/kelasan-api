@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ClassMember;
 use App\Models\Classroom;
 use App\Models\Note;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -58,8 +59,17 @@ class ClassroomController extends Controller
         ]);
     }
 
-    public function subjects()
+    public function subjects(Classroom $classroom)
     {
+        $subjects = Subject::with('createdBy')
+            ->where('classroom_id', $classroom->id)
+            ->orderBy('name')
+            ->paginate(30);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $subjects
+        ]);
     }
 
     public function create(Request $request)

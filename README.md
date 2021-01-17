@@ -80,9 +80,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `270`
 
-Completed Tasks : `186`
+Completed Tasks : `189`
 
-Progress : `68.88%`
+Progress : `70%`
 
 - [x] Delete user related boilerplate
 - [x] Change app timezone
@@ -231,7 +231,7 @@ Progress : `68.88%`
     - [x] `create()`
     - [x] `join()`
     - [x] `rename()`
-  - [ ] NoteController
+  - [x] NoteController
     - [x] `detail()`
     - [x] `timeline()`
     - [x] `create()`
@@ -239,9 +239,9 @@ Progress : `68.88%`
     - [x] `delete()`
   - [ ] SearchController
     - [ ] `search()`
-  - [ ] SubjectController
+  - [x] SubjectController
     - [x] `detail()`
-    - [ ] `assignments()`
+    - [x] `assignments()`
     - [x] `create()`
     - [x] `rename()`
     - [x] `delete()`

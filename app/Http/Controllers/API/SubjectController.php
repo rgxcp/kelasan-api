@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Assignment;
 use App\Models\Classroom;
 use App\Models\Subject;
 use Illuminate\Http\Request;
@@ -20,8 +21,20 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function assignments()
+    public function assignments(Classroom $classroom, Subject $subject)
     {
+        $assignments = Assignment::with([
+            'createdBy', 'subject'
+        ])->where([
+            'classroom_id' => $classroom->id,
+            'subject_id' => $subject->id
+        ])->orderBy('deadline')
+            ->paginate(30);
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $assignments
+        ]);
     }
 
     public function create(Request $request, $classroom_id)

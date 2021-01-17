@@ -10,8 +10,12 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function detail(User $user)
+    public function detail(Request $request)
     {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $request->user()
+        ]);
     }
 
     public function assignments()

@@ -12,6 +12,12 @@ class ClassroomController extends Controller
 {
     public function detail(Classroom $classroom)
     {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $classroom->load([
+                'leader'
+            ])
+        ]);
     }
 
     public function invitationCode(Classroom $classroom)

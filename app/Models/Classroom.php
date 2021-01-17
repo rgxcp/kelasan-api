@@ -18,4 +18,9 @@ class Classroom extends Model
     protected $hidden = [
         'invitation_code'
     ];
+
+    public function leader()
+    {
+        return $this->belongsTo(User::class, 'leader');
+    }
 }

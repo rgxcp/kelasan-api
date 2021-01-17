@@ -11,8 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class AssignmentController extends Controller
 {
-    public function detail(Assignment $assignment)
+    public function detail(Classroom $classroom, Assignment $assignment)
     {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $assignment->load([
+                'subject.createdBy', 'createdBy'
+            ])
+        ]);
     }
 
     public function status()

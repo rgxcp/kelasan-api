@@ -45,4 +45,14 @@ class Assignment extends Model
     {
         return $this->hasMany(AssignmentTimeline::class);
     }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

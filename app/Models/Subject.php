@@ -29,4 +29,9 @@ class Subject extends Model
     {
         return $this->hasMany(Assignment::class);
     }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

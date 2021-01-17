@@ -11,8 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class NoteController extends Controller
 {
-    public function detail(Note $note)
+    public function detail(Classroom $classroom, Note $note)
     {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $note->load([
+                'createdBy'
+            ])
+        ]);
     }
 
     public function timeline(Classroom $classroom, Note $note)

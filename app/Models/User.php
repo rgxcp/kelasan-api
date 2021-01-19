@@ -45,9 +45,39 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime'
     ];
 
+    protected $append = [
+        'total_uncompleted_assignment',
+        'total_doing_assignment',
+        'total_completed_assignment'
+    ];
+
     protected $appends = [
         'profile_picture'
     ];
+
+    public function getTotalUncompletedAssignmentAttribute()
+    {
+        return AssignmentStatus::where([
+            'user_id' => $this->id,
+            'state' => 'UNCOMPLETED'
+        ])->count();
+    }
+
+    public function getTotalDoingAssignmentAttribute()
+    {
+        return AssignmentStatus::where([
+            'user_id' => $this->id,
+            'state' => 'DOING'
+        ])->count();
+    }
+
+    public function getTotalCompletedAssignmentAttribute()
+    {
+        return AssignmentStatus::where([
+            'user_id' => $this->id,
+            'state' => 'COMPLETED'
+        ])->count();
+    }
 
     public function getProfilePictureAttribute()
     {

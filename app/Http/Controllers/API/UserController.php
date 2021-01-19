@@ -17,7 +17,11 @@ class UserController extends Controller
     {
         return response()->json([
             'status' => 'Success',
-            'result' => $request->user()
+            'result' => $request->user()->makeVisible('email')->append([
+                'total_uncompleted_assignment',
+                'total_doing_assignment',
+                'total_completed_assignment'
+            ])
         ]);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SignUpRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -30,38 +31,21 @@ class UserController extends Controller
     {
     }
 
-    public function signUp(Request $request)
+    public function signUp(SignUpRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'full_name' => 'required|string|max:30',
-            'email' => 'required|email|max:50|unique:users,email',
-            'password' => 'required|string|min:8'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'Failed',
-                'reasons' => $validator->errors()
-            ]);
-        }
-
-        $user = User::create([
-            'full_name' => $request->full_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        $user = User::create($request->all());
 
         $token = $user->createToken('bearer');
 
         $collection = collect([
-            'user' => $user,
+            'user' => $user->makeVisible('email'),
             'token' => $token
         ]);
 
         return response()->json([
             'status' => 'Success',
             'result' => $collection
-        ]);
+        ], 201);
     }
 
     public function signIn(Request $request)

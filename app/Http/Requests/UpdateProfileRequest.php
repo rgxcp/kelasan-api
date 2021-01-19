@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UpdateProfileRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateProfileRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,23 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
+            'full_name' => ['required', 'string', 'max:30'],
+            'email' => ['required', 'email', 'max:50', 'unique:users,email,' . $this->user()->id]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
             //
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'status' => 'Failed',
+            'reasons' => $validator->errors()
+        ], 422));
     }
 }

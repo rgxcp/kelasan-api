@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,30 +73,13 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(UpdateProfileRequest $request)
     {
-        $user = $request->user();
-
-        $validator = Validator::make($request->all(), [
-            'full_name' => 'required|string|max:30',
-            'email' => 'required|email|max:50|unique:users,email,' . $user->id
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'Failed',
-                'reasons' => $validator->errors()
-            ]);
-        }
-
-        $user->update([
-            'full_name' => $request->full_name,
-            'email' => $request->email
-        ]);
+        $request->user()->update($request->all());
 
         return response()->json([
             'status' => 'Success',
-            'result' => $user
+            'result' => $request->user()->makeVisible('email')
         ]);
     }
 

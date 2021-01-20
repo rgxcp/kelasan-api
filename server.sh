@@ -2,7 +2,7 @@
 FLAG=$1
 
 start () {
-    sudo xampp startapache && sudo xampp startmysql
+    sudo xampp startapache && sudo xampp startmysql && php artisan serve
 }
 
 stop () {

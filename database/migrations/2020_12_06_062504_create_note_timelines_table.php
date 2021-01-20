@@ -18,7 +18,7 @@ class CreateNoteTimelinesTable extends Migration
             $table->foreignId('classroom_id')->constrained();
             $table->foreignId('note_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
-            $table->enum('type', ['CREATED', 'UPDATED'])->default('CREATED');
+            $table->enum('type', ['CREATED', 'UPDATED'])->default('UPDATED');
             $table->timestamps();
             $table->softDeletes();
         });

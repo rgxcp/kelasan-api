@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateClassroomRequest;
+use App\Http\Requests\JoinClassroomRequest;
 use App\Models\Assignment;
 use App\Models\ClassMember;
 use App\Models\Classroom;
@@ -94,17 +95,17 @@ class ClassroomController extends Controller
         ], 201);
     }
 
-    public function join(Request $request)
+    public function join(JoinClassroomRequest $request)
     {
-        $classMember = ClassMember::create([
-            'classroom_id' => $request->classroom_id,
-            'user_id' => $request->user()->id,
-            'role' => 'STUDENT'
+        $classroom = Classroom::firstWhere('invitation_code', $request->invitation_code);
+
+        ClassMember::firstOrCreate([
+            'classroom_id' => $classroom->id,
+            'user_id' => $request->user()->id
         ]);
 
         return response()->json([
-            'status' => 'Success',
-            'result' => $classMember
+            'status' => 'Success'
         ]);
     }
 

@@ -65,6 +65,19 @@ class Kernel extends HttpKernel
         'owner' => \App\Http\Middleware\BelongToClass::class,
         'leader' => \App\Http\Middleware\ClassroomLeader::class,
         'member' => \App\Http\Middleware\ClassroomMember::class,
+        'json' => \App\Http\Middleware\JSONHeader::class,
         'nonmember' => \App\Http\Middleware\NotClassroomMember::class,
+    ];
+
+    protected $middlewarePriority = [
+        \Illuminate\Cookie\Middleware\EncryptCookies::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\JSONHeader::class,
+        \Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests::class,
+        \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Illuminate\Auth\Middleware\Authorize::class,
     ];
 }

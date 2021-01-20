@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('v1')->group(function () {
+Route::middleware('json')->prefix('v1')->group(function () {
     // Classroom
     Route::middleware('auth:sanctum')->prefix('classrooms')->group(function () {
         Route::post('', [ClassroomController::class, 'create']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateClassroomRequest;
 use App\Http\Requests\JoinClassroomRequest;
+use App\Http\Requests\RenameClassroomRequest;
 use App\Models\Assignment;
 use App\Models\ClassMember;
 use App\Models\Classroom;
@@ -109,22 +110,9 @@ class ClassroomController extends Controller
         ]);
     }
 
-    public function rename(Request $request, Classroom $classroom)
+    public function rename(RenameClassroomRequest $request, Classroom $classroom)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:20'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'Failed',
-                'reasons' => $validator->errors()
-            ]);
-        }
-
-        $classroom->update([
-            'name' => $request->name
-        ]);
+        $classroom->update($request->all());
 
         return response()->json([
             'status' => 'Success',

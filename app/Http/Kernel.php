@@ -66,7 +66,6 @@ class Kernel extends HttpKernel
         'leader' => \App\Http\Middleware\ClassroomLeader::class,
         'member' => \App\Http\Middleware\ClassroomMember::class,
         'json' => \App\Http\Middleware\JSONHeader::class,
-        'nonmember' => \App\Http\Middleware\NotClassroomMember::class,
     ];
 
     protected $middlewarePriority = [

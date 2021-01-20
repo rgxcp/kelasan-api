@@ -24,7 +24,7 @@ Route::middleware('json')->prefix('v1')->group(function () {
     // Classroom
     Route::middleware('auth:sanctum')->prefix('classrooms')->group(function () {
         Route::post('', [ClassroomController::class, 'create']);
-        Route::middleware('nonmember')->post('join', [ClassroomController::class, 'join']);
+        Route::post('join', [ClassroomController::class, 'join']);
         Route::middleware('member')->prefix('{classroom}')->group(function () {
             Route::get('', [ClassroomController::class, 'detail']);
             Route::get('invitation-code', [ClassroomController::class, 'invitationCode']);

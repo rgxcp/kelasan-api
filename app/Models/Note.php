@@ -41,6 +41,11 @@ class Note extends Model
         });
     }
 
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function noteAttachments()
     {
         return $this->hasMany(NoteAttachment::class);
@@ -49,10 +54,5 @@ class Note extends Model
     public function noteTimelines()
     {
         return $this->hasMany(NoteTimeline::class);
-    }
-
-    public function createdBy()
-    {
-        return $this->belongsTo(User::class, 'created_by');
     }
 }

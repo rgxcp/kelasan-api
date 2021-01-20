@@ -16,7 +16,8 @@ class NoteController extends Controller
         return response()->json([
             'status' => 'Success',
             'result' => $note->load([
-                'createdBy'
+                'createdBy',
+                'noteAttachments.uploadedBy'
             ])
         ]);
     }

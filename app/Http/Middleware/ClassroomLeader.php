@@ -22,7 +22,7 @@ class ClassroomLeader
             return response()->json([
                 'status' => 'Failed',
                 'reason' => 'Unauthorized'
-            ]);
+            ], 401);
         }
 
         return $next($request);

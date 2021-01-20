@@ -16,7 +16,7 @@ class JSONHeader
      */
     public function handle(Request $request, Closure $next)
     {
-        $request->header->set('Accept', 'application/json');
+        $request->headers->set('Accept', 'application/json');
 
         return $next($request);
     }

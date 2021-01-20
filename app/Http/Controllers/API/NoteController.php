@@ -4,11 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateNoteRequest;
+use App\Http\Requests\UpdateNoteRequest;
 use App\Models\Classroom;
 use App\Models\Note;
 use App\Models\NoteTimeline;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class NoteController extends Controller
 {
@@ -45,29 +44,9 @@ class NoteController extends Controller
         ], 201);
     }
 
-    public function update(Request $request, Classroom $classroom, Note $note)
+    public function update(UpdateNoteRequest $request, Classroom $classroom, Note $note)
     {
-        $validator = Validator::make($request->all(), [
-            'detail' => 'required|string'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'Failed',
-                'reasons' => $validator->errors()
-            ]);
-        }
-
-        $note->update([
-            'detail' => $request->detail
-        ]);
-
-        NoteTimeline::create([
-            'classroom_id' => $classroom->id,
-            'note_id' => $note->id,
-            'user_id' => $request->user()->id,
-            'type' => 'UPDATED'
-        ]);
+        $note->update($request->all());
 
         return response()->json([
             'status' => 'Success',

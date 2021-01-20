@@ -27,6 +27,14 @@ class Note extends Model
             ]);
         });
 
+        static::updated(function ($note) {
+            NoteTimeline::create([
+                'classroom_id' => $note->classroom_id,
+                'note_id' => $note->id,
+                'user_id' => request()->user()->id
+            ]);
+        });
+
         static::deleted(function ($note) {
             $note->noteAttachments()->delete();
             $note->noteTimelines()->delete();

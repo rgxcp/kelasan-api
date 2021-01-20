@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateNoteRequest;
 use App\Models\Classroom;
 use App\Models\Note;
 use App\Models\NoteTimeline;
@@ -34,35 +35,14 @@ class NoteController extends Controller
         ]);
     }
 
-    public function create(Request $request, $classroom_id)
+    public function create(CreateNoteRequest $request, Classroom $classroom)
     {
-        $validator = Validator::make($request->all(), [
-            'detail' => 'required|string'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'Failed',
-                'reasons' => $validator->errors()
-            ]);
-        }
-
-        $note = Note::create([
-            'classroom_id' => $classroom_id,
-            'created_by' => $request->user()->id,
-            'detail' => $request->detail
-        ]);
-
-        NoteTimeline::create([
-            'classroom_id' => $classroom_id,
-            'note_id' => $note->id,
-            'user_id' => $request->user()->id
-        ]);
+        $note = Note::create($request->all());
 
         return response()->json([
             'status' => 'Success',
             'result' => $note
-        ]);
+        ], 201);
     }
 
     public function update(Request $request, Classroom $classroom, Note $note)

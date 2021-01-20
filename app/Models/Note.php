@@ -16,13 +16,20 @@ class Note extends Model
         'detail'
     ];
 
-    public static function boot()
+    protected static function booted()
     {
-        parent::boot();
+        static::created(function ($note) {
+            NoteTimeline::create([
+                'classroom_id' => $note->classroom_id,
+                'note_id' => $note->id,
+                'user_id' => $note->created_by,
+                'type' => 'CREATED'
+            ]);
+        });
 
-        static::deleted(function ($notes) {
-            $notes->noteAttachments()->delete();
-            $notes->noteTimelines()->delete();
+        static::deleted(function ($note) {
+            $note->noteAttachments()->delete();
+            $note->noteTimelines()->delete();
         });
     }
 

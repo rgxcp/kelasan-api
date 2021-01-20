@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CreateNoteRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class CreateNoteRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,35 @@ class CreateNoteRequest extends FormRequest
     public function rules()
     {
         return [
+            'detail' => [
+                'required',
+                'string'
+            ]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
             //
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function () {
+            $this->merge([
+                'classroom_id' => $this->classroom->id,
+                'created_by' => $this->user()->id
+            ]);
+        });
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'status' => 'Failed',
+            'reasons' => $validator->errors()
+        ], 422));
     }
 }

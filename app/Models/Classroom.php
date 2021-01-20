@@ -19,6 +19,17 @@ class Classroom extends Model
         'invitation_code'
     ];
 
+    protected static function booted()
+    {
+        static::created(function ($classroom) {
+            ClassMember::create([
+                'classroom_id' => $classroom->id,
+                'user_id' => $classroom->leader,
+                'role' => 'LEADER'
+            ]);
+        });
+    }
+
     public function leader()
     {
         return $this->belongsTo(User::class, 'leader');

@@ -11,8 +11,6 @@ use App\Models\ClassMember;
 use App\Models\Classroom;
 use App\Models\Note;
 use App\Models\Subject;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class ClassroomController extends Controller
 {
@@ -20,8 +18,11 @@ class ClassroomController extends Controller
     {
         return response()->json([
             'status' => 'Success',
-            'result' => $classroom->load([
-                'leader'
+            'result' => $classroom->load('leader')->append([
+                'total_assignment',
+                'total_class_member',
+                'total_note',
+                'total_subject'
             ])
         ]);
     }

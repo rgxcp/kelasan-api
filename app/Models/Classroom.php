@@ -19,6 +19,13 @@ class Classroom extends Model
         'invitation_code'
     ];
 
+    protected $append = [
+        'total_assignment',
+        'total_class_member',
+        'total_note',
+        'total_subject'
+    ];
+
     protected static function booted()
     {
         static::created(function ($classroom) {
@@ -33,5 +40,25 @@ class Classroom extends Model
     public function leader()
     {
         return $this->belongsTo(User::class, 'leader');
+    }
+
+    public function getTotalAssignmentAttribute()
+    {
+        return Assignment::where('classroom_id', $this->id)->count();
+    }
+
+    public function getTotalClassMemberAttribute()
+    {
+        return ClassMember::where('classroom_id', $this->id)->count();
+    }
+
+    public function getTotalNoteAttribute()
+    {
+        return Note::where('classroom_id', $this->id)->count();
+    }
+
+    public function getTotalSubjectAttribute()
+    {
+        return Subject::where('classroom_id', $this->id)->count();
     }
 }

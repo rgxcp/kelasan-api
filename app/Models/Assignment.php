@@ -31,6 +31,14 @@ class Assignment extends Model
             ]);
         });
 
+        static::updated(function ($assignment) {
+            AssignmentTimeline::create([
+                'classroom_id' => $assignment->classroom_id,
+                'assignment_id' => $assignment->id,
+                'user_id' => request()->user()->id
+            ]);
+        });
+
         static::deleted(function ($assignment) {
             $assignment->assignmentAttachments()->delete();
             $assignment->assignmentStatuses()->delete();

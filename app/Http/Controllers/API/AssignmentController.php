@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateAssignmentRequest;
 use App\Models\Assignment;
 use App\Models\AssignmentTimeline;
 use App\Models\Classroom;
@@ -38,43 +39,14 @@ class AssignmentController extends Controller
         ]);
     }
 
-    public function create(Request $request, $classroom_id)
+    public function create(CreateAssignmentRequest $request, Classroom $classroom)
     {
-        $validator = Validator::make($request->all(), [
-            'subject_id' => 'required|integer|exists:subjects,id',
-            'detail' => 'required|string',
-            'type' => 'in:INDIVIDUAL,GROUP',
-            'start' => 'date',
-            'deadline' => 'date|after:start'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'Failed',
-                'reasons' => $validator->errors()
-            ]);
-        }
-
-        $assignment = Assignment::create([
-            'classroom_id' => $classroom_id,
-            'subject_id' => $request->subject_id,
-            'created_by' => $request->user()->id,
-            'detail' => $request->detail,
-            'type' => $request->type ?: 'INDIVIDUAL',
-            'start' => $request->start,
-            'deadline' => $request->deadline
-        ]);
-
-        AssignmentTimeline::create([
-            'classroom_id' => $classroom_id,
-            'assignment_id' => $assignment->id,
-            'user_id' => $request->user()->id
-        ]);
+        $assignment = Assignment::create($request->all());
 
         return response()->json([
             'status' => 'Success',
             'result' => $assignment
-        ]);
+        ], 201);
     }
 
     public function update(Request $request, Classroom $classroom, Assignment $assignment)

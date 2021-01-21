@@ -9,4 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AssignmentStatus extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'classroom_id',
+        'assignment_id',
+        'user_id',
+        'state'
+    ];
 }

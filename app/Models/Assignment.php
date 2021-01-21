@@ -20,14 +20,21 @@ class Assignment extends Model
         'deadline'
     ];
 
-    public static function boot()
+    protected static function booted()
     {
-        parent::boot();
+        static::created(function ($assignment) {
+            AssignmentTimeline::create([
+                'classroom_id' => $assignment->classroom_id,
+                'assignment_id' => $assignment->id,
+                'user_id' => $assignment->created_by,
+                'type' => 'CREATED'
+            ]);
+        });
 
-        static::deleted(function ($assignments) {
-            $assignments->assignmentAttachments()->delete();
-            $assignments->assignmentStatuses()->delete();
-            $assignments->assignmentTimelines()->delete();
+        static::deleted(function ($assignment) {
+            $assignment->assignmentAttachments()->delete();
+            $assignment->assignmentStatuses()->delete();
+            $assignment->assignmentTimelines()->delete();
         });
     }
 

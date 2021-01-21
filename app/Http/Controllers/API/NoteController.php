@@ -7,7 +7,6 @@ use App\Http\Requests\CreateNoteRequest;
 use App\Http\Requests\UpdateNoteRequest;
 use App\Models\Classroom;
 use App\Models\Note;
-use App\Models\NoteTimeline;
 
 class NoteController extends Controller
 {
@@ -19,19 +18,6 @@ class NoteController extends Controller
                 'createdBy',
                 'noteAttachments.uploadedBy'
             ])
-        ]);
-    }
-
-    public function timeline(Classroom $classroom, Note $note)
-    {
-        $timeline = NoteTimeline::with('user')
-            ->where('note_id', $note->id)
-            ->orderByDesc('id')
-            ->paginate(30);
-
-        return response()->json([
-            'status' => 'Success',
-            'result' => $timeline
         ]);
     }
 

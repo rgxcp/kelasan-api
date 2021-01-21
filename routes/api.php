@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AssignmentController;
 use App\Http\Controllers\API\ClassroomController;
 use App\Http\Controllers\API\NoteController;
+use App\Http\Controllers\API\NoteTimelineController;
 use App\Http\Controllers\API\SearchController;
 use App\Http\Controllers\API\SubjectController;
 use App\Http\Controllers\API\UserController;
@@ -47,12 +48,12 @@ Route::middleware('json')->prefix('v1')->group(function () {
                 });
             });
 
-            // Note
+            // Note & Note Timeline
             Route::prefix('notes')->group(function () {
                 Route::post('', [NoteController::class, 'create']);
                 Route::middleware('owner')->prefix('{note}')->group(function () {
                     Route::get('', [NoteController::class, 'detail']);
-                    Route::get('timeline', [NoteController::class, 'timeline']);
+                    Route::get('timeline', NoteTimelineController::class);
                     Route::put('', [NoteController::class, 'update']);
                     Route::middleware('leader')->delete('', [NoteController::class, 'delete']);
                 });

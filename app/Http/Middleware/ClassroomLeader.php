@@ -21,8 +21,8 @@ class ClassroomLeader
         if (!$classLeader) {
             return response()->json([
                 'status' => 'Failed',
-                'reason' => 'Unauthorized'
-            ], 401);
+                'reason' => 'Forbidden'
+            ], 403);
         }
 
         return $next($request);

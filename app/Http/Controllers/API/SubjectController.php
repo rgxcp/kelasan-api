@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateSubjectRequest;
 use App\Models\Assignment;
 use App\Models\Classroom;
 use App\Models\Subject;
@@ -37,29 +38,14 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function create(Request $request, $classroom_id)
+    public function create(CreateSubjectRequest $request, Classroom $classroom)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:50'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'Failed',
-                'reasons' => $validator->errors()
-            ]);
-        }
-
-        $subject = Subject::create([
-            'classroom_id' => $classroom_id,
-            'created_by' => $request->user()->id,
-            'name' => $request->name
-        ]);
+        $subject = Subject::firstOrCreate($request->all());
 
         return response()->json([
             'status' => 'Success',
             'result' => $subject
-        ]);
+        ], 201);
     }
 
     public function rename(Request $request, Classroom $classroom, Subject $subject)

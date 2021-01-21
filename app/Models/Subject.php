@@ -16,12 +16,10 @@ class Subject extends Model
         'name'
     ];
 
-    public static function boot()
+    protected static function booted()
     {
-        parent::boot();
-
-        static::deleted(function ($subjects) {
-            $subjects->assignments()->delete();
+        static::deleted(function ($subject) {
+            $subject->assignments()->delete();
         });
     }
 

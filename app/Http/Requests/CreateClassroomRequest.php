@@ -3,11 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Http\Traits\InvitationCode;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
-class CreateClassroomRequest extends FormRequest
+class CreateClassroomRequest extends APIFormRequest
 {
     use InvitationCode;
 
@@ -52,13 +49,5 @@ class CreateClassroomRequest extends FormRequest
                 'invitation_code' => $this->generateInvitationCode()
             ]);
         });
-    }
-
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            'status' => 'Failed',
-            'reasons' => $validator->errors()
-        ], 422));
     }
 }

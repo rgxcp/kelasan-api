@@ -2,11 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-
-class UpdateProfileRequest extends FormRequest
+class UpdateProfileRequest extends APIFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -45,13 +41,5 @@ class UpdateProfileRequest extends FormRequest
         return [
             //
         ];
-    }
-
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            'status' => 'Failed',
-            'reasons' => $validator->errors()
-        ], 422));
     }
 }

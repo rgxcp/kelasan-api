@@ -4,11 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateSubjectRequest;
+use App\Http\Requests\RenameSubjectRequest;
 use App\Models\Assignment;
 use App\Models\Classroom;
 use App\Models\Subject;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class SubjectController extends Controller
 {
@@ -48,22 +47,9 @@ class SubjectController extends Controller
         ], 201);
     }
 
-    public function rename(Request $request, Classroom $classroom, Subject $subject)
+    public function rename(RenameSubjectRequest $request, Classroom $classroom, Subject $subject)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:50'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'Failed',
-                'reasons' => $validator->errors()
-            ]);
-        }
-
-        $subject->update([
-            'name' => $request->name
-        ]);
+        $subject->update($request->all());
 
         return response()->json([
             'status' => 'Success',

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class RenameSubjectRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class RenameSubjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,26 @@ class RenameSubjectRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => [
+                'required',
+                'string',
+                'max:50'
+            ]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
             //
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'status' => 'Failed',
+            'reasons' => $validator->errors()
+        ], 422));
     }
 }

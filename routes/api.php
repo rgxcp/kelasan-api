@@ -7,7 +7,6 @@ use App\Http\Controllers\API\NoteTimelineController;
 use App\Http\Controllers\API\SearchController;
 use App\Http\Controllers\API\SubjectController;
 use App\Http\Controllers\API\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Version 1
 Route::middleware('json')->prefix('v1')->group(function () {
     // Classroom
     Route::middleware('auth:sanctum')->prefix('classrooms')->group(function () {

@@ -20,6 +20,12 @@ class Assignment extends Model
         'deadline'
     ];
 
+    protected $append = [
+        'total_uncompleted_member',
+        'total_doing_member',
+        'total_completed_member'
+    ];
+
     protected static function booted()
     {
         static::created(function ($assignment) {
@@ -46,6 +52,16 @@ class Assignment extends Model
         });
     }
 
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function assignmentAttachments()
     {
         return $this->hasMany(AssignmentAttachment::class);
@@ -61,13 +77,27 @@ class Assignment extends Model
         return $this->hasMany(AssignmentTimeline::class);
     }
 
-    public function subject()
+    public function getTotalUncompletedMemberAttribute()
     {
-        return $this->belongsTo(Subject::class);
+        return AssignmentStatus::where([
+            'assignment_id' => $this->id,
+            'state' => 'UNCOMPLETED'
+        ])->count();
     }
 
-    public function createdBy()
+    public function getTotalDoingMemberAttribute()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return AssignmentStatus::where([
+            'assignment_id' => $this->id,
+            'state' => 'DOING'
+        ])->count();
+    }
+
+    public function getTotalCompletedMemberAttribute()
+    {
+        return AssignmentStatus::where([
+            'assignment_id' => $this->id,
+            'state' => 'COMPLETED'
+        ])->count();
     }
 }

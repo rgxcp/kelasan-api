@@ -16,7 +16,13 @@ class AssignmentController extends Controller
         return response()->json([
             'status' => 'Success',
             'result' => $assignment->load([
-                'subject.createdBy', 'createdBy'
+                'subject',
+                'createdBy',
+                'assignmentAttachments.uploadedBy'
+            ])->append([
+                'total_uncompleted_member',
+                'total_doing_member',
+                'total_completed_member'
             ])
         ]);
     }

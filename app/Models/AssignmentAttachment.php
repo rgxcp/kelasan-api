@@ -13,4 +13,9 @@ class AssignmentAttachment extends Model
     protected $fillable = [
         'direct_link'
     ];
+
+    public function uploadedBy()
+    {
+        return $this->belongsTo(User::class, 'uploaded_by');
+    }
 }

@@ -15,9 +15,7 @@ class SubjectController extends Controller
     {
         return response()->json([
             'status' => 'Success',
-            'result' => $subject->load([
-                'createdBy'
-            ])
+            'result' => $subject->load('createdBy')->append('total_assignment')
         ]);
     }
 

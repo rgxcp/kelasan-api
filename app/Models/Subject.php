@@ -16,6 +16,10 @@ class Subject extends Model
         'name'
     ];
 
+    protected $append = [
+        'total_assignment'
+    ];
+
     protected static function booted()
     {
         static::deleted(function ($subject) {
@@ -23,13 +27,21 @@ class Subject extends Model
         });
     }
 
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function assignments()
     {
         return $this->hasMany(Assignment::class);
     }
 
-    public function createdBy()
+    public function getTotalAssignmentAttribute()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return Assignment::where([
+            'classroom_id' => $this->classroom_id,
+            'subject_id' => $this->id
+        ])->count();
     }
 }

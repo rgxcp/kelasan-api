@@ -58,7 +58,7 @@ class User extends Authenticatable
 
     public function getTokenAttribute()
     {
-        return $this->createToken('bearer');
+        return $this->createToken(request()->device ?? 'Unknown Device');
     }
 
     public function getTotalUncompletedAssignmentAttribute()

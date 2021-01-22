@@ -39,7 +39,7 @@ class UserController extends Controller
 
     public function signUp(SignUpRequest $request)
     {
-        $user = User::create($request->all());
+        $user = User::create($request->except('device'));
 
         return response()->json([
             'status' => 'Success',
@@ -49,7 +49,7 @@ class UserController extends Controller
 
     public function signIn(SignInRequest $request)
     {
-        if (!Auth::attempt($request->all())) {
+        if (!Auth::attempt($request->except('device'))) {
             return response()->json([
                 'status' => 'Failed',
                 'reason' => 'Unauthorized'

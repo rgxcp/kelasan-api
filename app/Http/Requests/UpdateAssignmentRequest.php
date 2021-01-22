@@ -15,14 +15,14 @@ class UpdateAssignmentRequest extends APIFormRequest
     {
         return [
             'subject_id' => [
-                'filled',
+                'required',
                 'integer',
                 Rule::exists('subjects', 'id')->where(function ($query) {
                     return $query->where('classroom_id', $this->classroom->id);
                 })
             ],
             'detail' => [
-                'filled',
+                'required',
                 'string'
             ],
             'type' => [

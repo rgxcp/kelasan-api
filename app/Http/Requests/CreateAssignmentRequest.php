@@ -26,14 +26,17 @@ class CreateAssignmentRequest extends APIFormRequest
                 'string'
             ],
             'type' => [
+                'filled',
                 'string',
                 'in:INDIVIDUAL,GROUP'
             ],
             'start' => [
+                'filled',
                 'date'
             ],
             'deadline' => [
                 'required_with:start',
+                'filled',
                 'date',
                 'after:start'
             ]

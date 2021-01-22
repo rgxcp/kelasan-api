@@ -41,16 +41,9 @@ class UserController extends Controller
     {
         $user = User::create($request->all());
 
-        $token = $user->createToken('bearer');
-
-        $collection = collect([
-            'user' => $user->makeVisible('email'),
-            'token' => $token
-        ]);
-
         return response()->json([
             'status' => 'Success',
-            'result' => $collection
+            'result' => $user->makeVisible('email')->append('token')
         ], 201);
     }
 
@@ -63,16 +56,9 @@ class UserController extends Controller
             ], 401);
         }
 
-        $token = $request->user()->createToken('bearer');
-
-        $collection = collect([
-            'user' => $request->user()->makeVisible('email'),
-            'token' => $token
-        ]);
-
         return response()->json([
             'status' => 'Success',
-            'result' => $collection
+            'result' => $request->user()->makeVisible('email')->append('token')
         ]);
     }
 

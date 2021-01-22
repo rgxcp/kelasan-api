@@ -46,6 +46,7 @@ class User extends Authenticatable
     ];
 
     protected $append = [
+        'token',
         'total_uncompleted_assignment',
         'total_doing_assignment',
         'total_completed_assignment'
@@ -54,6 +55,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_picture'
     ];
+
+    public function getTokenAttribute()
+    {
+        return $this->createToken('bearer');
+    }
 
     public function getTotalUncompletedAssignmentAttribute()
     {

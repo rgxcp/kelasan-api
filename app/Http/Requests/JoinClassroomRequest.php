@@ -21,11 +21,4 @@ class JoinClassroomRequest extends APIFormRequest
             ]
         ];
     }
-
-    public function messages()
-    {
-        return [
-            //
-        ];
-    }
 }

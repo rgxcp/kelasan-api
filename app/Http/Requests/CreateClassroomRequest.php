@@ -24,13 +24,6 @@ class CreateClassroomRequest extends APIFormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            //
-        ];
-    }
-
     public function withValidator($validator)
     {
         $validator->after(function () {

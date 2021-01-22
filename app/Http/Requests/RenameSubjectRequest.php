@@ -19,11 +19,4 @@ class RenameSubjectRequest extends APIFormRequest
             ]
         ];
     }
-
-    public function messages()
-    {
-        return [
-            //
-        ];
-    }
 }

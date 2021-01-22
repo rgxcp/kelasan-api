@@ -31,11 +31,4 @@ class SignUpRequest extends APIFormRequest
             ]
         ];
     }
-
-    public function messages()
-    {
-        return [
-            //
-        ];
-    }
 }

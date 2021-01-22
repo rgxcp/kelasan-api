@@ -42,11 +42,4 @@ class UpdateAssignmentRequest extends APIFormRequest
             ]
         ];
     }
-
-    public function messages()
-    {
-        return [
-            //
-        ];
-    }
 }

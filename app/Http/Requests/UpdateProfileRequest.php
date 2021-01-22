@@ -25,11 +25,4 @@ class UpdateProfileRequest extends APIFormRequest
             ]
         ];
     }
-
-    public function messages()
-    {
-        return [
-            //
-        ];
-    }
 }

@@ -62,10 +62,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'owner' => \App\Http\Middleware\BelongToClass::class,
+        'json' => \App\Http\Middleware\JSONHeader::class,
         'leader' => \App\Http\Middleware\ClassroomLeader::class,
         'member' => \App\Http\Middleware\ClassroomMember::class,
-        'json' => \App\Http\Middleware\JSONHeader::class,
+        'owner' => \App\Http\Middleware\BelongToClass::class,
     ];
 
     protected $middlewarePriority = [

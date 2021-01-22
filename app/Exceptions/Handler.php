@@ -39,6 +39,15 @@ class Handler extends ExceptionHandler
             //
         });
 
+        $this->renderable(function (AuthenticationException $exception, $request) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'status' => 'Failed',
+                    'reason' => 'Unauthorized'
+                ], 401);
+            }
+        });
+
         $this->renderable(function (NotFoundHttpException $exception, $request) {
             if ($request->expectsJson()) {
                 return response()->json([
@@ -47,17 +56,5 @@ class Handler extends ExceptionHandler
                 ], 404);
             }
         });
-    }
-
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-        if ($request->expectsJson()) {
-            return response()->json([
-                'status' => 'Failed',
-                'reason' => 'Unauthorized'
-            ], 401);
-        }
-
-        parent::unauthenticated($request, $exception);
     }
 }

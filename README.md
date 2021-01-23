@@ -81,9 +81,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `326`
 
-Completed Tasks : `223`
+Completed Tasks : `224`
 
-Progress : `68.40%`
+Progress : `68.71%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -339,7 +339,7 @@ Progress : `68.40%`
 - [ ] Create traits
   - [ ] APIFormRequest
   - [x] InvitationCode
-  - [ ] SerializeDate
+  - [x] SerializeDate
 - [ ] Fill base controllers
   - [ ] AssignmentController
     - [x] `detail()`

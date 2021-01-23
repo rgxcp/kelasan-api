@@ -81,9 +81,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `335`
 
-Completed Tasks : `213`
+Completed Tasks : `224`
 
-Progress : `63.58%`
+Progress : `66.86%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -249,7 +249,7 @@ Progress : `63.58%`
   - [ ] Assignment
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -258,7 +258,7 @@ Progress : `63.58%`
   - [ ] AssignmentAttachment
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -267,7 +267,7 @@ Progress : `63.58%`
   - [ ] AssignmentStatus
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -276,7 +276,7 @@ Progress : `63.58%`
   - [ ] AssignmentTimeline
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -285,7 +285,7 @@ Progress : `63.58%`
   - [ ] ClassMember
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -294,7 +294,7 @@ Progress : `63.58%`
   - [ ] Classroom
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -303,7 +303,7 @@ Progress : `63.58%`
   - [ ] Note
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -312,7 +312,7 @@ Progress : `63.58%`
   - [ ] NoteAttachment
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -321,7 +321,7 @@ Progress : `63.58%`
   - [ ] NoteTimeline
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -330,7 +330,7 @@ Progress : `63.58%`
   - [ ] Subject
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
@@ -339,7 +339,7 @@ Progress : `63.58%`
   - [ ] User
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
-    - [ ] `$hidden` attributes
+    - [x] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships

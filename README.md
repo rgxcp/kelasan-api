@@ -79,11 +79,11 @@ DEVELOPING
 | `/api/v1/users/self/sign-out-all`                         | Sign out all devices    |
 
 ## TODOs
-Total Tasks : `335`
+Total Tasks : `326`
 
-Completed Tasks : `224`
+Completed Tasks : `223`
 
-Progress : `66.86%`
+Progress : `68.40%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -199,7 +199,6 @@ Progress : `66.86%`
   - [x] JSONHeader
 - [x] Register middleware on kernel
 - [x] Assign middleware on route
-- [x] Handle FormRequest class failed validation attempt
 - [x] Create base requests
   - [x] ChangePasswordRequest
   - [x] CreateAssignmentRequest
@@ -250,7 +249,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -259,7 +257,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -268,7 +265,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -277,7 +273,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -286,7 +281,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -295,7 +289,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -304,7 +297,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -313,7 +305,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -322,7 +313,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -331,7 +321,6 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
@@ -340,15 +329,17 @@ Progress : `66.86%`
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] `$casts` attributes
     - [ ] Events
     - [ ] Relationships
     - [ ] Accessors
     - [ ] Mutators
 - [x] Handle AuthenticationException class
 - [x] Handle NotFoundHttpException class
-- [x] Create InvitationCode trait
 - [x] Configure `$dontFlash` attributes on exception handler & `$except` attributes on TrimStrings middleware
+- [ ] Create traits
+  - [ ] APIFormRequest
+  - [x] InvitationCode
+  - [ ] SerializeDate
 - [ ] Fill base controllers
   - [ ] AssignmentController
     - [x] `detail()`

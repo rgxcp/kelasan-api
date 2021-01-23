@@ -2,10 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Traits\FailedFormValidation;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateAssignmentRequest extends APIFormRequest
+class CreateAssignmentRequest extends FormRequest
 {
+    use FailedFormValidation;
+
     /**
      * Get the validation rules that apply to the request.
      *

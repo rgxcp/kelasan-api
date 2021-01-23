@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Traits\FailedFormValidation;
 use App\Http\Traits\InvitationCode;
+use Illuminate\Foundation\Http\FormRequest;
 
-class CreateClassroomRequest extends APIFormRequest
+class CreateClassroomRequest extends FormRequest
 {
-    use InvitationCode;
+    use FailedFormValidation, InvitationCode;
 
     /**
      * Get the validation rules that apply to the request.

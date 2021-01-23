@@ -2,8 +2,13 @@
 
 namespace App\Http\Requests;
 
-class ChangePasswordRequest extends APIFormRequest
+use App\Http\Traits\FailedFormValidation;
+use Illuminate\Foundation\Http\FormRequest;
+
+class ChangePasswordRequest extends FormRequest
 {
+    use FailedFormValidation;
+
     /**
      * Get the validation rules that apply to the request.
      *

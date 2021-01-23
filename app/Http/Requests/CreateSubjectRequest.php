@@ -2,8 +2,13 @@
 
 namespace App\Http\Requests;
 
-class CreateSubjectRequest extends APIFormRequest
+use App\Http\Traits\FailedFormValidation;
+use Illuminate\Foundation\Http\FormRequest;
+
+class CreateSubjectRequest extends FormRequest
 {
+    use FailedFormValidation;
+
     /**
      * Get the validation rules that apply to the request.
      *

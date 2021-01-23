@@ -81,9 +81,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `326`
 
-Completed Tasks : `224`
+Completed Tasks : `226`
 
-Progress : `68.71%`
+Progress : `69.32%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -336,8 +336,8 @@ Progress : `68.71%`
 - [x] Handle AuthenticationException class
 - [x] Handle NotFoundHttpException class
 - [x] Configure `$dontFlash` attributes on exception handler & `$except` attributes on TrimStrings middleware
-- [ ] Create traits
-  - [ ] APIFormRequest
+- [x] Create traits
+  - [x] FailedFormValidation
   - [x] InvitationCode
   - [x] SerializeDate
 - [ ] Fill base controllers

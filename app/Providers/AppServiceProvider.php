@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // TODO: Remove this in production server
+        // TODO: Remove this on production server
         DB::listen(function ($query) {
             Log::info(
                 $query->sql,

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateAssignmentRequest;
 use App\Http\Requests\UpdateAssignmentRequest;
 use App\Models\Assignment;
-use App\Models\AssignmentTimeline;
 use App\Models\Classroom;
 
 class AssignmentController extends Controller
@@ -29,19 +28,6 @@ class AssignmentController extends Controller
 
     public function status()
     {
-    }
-
-    public function timeline(Classroom $classroom, Assignment $assignment)
-    {
-        $timeline = AssignmentTimeline::with('user')
-            ->where('assignment_id', $assignment->id)
-            ->orderByDesc('id')
-            ->paginate(30);
-
-        return response()->json([
-            'status' => 'Success',
-            'result' => $timeline
-        ]);
     }
 
     public function create(CreateAssignmentRequest $request, Classroom $classroom)

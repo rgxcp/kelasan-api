@@ -11,7 +11,8 @@ DEVELOPING
 2. Composer
 3. Laravel
 4. MySQL
-5. Postman
+5. XAMPP
+6. Postman
 
 ## How to Use
 1. Clone this repository to your desired location.
@@ -19,86 +20,93 @@ DEVELOPING
 3. Create database `kelasan_sandbox` and configure it on `.env` file.
 4. Run migration `php artisan migrate`.
 5. Run seeder `php artisan db:seed`.
-6. Run server `php artisan serve`.
+6. Run server `bash server.sh --start`.
 7. Fire-up Postman.
 8. Do-what-you-want-with-it!
 
 ## Endpoints
 ### GET
-| URL                                                                | Description                    | Param | Return Type |
-|--------------------------------------------------------------------|--------------------------------|-------|-------------|
-| `/api/v1/classrooms/{classroom}`                                   | Show classroom detail          |       |             |
-| `/api/v1/classrooms/{classroom}/invitation-code`                   | Show classroom invitation code |       |             |
-| `/api/v1/classrooms/{classroom}/assignments`                       | Show classroom assignments     |       |             |
-| `/api/v1/classrooms/{classroom}/members`                           | Show classroom members         |       |             |
-| `/api/v1/classrooms/{classroom}/notes`                             | Show classroom notes           |       |             |
-| `/api/v1/classrooms/{classroom}/subjects`                          | Show classroom subjects        |       |             |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}`          | Show assignment detail         |       |             |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}/status`   | Show assignment status         |       |             |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}/timeline` | Show assignment timeline       |       |             |
-| `/api/v1/classrooms/{classroom}/notes/{note}`                      | Show note detail               |       |             |
-| `/api/v1/classrooms/{classroom}/notes/{note}/timeline`             | Show note timeline             |       |             |
-| `/api/v1/classrooms/{classroom}/subjects/{subject}`                | Show subject detail            |       |             |
-| `/api/v1/classrooms/{classroom}/subjects/{subject}/assignments`    | Show subject assignments       |       |             |
-| `/api/v1/search`                                                   | Search data                    |       |             |
-| `/api/v1/users/self`                                               | Show self profile detail       |       |             |
-| `/api/v1/users/self/assignments`                                   | Show self profile assignments  |       |             |
-| `/api/v1/users/self/classrooms`                                    | Show self profile classrooms   |       |             |
-| `/api/v1/users/self/subjects`                                      | Show self profile subjects     |       |             |
+| URL                                                                | Description                    |
+|--------------------------------------------------------------------|--------------------------------|
+| `/api/v1/classrooms/{classroom}`                                   | Show classroom detail          |
+| `/api/v1/classrooms/{classroom}/invitation-code`                   | Show classroom invitation code |
+| `/api/v1/classrooms/{classroom}/assignments`                       | Show classroom assignments     |
+| `/api/v1/classrooms/{classroom}/members`                           | Show classroom members         |
+| `/api/v1/classrooms/{classroom}/notes`                             | Show classroom notes           |
+| `/api/v1/classrooms/{classroom}/subjects`                          | Show classroom subjects        |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}`          | Show assignment detail         |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}/status`   | Show assignment status         |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}/timeline` | Show assignment timeline       |
+| `/api/v1/classrooms/{classroom}/notes/{note}`                      | Show note detail               |
+| `/api/v1/classrooms/{classroom}/notes/{note}/timeline`             | Show note timeline             |
+| `/api/v1/classrooms/{classroom}/subjects/{subject}`                | Show subject detail            |
+| `/api/v1/classrooms/{classroom}/subjects/{subject}/assignments`    | Show subject assignments       |
+| `/api/v1/search`                                                   | Search data                    |
+| `/api/v1/users/self`                                               | Show self profile detail       |
+| `/api/v1/users/self/assignments`                                   | Show self profile assignments  |
+| `/api/v1/users/self/classrooms`                                    | Show self profile classrooms   |
+| `/api/v1/users/self/subjects`                                      | Show self profile subjects     |
 
 ### POST
-| URL                                          | Description       | Param | Return Type |
-|----------------------------------------------|-------------------|-------|-------------|
-| `/api/v1/classrooms`                         | Create classroom  |       |             |
-| `/api/v1/classrooms/join`                    | Join classroom    |       |             |
-| `/api/v1/classrooms/{classroom}/assignments` | Create assignment |       |             |
-| `/api/v1/classrooms/{classroom}/notes`       | Create note       |       |             |
-| `/api/v1/classrooms/{classroom}/subjects`    | Create subject    |       |             |
-| `/api/v1/users/sign-up`                      | Sign up           |       |             |
-| `/api/v1/users/sign-in`                      | Sign in           |       |             |
+| URL                                          | Description       |
+|----------------------------------------------|-------------------|
+| `/api/v1/classrooms`                         | Create classroom  |
+| `/api/v1/classrooms/join`                    | Join classroom    |
+| `/api/v1/classrooms/{classroom}/assignments` | Create assignment |
+| `/api/v1/classrooms/{classroom}/notes`       | Create note       |
+| `/api/v1/classrooms/{classroom}/subjects`    | Create subject    |
+| `/api/v1/users/sign-up`                      | Sign up           |
+| `/api/v1/users/sign-in`                      | Sign in           |
 
 ### PUT
-| URL                                                                     | Description              | Param | Return Type |
-|-------------------------------------------------------------------------|--------------------------|-------|-------------|
-| `/api/v1/classrooms/{classroom}`                                        | Rename classroom         |       |             |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}`               | Update assignment        |       |             |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}/change-status` | Change assignment status |       |             |
-| `/api/v1/classrooms/{classroom}/notes/{note}`                           | Update note              |       |             |
-| `/api/v1/classrooms/{classroom}/subjects/{subject}`                     | Rename subject           |       |             |
-| `/api/v1/users/self`                                                    | Update self profile      |       |             |
-| `/api/v1/users/self/change-password`                                    | Change self password     |       |             |
+| URL                                                                     | Description              |
+|-------------------------------------------------------------------------|--------------------------|
+| `/api/v1/classrooms/{classroom}`                                        | Rename classroom         |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}`               | Update assignment        |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}/change-status` | Change assignment status |
+| `/api/v1/classrooms/{classroom}/notes/{note}`                           | Update note              |
+| `/api/v1/classrooms/{classroom}/subjects/{subject}`                     | Rename subject           |
+| `/api/v1/users/self`                                                    | Update self profile      |
+| `/api/v1/users/self/change-password`                                    | Change self password     |
 
 ### DELETE
-| URL                                                       | Description             | Param | Return Type |
-|-----------------------------------------------------------|-------------------------|-------|-------------|
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}` | Remove assignment       |       |             |
-| `/api/v1/classrooms/{classroom}/notes/{note}`             | Remove note             |       |             |
-| `/api/v1/classrooms/{classroom}/subjects/{subject}`       | Remove subject          |       |             |
-| `/api/v1/users/self/sign-out`                             | Sign out current device |       |             |
-| `/api/v1/users/self/sign-out-all`                         | Sign out all devices    |       |             |
+| URL                                                       | Description             |
+|-----------------------------------------------------------|-------------------------|
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}` | Remove assignment       |
+| `/api/v1/classrooms/{classroom}/notes/{note}`             | Remove note             |
+| `/api/v1/classrooms/{classroom}/subjects/{subject}`       | Remove subject          |
+| `/api/v1/users/self/sign-out`                             | Sign out current device |
+| `/api/v1/users/self/sign-out-all`                         | Sign out all devices    |
 
 ## TODOs
-Total Tasks : `270`
+Total Tasks : `335`
 
-Completed Tasks : `189`
+Completed Tasks : `202`
 
-Progress : `70%`
+Progress : `60.29%`
 
+- [x] Configure app .env
+- [x] Change app timezone & locale
+- [x] Install auth package (Sanctum)
+- [x] Log SQL queries
 - [x] Delete user related boilerplate
-- [x] Change app timezone
-- [x] Configure ModelNotFoundException on handler
+  - [x] User model
+  - [x] User factory
+  - [x] users migration
+  - [x] password_resets migration
+  - [x] failed_jobs migration
 - [x] Create base migrations
-  - [x] user
-  - [x] classroom
-  - [x] class_member
-  - [x] subject
-  - [x] assignment
-  - [x] assignment_attachment
-  - [x] assignment_status
-  - [x] assignment_timeline
-  - [x] note
-  - [x] note_attachment
-  - [x] note_timeline
+  - [x] users
+  - [x] classrooms
+  - [x] class_members
+  - [x] subjects
+  - [x] assignments
+  - [x] assignment_attachments
+  - [x] assignment_statuses
+  - [x] assignment_timelines
+  - [x] notes
+  - [x] note_attachments
+  - [x] note_timelines
 - [x] Create base models
   - [x] Assignment
   - [x] AssignmentAttachment
@@ -113,24 +121,13 @@ Progress : `70%`
   - [x] User
 - [x] Create base controllers
   - [x] AssignmentController
+  - [x] AssignmentTimelineController
   - [x] ClassroomController
   - [x] NoteController
+  - [x] NoteTimelineController
   - [x] SearchController
   - [x] SubjectController
   - [x] UserController
-- [x] Create base requests
-  - [x] CreateAssignmentRequest
-  - [x] CreateClassroomRequest
-  - [x] CreateNoteRequest
-  - [x] CreateSubjectRequest
-  - [x] JoinClassroomRequest
-  - [x] RenameClassroomRequest
-  - [x] RenameSubjectRequest
-  - [x] SignInRequest
-  - [x] SignUpRequest
-  - [x] UpdateAssignmentRequest
-  - [x] UpdateProfileRequest
-  - [x] UpdateNoteRequest
 - [x] Create base factories
   - [x] AssignmentAttachmentFactory
   - [x] AssignmentFactory
@@ -155,11 +152,6 @@ Progress : `70%`
   - [x] NoteTimelineSeeder
   - [x] SubjectSeeder
   - [x] UserSeeder
-- [x] Create base middleware
-  - [x] BelongToClass
-  - [x] ClassroomLeader
-  - [x] ClassroomMember
-  - [x] NotClassroomMember
 - [x] Create endpoints
   - [x] GET Classroom detail
   - [x] GET Classroom invitation code
@@ -179,6 +171,7 @@ Progress : `70%`
   - [x] GET Self profile assignments
   - [x] GET Self profile classrooms
   - [x] GET Self profile subjects
+  - [ ] GET Signed in devices
   - [x] POST Create classroom
   - [x] POST Join classroom
   - [x] POST Create assignment
@@ -198,50 +191,196 @@ Progress : `70%`
   - [x] DELETE Remove subject
   - [x] DELETE Sign out current device
   - [x] DELETE Sign out all devices
-- [x] Assign middleware on route
+  - [ ] DELETE Sign out specific devices
+- [x] Create base middleware
+  - [x] BelongToClass
+  - [x] ClassroomLeader
+  - [x] ClassroomMember
+  - [x] JSONHeader
 - [x] Register middleware on kernel
+- [x] Assign middleware on route
+- [x] Handle FormRequest class failed validation attempt
+- [x] Create base requests
+  - [x] ChangePasswordRequest
+  - [x] CreateAssignmentRequest
+  - [x] CreateClassroomRequest
+  - [x] CreateNoteRequest
+  - [x] CreateSubjectRequest
+  - [x] JoinClassroomRequest
+  - [x] RenameClassroomRequest
+  - [x] RenameSubjectRequest
+  - [x] SignInRequest
+  - [x] SignUpRequest
+  - [x] UpdateAssignmentRequest
+  - [x] UpdateNoteRequest
+  - [x] UpdateProfileRequest
 - [x] Fill base migrations
-  - [x] user
-  - [x] classroom
-  - [x] class_member
-  - [x] subject
-  - [x] assignment
-  - [x] assignment_attachment
-  - [x] assignment_status
-  - [x] assignment_timeline
-  - [x] note
-  - [x] note_attachment
-  - [x] note_timeline
+  - [x] users
+  - [x] classrooms
+  - [x] class_members
+  - [x] subjects
+  - [x] assignments
+  - [x] assignment_attachments
+  - [x] assignment_statuses
+  - [x] assignment_timelines
+  - [x] notes
+  - [x] note_attachments
+  - [x] note_timelines
+- [x] Fill base middleware
+  - [x] BelongToClass
+  - [x] ClassroomLeader
+  - [x] ClassroomMember
+  - [x] JSONHeader
+- [x] Fill base requests
+  - [x] ChangePasswordRequest
+  - [x] CreateAssignmentRequest
+  - [x] CreateClassroomRequest
+  - [x] CreateNoteRequest
+  - [x] CreateSubjectRequest
+  - [x] JoinClassroomRequest
+  - [x] RenameClassroomRequest
+  - [x] RenameSubjectRequest
+  - [x] SignInRequest
+  - [x] SignUpRequest
+  - [x] UpdateAssignmentRequest
+  - [x] UpdateNoteRequest
+  - [x] UpdateProfileRequest
+- [ ] Fill base models
+  - [ ] Assignment
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] AssignmentAttachment
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] AssignmentStatus
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] AssignmentTimeline
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] ClassMember
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] Classroom
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] Note
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] NoteAttachment
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] NoteTimeline
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] Subject
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+  - [ ] User
+    - [x] SoftDeletes trait
+    - [ ] `$fillable` attributes
+    - [ ] `$hidden` attributes
+    - [ ] `$casts` attributes
+    - [ ] Events
+    - [ ] Relationships
+    - [ ] Accessors
+    - [ ] Mutators
+- [x] Handle AuthenticationException class
+- [x] Handle NotFoundHttpException class
+- [x] Create InvitationCode trait
+- [x] Configure `$dontFlash` attributes on exception handler & `$except` attributes on TrimStrings middleware
 - [ ] Fill base controllers
   - [ ] AssignmentController
     - [x] `detail()`
     - [ ] `status()`
-    - [x] `timeline()`
     - [x] `create()`
     - [x] `update()`
     - [ ] `changeStatus()`
     - [x] `delete()`
-  - [x] ClassroomController
+  - [x] AssignmentTimelineController
+    - [x] `__invoke()`
+  - [ ] ClassroomController
     - [x] `detail()`
     - [x] `invitationCode()`
-    - [x] `assignments()`
-    - [x] `members()`
-    - [x] `notes()`
-    - [x] `subjects()`
+    - [ ] `assignments()`
+    - [ ] `members()`
+    - [ ] `notes()`
+    - [ ] `subjects()`
     - [x] `create()`
     - [x] `join()`
     - [x] `rename()`
   - [x] NoteController
     - [x] `detail()`
-    - [x] `timeline()`
     - [x] `create()`
     - [x] `update()`
     - [x] `delete()`
+  - [x] NoteTimelineController
+    - [x] `__invoke()`
   - [ ] SearchController
-    - [ ] `search()`
-  - [x] SubjectController
+    - [ ] `__invoke()`
+  - [ ] SubjectController
     - [x] `detail()`
-    - [x] `assignments()`
+    - [ ] `assignments()`
     - [x] `create()`
     - [x] `rename()`
     - [x] `delete()`
@@ -256,101 +395,28 @@ Progress : `70%`
     - [x] `changePassword()`
     - [x] `signOut()`
     - [x] `signOutAll()`
-- [ ] Fill base models
-  - [ ] Assignment
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] AssignmentAttachment
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] AssignmentStatus
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] AssignmentTimeline
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] ClassMember
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] Classroom
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] Note
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] NoteAttachment
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] NoteTimeline
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] Subject
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-  - [ ] User
-    - [x] Fillable Properties
-    - [x] Hidden Properties
-    - [ ] Relationships
-    - [ ] Accessors
-- [ ] Fill base requests
-  - [ ] CreateAssignmentRequest
-  - [ ] CreateClassroomRequest
-  - [ ] CreateNoteRequest
-  - [ ] CreateSubjectRequest
-  - [ ] JoinClassroomRequest
-  - [ ] RenameClassroomRequest
-  - [ ] RenameSubjectRequest
-  - [ ] SignInRequest
-  - [ ] SignUpRequest
-  - [ ] UpdateAssignmentRequest
-  - [ ] UpdateNoteRequest
-  - [ ] UpdateProfileRequest
-- [x] Fill base middleware
-  - [x] BelongToClass
-  - [x] ClassroomLeader
-  - [x] ClassroomMember
-  - [x] NotClassroomMember
 - [ ] Fill base factories
-  - [ ] AssignmentFactory
   - [ ] AssignmentAttachmentFactory
+  - [ ] AssignmentFactory
   - [ ] AssignmentStatusFactory
   - [ ] AssignmentTimelineFactory
   - [ ] ClassMemberFactory
   - [ ] ClassroomFactory
-  - [ ] NoteFactory
   - [ ] NoteAttachmentFactory
+  - [ ] NoteFactory
   - [ ] NoteTimelineFactory
   - [ ] SubjectFactory
   - [ ] UserFactory
 - [ ] Fill base seeders
-  - [ ] AssignmentSeeder
   - [ ] AssignmentAttachmentSeeder
+  - [ ] AssignmentSeeder
   - [ ] AssignmentStatusSeeder
   - [ ] AssignmentTimelineSeeder
   - [ ] ClassMemberSeeder
   - [ ] ClassroomSeeder
-  - [ ] NoteSeeder
   - [ ] NoteAttachmentSeeder
+  - [ ] NoteSeeder
   - [ ] NoteTimelineSeeder
   - [ ] SubjectSeeder
   - [ ] UserSeeder
+- [ ] Translate English locale to Indonesian

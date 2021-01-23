@@ -81,9 +81,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `335`
 
-Completed Tasks : `202`
+Completed Tasks : `213`
 
-Progress : `60.29%`
+Progress : `63.58%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -248,7 +248,7 @@ Progress : `60.29%`
 - [ ] Fill base models
   - [ ] Assignment
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -257,7 +257,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] AssignmentAttachment
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -266,7 +266,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] AssignmentStatus
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -275,7 +275,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] AssignmentTimeline
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -284,7 +284,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] ClassMember
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -293,7 +293,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] Classroom
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -302,7 +302,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] Note
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -311,7 +311,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] NoteAttachment
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -320,7 +320,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] NoteTimeline
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -329,7 +329,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] Subject
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events
@@ -338,7 +338,7 @@ Progress : `60.29%`
     - [ ] Mutators
   - [ ] User
     - [x] SoftDeletes trait
-    - [ ] `$fillable` attributes
+    - [x] `$fillable` attributes
     - [ ] `$hidden` attributes
     - [ ] `$casts` attributes
     - [ ] Events

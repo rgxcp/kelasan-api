@@ -11,6 +11,9 @@ class NoteAttachment extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'classroom_id',
+        'note_id',
+        'uploaded_by',
         'direct_link'
     ];
 

@@ -11,6 +11,9 @@ class AssignmentAttachment extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'classroom_id',
+        'assignment_id',
+        'uploaded_by',
         'direct_link'
     ];
 

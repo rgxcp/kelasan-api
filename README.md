@@ -79,11 +79,11 @@ DEVELOPING
 | `/api/v1/users/self/sign-out-all`                         | Sign out all devices    |
 
 ## TODOs
-Total Tasks : `326`
+Total Tasks : `328`
 
-Completed Tasks : `226`
+Completed Tasks : `229`
 
-Progress : `69.32%`
+Progress : `69.81%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -231,6 +231,7 @@ Progress : `69.32%`
   - [x] ClassroomMember
   - [x] JSONHeader
 - [x] Fill base requests
+  - [x] ChangeAssignmentStatusRequest
   - [x] ChangePasswordRequest
   - [x] CreateAssignmentRequest
   - [x] CreateClassroomRequest
@@ -346,8 +347,9 @@ Progress : `69.32%`
     - [ ] `status()`
     - [x] `create()`
     - [x] `update()`
-    - [ ] `changeStatus()`
     - [x] `delete()`
+  - [x] AssignmentStatusController
+    - [x] `__invoke()`
   - [x] AssignmentTimelineController
     - [x] `__invoke()`
   - [ ] ClassroomController

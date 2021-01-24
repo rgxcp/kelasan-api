@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AssignmentController;
+use App\Http\Controllers\API\AssignmentStatusController;
 use App\Http\Controllers\API\AssignmentTimelineController;
 use App\Http\Controllers\API\ClassroomController;
 use App\Http\Controllers\API\NoteController;
@@ -36,7 +37,7 @@ Route::middleware('json')->prefix('v1')->group(function () {
             Route::get('subjects', [ClassroomController::class, 'subjects']);
             Route::put('', [ClassroomController::class, 'rename']);
 
-            // Assignment & Assignment Timeline
+            // Assignment
             Route::prefix('assignments')->group(function () {
                 Route::post('', [AssignmentController::class, 'create']);
                 Route::middleware('owner')->prefix('{assignment}')->group(function () {
@@ -44,12 +45,12 @@ Route::middleware('json')->prefix('v1')->group(function () {
                     Route::get('status', [AssignmentController::class, 'status']);
                     Route::get('timeline', AssignmentTimelineController::class);
                     Route::put('', [AssignmentController::class, 'update']);
-                    Route::put('change-status', [AssignmentController::class, 'changeStatus']);
+                    Route::put('change-status', AssignmentStatusController::class);
                     Route::middleware('leader')->delete('', [AssignmentController::class, 'delete']);
                 });
             });
 
-            // Note & Note Timeline
+            // Note
             Route::prefix('notes')->group(function () {
                 Route::post('', [NoteController::class, 'create']);
                 Route::middleware('owner')->prefix('{note}')->group(function () {

@@ -26,10 +26,6 @@ class AssignmentController extends Controller
         ]);
     }
 
-    public function status()
-    {
-    }
-
     public function create(CreateAssignmentRequest $request, Classroom $classroom)
     {
         $assignment = Assignment::create($request->all());

@@ -8,7 +8,6 @@ use App\Http\Requests\JoinClassroomRequest;
 use App\Http\Requests\RenameClassroomRequest;
 use App\Models\ClassMember;
 use App\Models\Classroom;
-use App\Models\Subject;
 
 class ClassroomController extends Controller
 {
@@ -70,14 +69,14 @@ class ClassroomController extends Controller
 
     public function subjects(Classroom $classroom)
     {
-        $subjects = Subject::with('createdBy')
-            ->where('classroom_id', $classroom->id)
-            ->orderBy('name')
-            ->paginate(30);
-
         return response()->json([
             'status' => 'Success',
-            'result' => $subjects
+            'result' => $classroom
+                ->subjects()
+                ->with('createdBy')
+                ->withCount('assignments')
+                ->orderBy('name')
+                ->paginate(30)
         ]);
     }
 

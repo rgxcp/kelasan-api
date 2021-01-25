@@ -58,6 +58,11 @@ class Classroom extends Model
         return $this->hasMany(Note::class);
     }
 
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
+
     public function getTotalAssignmentAttribute()
     {
         return Assignment::where('classroom_id', $this->id)->count();

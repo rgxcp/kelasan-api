@@ -43,6 +43,11 @@ class Classroom extends Model
         return $this->belongsTo(User::class, 'leader');
     }
 
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
+
     public function getTotalAssignmentAttribute()
     {
         return Assignment::where('classroom_id', $this->id)->count();

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateClassroomRequest;
 use App\Http\Requests\JoinClassroomRequest;
 use App\Http\Requests\RenameClassroomRequest;
-use App\Models\Assignment;
 use App\Models\ClassMember;
 use App\Models\Classroom;
 use App\Models\Note;
@@ -37,15 +36,13 @@ class ClassroomController extends Controller
 
     public function assignments(Classroom $classroom)
     {
-        $assignments = Assignment::with([
-            'createdBy', 'subject'
-        ])->where('classroom_id', $classroom->id)
-            ->orderBy('deadline')
-            ->paginate(30);
-
         return response()->json([
             'status' => 'Success',
-            'result' => $assignments
+            'result' => $classroom
+                ->assignments()
+                ->with(['createdBy', 'subject'])
+                ->orderBy('deadline')
+                ->paginate(30)
         ]);
     }
 

@@ -81,9 +81,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `328`
 
-Completed Tasks : `234`
+Completed Tasks : `236`
 
-Progress : `71.34%`
+Progress : `71.95%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -371,9 +371,9 @@ Progress : `71.34%`
     - [x] `__invoke()`
   - [ ] SearchController
     - [ ] `__invoke()`
-  - [ ] SubjectController
+  - [x] SubjectController
     - [x] `detail()`
-    - [ ] `assignments()`
+    - [x] `assignments()`
     - [x] `create()`
     - [x] `rename()`
     - [x] `delete()`

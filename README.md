@@ -81,9 +81,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `328`
 
-Completed Tasks : `230`
+Completed Tasks : `231`
 
-Progress : `70.12%`
+Progress : `70.42%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -356,7 +356,7 @@ Progress : `70.12%`
     - [x] `detail()`
     - [x] `invitationCode()`
     - [x] `assignments()`
-    - [ ] `members()`
+    - [x] `members()`
     - [ ] `notes()`
     - [ ] `subjects()`
     - [x] `create()`

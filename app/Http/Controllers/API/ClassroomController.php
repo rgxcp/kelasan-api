@@ -48,13 +48,12 @@ class ClassroomController extends Controller
 
     public function members(Classroom $classroom)
     {
-        $members = ClassMember::with('user')
-            ->where('classroom_id', $classroom->id)
-            ->paginate(30);
-
         return response()->json([
             'status' => 'Success',
-            'result' => $members
+            'result' => $classroom
+                ->classMembers()
+                ->with('user')
+                ->paginate(30)
         ]);
     }
 

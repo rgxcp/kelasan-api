@@ -8,7 +8,6 @@ use App\Http\Requests\JoinClassroomRequest;
 use App\Http\Requests\RenameClassroomRequest;
 use App\Models\ClassMember;
 use App\Models\Classroom;
-use App\Models\Note;
 use App\Models\Subject;
 
 class ClassroomController extends Controller
@@ -59,14 +58,13 @@ class ClassroomController extends Controller
 
     public function notes(Classroom $classroom)
     {
-        $notes = Note::with('createdBy')
-            ->where('classroom_id', $classroom->id)
-            ->orderByDesc('updated_at')
-            ->paginate(30);
-
         return response()->json([
             'status' => 'Success',
-            'result' => $notes
+            'result' => $classroom
+                ->notes()
+                ->with('createdBy')
+                ->orderByDesc('updated_at')
+                ->paginate(30)
         ]);
     }
 

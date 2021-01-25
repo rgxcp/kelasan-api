@@ -53,6 +53,13 @@ class Assignment extends Model
         });
     }
 
+    public function assignmentStatus()
+    {
+        return $this->hasOne(AssignmentStatus::class)->withDefault([
+            'state' => 'UNCOMPLETED'
+        ]);
+    }
+
     public function subject()
     {
         return $this->belongsTo(Subject::class);

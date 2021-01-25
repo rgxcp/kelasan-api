@@ -8,6 +8,7 @@ use App\Http\Requests\JoinClassroomRequest;
 use App\Http\Requests\RenameClassroomRequest;
 use App\Models\ClassMember;
 use App\Models\Classroom;
+use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
 {
@@ -32,13 +33,19 @@ class ClassroomController extends Controller
         ]);
     }
 
-    public function assignments(Classroom $classroom)
+    public function assignments(Request $request, Classroom $classroom)
     {
         return response()->json([
             'status' => 'Success',
             'result' => $classroom
                 ->assignments()
-                ->with(['createdBy', 'subject'])
+                ->with([
+                    'createdBy',
+                    'subject',
+                    'assignmentStatus' => function ($query) use ($request) {
+                        $query->where('user_id', $request->user()->id);
+                    }
+                ])
                 ->orderBy('deadline')
                 ->paginate(30)
         ]);

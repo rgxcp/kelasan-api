@@ -38,8 +38,17 @@ class UserController extends Controller
     {
     }
 
-    public function classrooms()
+    public function classrooms(Request $request)
     {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $request
+                ->user()
+                ->classrooms()
+                ->with('leader')
+                ->orderBy('name')
+                ->paginate(30)
+        ]);
     }
 
     public function subjects()

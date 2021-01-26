@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasMany(AssignmentStatus::class);
     }
 
+    public function classrooms()
+    {
+        return $this->belongsToMany(Classroom::class, 'class_members')->withPivot('role');
+    }
+
     // Accessors
     public function getTokenAttribute()
     {

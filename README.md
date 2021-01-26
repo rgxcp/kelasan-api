@@ -35,7 +35,7 @@ DEVELOPING
 | `/api/v1/classrooms/{classroom}/notes`                              | Show classroom notes           |
 | `/api/v1/classrooms/{classroom}/subjects`                           | Show classroom subjects        |
 | `/api/v1/classrooms/{classroom}/assignments/{assignment}`           | Show assignment detail         |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}/status`    | Show assignment status         |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}/statuses`  | Show assignment statuses       |
 | `/api/v1/classrooms/{classroom}/assignments/{assignment}/timelines` | Show assignment timelines      |
 | `/api/v1/classrooms/{classroom}/notes/{note}`                       | Show note detail               |
 | `/api/v1/classrooms/{classroom}/notes/{note}/timelines`             | Show note timelines            |
@@ -81,9 +81,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `324`
 
-Completed Tasks : `232`
+Completed Tasks : `234`
 
-Progress : `71.60%`
+Progress : `72.22%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -158,7 +158,7 @@ Progress : `71.60%`
   - [x] GET Classroom notes
   - [x] GET Classroom subjects
   - [x] GET Assignment detail
-  - [x] GET Assignment status
+  - [x] GET Assignment statuses
   - [x] GET Assignment timelines
   - [x] GET Note detail
   - [x] GET Note timelines
@@ -340,9 +340,9 @@ Progress : `71.60%`
   - [x] InvitationCode
   - [x] SerializeDate
 - [ ] Fill base controllers
-  - [ ] AssignmentController
+  - [x] AssignmentController
     - [x] `detail()`
-    - [ ] `status()`
+    - [x] `statuses()`
     - [x] `timelines()`
     - [x] `create()`
     - [x] `update()`

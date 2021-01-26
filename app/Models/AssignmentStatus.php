@@ -17,4 +17,10 @@ class AssignmentStatus extends Model
         'user_id',
         'state'
     ];
+
+    // Relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

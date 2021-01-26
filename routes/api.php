@@ -40,7 +40,7 @@ Route::middleware('json')->prefix('v1')->group(function () {
                 Route::post('', [AssignmentController::class, 'create']);
                 Route::middleware('owner')->prefix('{assignment}')->group(function () {
                     Route::get('', [AssignmentController::class, 'detail']);
-                    Route::get('status', [AssignmentController::class, 'status']);
+                    Route::get('statuses', [AssignmentController::class, 'statuses']);
                     Route::get('timelines', [AssignmentController::class, 'timelines']);
                     Route::put('', [AssignmentController::class, 'update']);
                     Route::put('change-status', AssignmentStatusController::class);

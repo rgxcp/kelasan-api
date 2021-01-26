@@ -34,8 +34,16 @@ class AssignmentController extends Controller
         ]);
     }
 
-    public function status(Classroom $classroom, Assignment $assignment)
+    public function statuses(Classroom $classroom, Assignment $assignment)
     {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $assignment
+                ->assignmentStatuses()
+                ->with('user')
+                ->orderByDesc('updated_at')
+                ->paginate(30)
+        ]);
     }
 
     public function timelines(Classroom $classroom, Assignment $assignment)

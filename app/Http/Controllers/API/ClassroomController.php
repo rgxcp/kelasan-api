@@ -16,12 +16,14 @@ class ClassroomController extends Controller
     {
         return response()->json([
             'status' => 'Success',
-            'result' => $classroom->load('leader')->append([
-                'total_assignment',
-                'total_class_member',
-                'total_note',
-                'total_subject'
-            ])
+            'result' => $classroom
+                ->load('leader')
+                ->append([
+                    'total_assignment',
+                    'total_class_member',
+                    'total_note',
+                    'total_subject'
+                ])
         ]);
     }
 
@@ -40,8 +42,8 @@ class ClassroomController extends Controller
             'result' => $classroom
                 ->assignments()
                 ->with([
-                    'createdBy',
                     'subject',
+                    'createdBy',
                     'assignmentStatus' => function ($query) use ($request) {
                         $query->where('user_id', $request->user()->id);
                     }

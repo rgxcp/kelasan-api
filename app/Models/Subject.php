@@ -21,6 +21,7 @@ class Subject extends Model
         'total_assignment'
     ];
 
+    // Events
     protected static function booted()
     {
         static::deleted(function ($subject) {
@@ -28,6 +29,7 @@ class Subject extends Model
         });
     }
 
+    // Relationships
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -38,6 +40,7 @@ class Subject extends Model
         return $this->hasMany(Assignment::class);
     }
 
+    // Accessors
     public function getTotalAssignmentAttribute()
     {
         return Assignment::where([

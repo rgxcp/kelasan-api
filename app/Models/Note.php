@@ -17,6 +17,7 @@ class Note extends Model
         'detail'
     ];
 
+    // Events
     protected static function booted()
     {
         static::created(function ($note) {
@@ -42,6 +43,7 @@ class Note extends Model
         });
     }
 
+    // Relationships
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');

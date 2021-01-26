@@ -40,7 +40,7 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function (AuthenticationException $exception, $request) {
+        $this->renderable(function (AuthenticationException $e, $request) {
             if ($request->expectsJson()) {
                 return response()->json([
                     'status' => 'Failed',
@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
             }
         });
 
-        $this->renderable(function (NotFoundHttpException $exception, $request) {
+        $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->expectsJson()) {
                 return response()->json([
                     'status' => 'Failed',

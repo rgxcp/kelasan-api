@@ -16,7 +16,8 @@ class ClassroomLeader
      */
     public function handle(Request $request, Closure $next)
     {
-        $classLeader = $request->classroom->leader == $request->user()->id;
+        $classLeader = $request->classroom->leader
+            == $request->user()->id;
 
         if (!$classLeader) {
             return response()->json([

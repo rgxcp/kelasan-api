@@ -18,6 +18,7 @@ class NoteAttachment extends Model
         'direct_link'
     ];
 
+    // Relationships
     public function uploadedBy()
     {
         return $this->belongsTo(User::class, 'uploaded_by');

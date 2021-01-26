@@ -18,6 +18,7 @@ class NoteTimeline extends Model
         'type'
     ];
 
+    // Relationships
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -27,6 +27,7 @@ class Assignment extends Model
         'total_completed_member'
     ];
 
+    // Events
     protected static function booted()
     {
         static::created(function ($assignment) {
@@ -53,6 +54,7 @@ class Assignment extends Model
         });
     }
 
+    // Relationships
     public function assignmentStatus()
     {
         return $this->hasOne(AssignmentStatus::class)->withDefault([
@@ -85,6 +87,7 @@ class Assignment extends Model
         return $this->hasMany(AssignmentTimeline::class);
     }
 
+    // Accessors
     public function getTotalUncompletedMemberAttribute()
     {
         return AssignmentStatus::where([

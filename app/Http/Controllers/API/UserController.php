@@ -17,11 +17,14 @@ class UserController extends Controller
     {
         return response()->json([
             'status' => 'Success',
-            'result' => $request->user()->makeVisible('email')->append([
-                'total_uncompleted_assignment',
-                'total_doing_assignment',
-                'total_completed_assignment'
-            ])
+            'result' => $request
+                ->user()
+                ->makeVisible('email')
+                ->append([
+                    'total_uncompleted_assignment',
+                    'total_doing_assignment',
+                    'total_completed_assignment'
+                ])
         ]);
     }
 
@@ -43,7 +46,9 @@ class UserController extends Controller
 
         return response()->json([
             'status' => 'Success',
-            'result' => $user->makeVisible('email')->append('token')
+            'result' => $user
+                ->makeVisible('email')
+                ->append('token')
         ], 201);
     }
 
@@ -58,7 +63,10 @@ class UserController extends Controller
 
         return response()->json([
             'status' => 'Success',
-            'result' => $request->user()->makeVisible('email')->append('token')
+            'result' => $request
+                ->user()
+                ->makeVisible('email')
+                ->append('token')
         ]);
     }
 
@@ -68,7 +76,9 @@ class UserController extends Controller
 
         return response()->json([
             'status' => 'Success',
-            'result' => $request->user()->makeVisible('email')
+            'result' => $request
+                ->user()
+                ->makeVisible('email')
         ]);
     }
 

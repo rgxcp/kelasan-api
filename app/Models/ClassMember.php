@@ -16,6 +16,7 @@ class ClassMember extends Model
         'role'
     ];
 
+    // Relationships
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -14,16 +14,22 @@ class AssignmentController extends Controller
     {
         return response()->json([
             'status' => 'Success',
-            'result' => $assignment->load([
-                'subject',
-                'createdBy',
-                'assignmentAttachments.uploadedBy'
-            ])->append([
-                'total_uncompleted_member',
-                'total_doing_member',
-                'total_completed_member'
-            ])
+            'result' => $assignment
+                ->load([
+                    'subject',
+                    'createdBy',
+                    'assignmentAttachments.uploadedBy'
+                ])
+                ->append([
+                    'total_uncompleted_member',
+                    'total_doing_member',
+                    'total_completed_member'
+                ])
         ]);
+    }
+
+    public function status(Classroom $classroom, Assignment $assignment)
+    {
     }
 
     public function create(CreateAssignmentRequest $request, Classroom $classroom)
@@ -44,10 +50,6 @@ class AssignmentController extends Controller
             'status' => 'Success',
             'result' => $assignment
         ]);
-    }
-
-    public function changeStatus()
-    {
     }
 
     public function delete(Classroom $classroom, Assignment $assignment)

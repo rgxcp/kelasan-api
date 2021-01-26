@@ -27,6 +27,7 @@ class Classroom extends Model
         'total_subject'
     ];
 
+    // Events
     protected static function booted()
     {
         static::created(function ($classroom) {
@@ -38,6 +39,7 @@ class Classroom extends Model
         });
     }
 
+    // Relationships
     public function leader()
     {
         return $this->belongsTo(User::class, 'leader');
@@ -63,6 +65,7 @@ class Classroom extends Model
         return $this->hasMany(Subject::class);
     }
 
+    // Accessors
     public function getTotalAssignmentAttribute()
     {
         return Assignment::where('classroom_id', $this->id)->count();

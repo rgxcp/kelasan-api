@@ -48,6 +48,7 @@ class User extends Authenticatable
         'profile_picture'
     ];
 
+    // Accessors
     public function getTokenAttribute()
     {
         return $this->createToken(request()->device ?? 'Unknown Device');
@@ -84,6 +85,7 @@ class User extends Authenticatable
             . '&size=512';
     }
 
+    // Mutator
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);

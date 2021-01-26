@@ -17,10 +17,6 @@ class Subject extends Model
         'name'
     ];
 
-    protected $append = [
-        'total_assignment'
-    ];
-
     // Events
     protected static function booted()
     {
@@ -38,14 +34,5 @@ class Subject extends Model
     public function assignments()
     {
         return $this->hasMany(Assignment::class);
-    }
-
-    // Accessors
-    public function getTotalAssignmentAttribute()
-    {
-        return Assignment::where([
-            'classroom_id' => $this->classroom_id,
-            'subject_id' => $this->id
-        ])->count();
     }
 }

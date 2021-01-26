@@ -21,12 +21,6 @@ class Assignment extends Model
         'deadline'
     ];
 
-    protected $append = [
-        'total_uncompleted_member',
-        'total_doing_member',
-        'total_completed_member'
-    ];
-
     // Events
     protected static function booted()
     {
@@ -85,30 +79,5 @@ class Assignment extends Model
     public function assignmentTimelines()
     {
         return $this->hasMany(AssignmentTimeline::class);
-    }
-
-    // Accessors
-    public function getTotalUncompletedMemberAttribute()
-    {
-        return AssignmentStatus::where([
-            'assignment_id' => $this->id,
-            'state' => 'UNCOMPLETED'
-        ])->count();
-    }
-
-    public function getTotalDoingMemberAttribute()
-    {
-        return AssignmentStatus::where([
-            'assignment_id' => $this->id,
-            'state' => 'DOING'
-        ])->count();
-    }
-
-    public function getTotalCompletedMemberAttribute()
-    {
-        return AssignmentStatus::where([
-            'assignment_id' => $this->id,
-            'state' => 'COMPLETED'
-        ])->count();
     }
 }

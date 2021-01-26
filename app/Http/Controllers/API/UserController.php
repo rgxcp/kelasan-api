@@ -20,10 +20,16 @@ class UserController extends Controller
             'result' => $request
                 ->user()
                 ->makeVisible('email')
-                ->append([
-                    'total_uncompleted_assignment',
-                    'total_doing_assignment',
-                    'total_completed_assignment'
+                ->loadCount([
+                    'assignmentStatuses as uncompleted_assignments_count' => function ($query) {
+                        $query->where('state', 'UNCOMPLETED');
+                    },
+                    'assignmentStatuses as doing_assignments_count' => function ($query) {
+                        $query->where('state', 'DOING');
+                    },
+                    'assignmentStatuses as completed_assignments_count' => function ($query) {
+                        $query->where('state', 'COMPLETED');
+                    }
                 ])
         ]);
     }

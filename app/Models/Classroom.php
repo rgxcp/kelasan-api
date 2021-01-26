@@ -20,13 +20,6 @@ class Classroom extends Model
         'invitation_code'
     ];
 
-    protected $append = [
-        'total_assignment',
-        'total_class_member',
-        'total_note',
-        'total_subject'
-    ];
-
     // Events
     protected static function booted()
     {
@@ -63,26 +56,5 @@ class Classroom extends Model
     public function subjects()
     {
         return $this->hasMany(Subject::class);
-    }
-
-    // Accessors
-    public function getTotalAssignmentAttribute()
-    {
-        return Assignment::where('classroom_id', $this->id)->count();
-    }
-
-    public function getTotalClassMemberAttribute()
-    {
-        return ClassMember::where('classroom_id', $this->id)->count();
-    }
-
-    public function getTotalNoteAttribute()
-    {
-        return Note::where('classroom_id', $this->id)->count();
-    }
-
-    public function getTotalSubjectAttribute()
-    {
-        return Subject::where('classroom_id', $this->id)->count();
     }
 }

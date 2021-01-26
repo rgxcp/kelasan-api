@@ -38,44 +38,23 @@ class User extends Authenticatable
     ];
 
     protected $append = [
-        'token',
-        'total_uncompleted_assignment',
-        'total_doing_assignment',
-        'total_completed_assignment'
+        'token'
     ];
 
     protected $appends = [
         'profile_picture'
     ];
 
+    // Relationship
+    public function assignmentStatuses()
+    {
+        return $this->hasMany(AssignmentStatus::class);
+    }
+
     // Accessors
     public function getTokenAttribute()
     {
         return $this->createToken(request()->device ?? 'Unknown Device');
-    }
-
-    public function getTotalUncompletedAssignmentAttribute()
-    {
-        return AssignmentStatus::where([
-            'user_id' => $this->id,
-            'state' => 'UNCOMPLETED'
-        ])->count();
-    }
-
-    public function getTotalDoingAssignmentAttribute()
-    {
-        return AssignmentStatus::where([
-            'user_id' => $this->id,
-            'state' => 'DOING'
-        ])->count();
-    }
-
-    public function getTotalCompletedAssignmentAttribute()
-    {
-        return AssignmentStatus::where([
-            'user_id' => $this->id,
-            'state' => 'COMPLETED'
-        ])->count();
     }
 
     public function getProfilePictureAttribute()

@@ -20,10 +20,16 @@ class AssignmentController extends Controller
                     'createdBy',
                     'assignmentAttachments.uploadedBy'
                 ])
-                ->append([
-                    'total_uncompleted_member',
-                    'total_doing_member',
-                    'total_completed_member'
+                ->loadCount([
+                    'assignmentStatuses as uncompleted_class_members_count' => function ($query) {
+                        $query->where('state', 'UNCOMPLETED');
+                    },
+                    'assignmentStatuses as doing_class_members_count' => function ($query) {
+                        $query->where('state', 'DOING');
+                    },
+                    'assignmentStatuses as completed_class_members_count' => function ($query) {
+                        $query->where('state', 'COMPLETED');
+                    }
                 ])
         ]);
     }

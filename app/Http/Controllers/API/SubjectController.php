@@ -17,7 +17,7 @@ class SubjectController extends Controller
             'status' => 'Success',
             'result' => $subject
                 ->load('createdBy')
-                ->append('total_assignment')
+                ->loadCount('assignments')
         ]);
     }
 

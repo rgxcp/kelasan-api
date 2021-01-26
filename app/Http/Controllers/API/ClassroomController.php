@@ -18,11 +18,11 @@ class ClassroomController extends Controller
             'status' => 'Success',
             'result' => $classroom
                 ->load('leader')
-                ->append([
-                    'total_assignment',
-                    'total_class_member',
-                    'total_note',
-                    'total_subject'
+                ->loadCount([
+                    'assignments',
+                    'classMembers',
+                    'notes',
+                    'subjects'
                 ])
         ]);
     }

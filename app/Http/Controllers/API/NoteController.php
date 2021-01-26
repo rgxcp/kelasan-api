@@ -22,6 +22,18 @@ class NoteController extends Controller
         ]);
     }
 
+    public function timelines(Classroom $classroom, Note $note)
+    {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $note
+                ->noteTimelines()
+                ->with('user')
+                ->orderByDesc('id')
+                ->paginate(30)
+        ]);
+    }
+
     public function create(CreateNoteRequest $request, Classroom $classroom)
     {
         $note = Note::create($request->all());

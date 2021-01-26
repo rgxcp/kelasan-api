@@ -26,26 +26,26 @@ DEVELOPING
 
 ## Endpoints
 ### GET
-| URL                                                                | Description                    |
-|--------------------------------------------------------------------|--------------------------------|
-| `/api/v1/classrooms/{classroom}`                                   | Show classroom detail          |
-| `/api/v1/classrooms/{classroom}/invitation-code`                   | Show classroom invitation code |
-| `/api/v1/classrooms/{classroom}/assignments`                       | Show classroom assignments     |
-| `/api/v1/classrooms/{classroom}/members`                           | Show classroom members         |
-| `/api/v1/classrooms/{classroom}/notes`                             | Show classroom notes           |
-| `/api/v1/classrooms/{classroom}/subjects`                          | Show classroom subjects        |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}`          | Show assignment detail         |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}/status`   | Show assignment status         |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}/timeline` | Show assignment timeline       |
-| `/api/v1/classrooms/{classroom}/notes/{note}`                      | Show note detail               |
-| `/api/v1/classrooms/{classroom}/notes/{note}/timeline`             | Show note timeline             |
-| `/api/v1/classrooms/{classroom}/subjects/{subject}`                | Show subject detail            |
-| `/api/v1/classrooms/{classroom}/subjects/{subject}/assignments`    | Show subject assignments       |
-| `/api/v1/search`                                                   | Search data                    |
-| `/api/v1/users/self`                                               | Show self profile detail       |
-| `/api/v1/users/self/assignments`                                   | Show self profile assignments  |
-| `/api/v1/users/self/classrooms`                                    | Show self profile classrooms   |
-| `/api/v1/users/self/subjects`                                      | Show self profile subjects     |
+| URL                                                                 | Description                    |
+|---------------------------------------------------------------------|--------------------------------|
+| `/api/v1/classrooms/{classroom}`                                    | Show classroom detail          |
+| `/api/v1/classrooms/{classroom}/invitation-code`                    | Show classroom invitation code |
+| `/api/v1/classrooms/{classroom}/assignments`                        | Show classroom assignments     |
+| `/api/v1/classrooms/{classroom}/members`                            | Show classroom members         |
+| `/api/v1/classrooms/{classroom}/notes`                              | Show classroom notes           |
+| `/api/v1/classrooms/{classroom}/subjects`                           | Show classroom subjects        |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}`           | Show assignment detail         |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}/status`    | Show assignment status         |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}/timelines` | Show assignment timelines      |
+| `/api/v1/classrooms/{classroom}/notes/{note}`                       | Show note detail               |
+| `/api/v1/classrooms/{classroom}/notes/{note}/timelines`             | Show note timelines            |
+| `/api/v1/classrooms/{classroom}/subjects/{subject}`                 | Show subject detail            |
+| `/api/v1/classrooms/{classroom}/subjects/{subject}/assignments`     | Show subject assignments       |
+| `/api/v1/search`                                                    | Search data                    |
+| `/api/v1/users/self`                                                | Show self profile detail       |
+| `/api/v1/users/self/assignments`                                    | Show self profile assignments  |
+| `/api/v1/users/self/classrooms`                                     | Show self profile classrooms   |
+| `/api/v1/users/self/subjects`                                       | Show self profile subjects     |
 
 ### POST
 | URL                                          | Description       |
@@ -79,11 +79,11 @@ DEVELOPING
 | `/api/v1/users/self/sign-out-all`                         | Sign out all devices    |
 
 ## TODOs
-Total Tasks : `328`
+Total Tasks : `324`
 
-Completed Tasks : `236`
+Completed Tasks : `232`
 
-Progress : `71.95%`
+Progress : `71.60%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -121,10 +121,8 @@ Progress : `71.95%`
   - [x] User
 - [x] Create base controllers
   - [x] AssignmentController
-  - [x] AssignmentTimelineController
   - [x] ClassroomController
   - [x] NoteController
-  - [x] NoteTimelineController
   - [x] SearchController
   - [x] SubjectController
   - [x] UserController
@@ -161,9 +159,9 @@ Progress : `71.95%`
   - [x] GET Classroom subjects
   - [x] GET Assignment detail
   - [x] GET Assignment status
-  - [x] GET Assignment timeline
+  - [x] GET Assignment timelines
   - [x] GET Note detail
-  - [x] GET Note timeline
+  - [x] GET Note timelines
   - [x] GET Subject detail
   - [x] GET Subject assignments
   - [x] GET Search data
@@ -345,12 +343,11 @@ Progress : `71.95%`
   - [ ] AssignmentController
     - [x] `detail()`
     - [ ] `status()`
+    - [x] `timelines()`
     - [x] `create()`
     - [x] `update()`
     - [x] `delete()`
   - [x] AssignmentStatusController
-    - [x] `__invoke()`
-  - [x] AssignmentTimelineController
     - [x] `__invoke()`
   - [x] ClassroomController
     - [x] `detail()`
@@ -364,11 +361,10 @@ Progress : `71.95%`
     - [x] `rename()`
   - [x] NoteController
     - [x] `detail()`
+    - [x] `timelines()`
     - [x] `create()`
     - [x] `update()`
     - [x] `delete()`
-  - [x] NoteTimelineController
-    - [x] `__invoke()`
   - [ ] SearchController
     - [ ] `__invoke()`
   - [x] SubjectController

@@ -2,10 +2,8 @@
 
 use App\Http\Controllers\API\AssignmentController;
 use App\Http\Controllers\API\AssignmentStatusController;
-use App\Http\Controllers\API\AssignmentTimelineController;
 use App\Http\Controllers\API\ClassroomController;
 use App\Http\Controllers\API\NoteController;
-use App\Http\Controllers\API\NoteTimelineController;
 use App\Http\Controllers\API\SearchController;
 use App\Http\Controllers\API\SubjectController;
 use App\Http\Controllers\API\UserController;
@@ -43,7 +41,7 @@ Route::middleware('json')->prefix('v1')->group(function () {
                 Route::middleware('owner')->prefix('{assignment}')->group(function () {
                     Route::get('', [AssignmentController::class, 'detail']);
                     Route::get('status', [AssignmentController::class, 'status']);
-                    Route::get('timeline', AssignmentTimelineController::class);
+                    Route::get('timelines', [AssignmentController::class, 'timelines']);
                     Route::put('', [AssignmentController::class, 'update']);
                     Route::put('change-status', AssignmentStatusController::class);
                     Route::middleware('leader')->delete('', [AssignmentController::class, 'delete']);
@@ -55,7 +53,7 @@ Route::middleware('json')->prefix('v1')->group(function () {
                 Route::post('', [NoteController::class, 'create']);
                 Route::middleware('owner')->prefix('{note}')->group(function () {
                     Route::get('', [NoteController::class, 'detail']);
-                    Route::get('timeline', NoteTimelineController::class);
+                    Route::get('timelines', [NoteController::class, 'timelines']);
                     Route::put('', [NoteController::class, 'update']);
                     Route::middleware('leader')->delete('', [NoteController::class, 'delete']);
                 });

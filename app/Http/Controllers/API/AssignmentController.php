@@ -38,6 +38,18 @@ class AssignmentController extends Controller
     {
     }
 
+    public function timelines(Classroom $classroom, Assignment $assignment)
+    {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $assignment
+                ->assignmentTimelines()
+                ->with('user')
+                ->orderByDesc('id')
+                ->paginate(30)
+        ]);
+    }
+
     public function create(CreateAssignmentRequest $request, Classroom $classroom)
     {
         $assignment = Assignment::create($request->all());

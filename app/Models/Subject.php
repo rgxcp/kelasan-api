@@ -26,6 +26,11 @@ class Subject extends Model
     }
 
     // Relationships
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class);
+    }
+
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');

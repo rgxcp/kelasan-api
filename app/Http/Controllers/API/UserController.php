@@ -51,8 +51,17 @@ class UserController extends Controller
         ]);
     }
 
-    public function subjects()
+    public function subjects(Request $request)
     {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $request
+                ->user()
+                ->subjects()
+                ->with('classroom')
+                ->orderBy('name')
+                ->paginate(30)
+        ]);
     }
 
     public function signUp(SignUpRequest $request)

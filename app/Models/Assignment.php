@@ -56,6 +56,11 @@ class Assignment extends Model
         ]);
     }
 
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class);
+    }
+
     public function subject()
     {
         return $this->belongsTo(Subject::class);

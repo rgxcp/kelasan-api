@@ -56,6 +56,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Classroom::class, 'class_members')->withPivot('role');
     }
 
+    public function assignments()
+    {
+        // TODO: Find a better solution
+        return Assignment::whereIn('classroom_id', $this->classrooms()->get()->pluck('id'));
+    }
+
     public function subjects()
     {
         // TODO: Find a better solution

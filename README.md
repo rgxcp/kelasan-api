@@ -81,9 +81,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `324`
 
-Completed Tasks : `236`
+Completed Tasks : `238`
 
-Progress : `72.83%`
+Progress : `73.45%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -373,9 +373,9 @@ Progress : `72.83%`
     - [x] `create()`
     - [x] `rename()`
     - [x] `delete()`
-  - [ ] UserController
+  - [x] UserController
     - [x] `detail()`
-    - [ ] `assignments()`
+    - [x] `assignments()`
     - [x] `classrooms()`
     - [x] `subjects()`
     - [x] `signUp()`

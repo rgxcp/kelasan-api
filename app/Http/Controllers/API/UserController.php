@@ -8,6 +8,7 @@ use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SignUpRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,8 +35,53 @@ class UserController extends Controller
         ]);
     }
 
-    public function assignments()
+    public function assignments(Request $request)
     {
+        // TODO: Find a better solution
+        if ($request->state != null && $request->state != 'UNCOMPLETED') {
+            return response()->json([
+                'status' => 'Success',
+                'result' => $request
+                    ->user()
+                    ->assignments()
+                    ->whereHas('assignmentStatus', function (Builder $query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => $request->state
+                        ]);
+                    })
+                    ->with([
+                        'classroom',
+                        'subject',
+                        'createdBy',
+                        'assignmentStatus' => function ($query) use ($request) {
+                            $query->where('user_id', $request->user()->id);
+                        }
+                    ])
+                    ->orderBy('deadline')
+                    ->paginate(30)
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'Success',
+            'result' => $request
+                ->user()
+                ->assignments()
+                ->whereDoesntHave('assignmentStatus', function (Builder $query) use ($request) {
+                    $query->where('user_id', $request->user()->id);
+                })
+                ->with([
+                    'classroom',
+                    'subject',
+                    'createdBy',
+                    'assignmentStatus' => function ($query) use ($request) {
+                        $query->where('user_id', $request->user()->id);
+                    }
+                ])
+                ->orderBy('deadline')
+                ->paginate(30)
+        ]);
     }
 
     public function classrooms(Request $request)

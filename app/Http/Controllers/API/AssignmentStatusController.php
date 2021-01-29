@@ -17,9 +17,17 @@ class AssignmentStatusController extends Controller
             'assignment_id' => $assignment->id
         ])->first();
 
-        !$assignmentStatus
-            ? AssignmentStatus::create($request->all())
-            : $assignmentStatus->update($request->all());
+        if (!$assignmentStatus && $request->state != 'UNCOMPLETED') {
+            AssignmentStatus::create($request->all());
+        }
+
+        if ($assignmentStatus && $request->state != 'UNCOMPLETED') {
+            $assignmentStatus->update($request->all());
+        }
+
+        if ($assignmentStatus) {
+            $assignmentStatus->forceDelete();
+        }
 
         return response()->json([
             'status' => 'Success'

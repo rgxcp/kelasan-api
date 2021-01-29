@@ -81,9 +81,9 @@ DEVELOPING
 ## TODOs
 Total Tasks : `324`
 
-Completed Tasks : `238`
+Completed Tasks : `294`
 
-Progress : `73.45%`
+Progress : `90.74%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -243,95 +243,95 @@ Progress : `73.45%`
   - [x] UpdateAssignmentRequest
   - [x] UpdateNoteRequest
   - [x] UpdateProfileRequest
-- [ ] Fill base models
-  - [ ] Assignment
+- [x] Fill base models
+  - [x] Assignment
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] AssignmentAttachment
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] AssignmentAttachment
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] AssignmentStatus
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] AssignmentStatus
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] AssignmentTimeline
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] AssignmentTimeline
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] ClassMember
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] ClassMember
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] Classroom
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] Classroom
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] Note
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] Note
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] NoteAttachment
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] NoteAttachment
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] NoteTimeline
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] NoteTimeline
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] Subject
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] Subject
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
-  - [ ] User
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
+  - [x] User
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
-    - [ ] Events
-    - [ ] Relationships
-    - [ ] Accessors
-    - [ ] Mutators
+    - [x] Events
+    - [x] Relationships
+    - [x] Accessors
+    - [x] Mutators
 - [x] Handle AuthenticationException class
 - [x] Handle NotFoundHttpException class
 - [x] Configure `$dontFlash` attributes on exception handler & `$except` attributes on TrimStrings middleware

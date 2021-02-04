@@ -17,7 +17,7 @@ class ClassroomController extends Controller
         return response()->json([
             'status' => 'Success',
             'result' => $classroom
-                ->load('leader')
+                ->load('user')
                 ->loadCount([
                     'assignments',
                     'classroomUsers',
@@ -43,7 +43,7 @@ class ClassroomController extends Controller
                 ->assignments()
                 ->with([
                     'subject',
-                    'createdBy',
+                    'user',
                     'assignmentStatus' => function ($query) use ($request) {
                         $query->where('user_id', $request->user()->id);
                     }
@@ -59,7 +59,7 @@ class ClassroomController extends Controller
             'status' => 'Success',
             'result' => $classroom
                 ->notes()
-                ->with('createdBy')
+                ->with('user')
                 ->orderByDesc('updated_at')
                 ->paginate(30)
         ]);
@@ -71,7 +71,7 @@ class ClassroomController extends Controller
             'status' => 'Success',
             'result' => $classroom
                 ->subjects()
-                ->with('createdBy')
+                ->with('user')
                 ->withCount('assignments')
                 ->orderBy('name')
                 ->paginate(30)

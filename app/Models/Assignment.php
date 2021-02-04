@@ -14,7 +14,7 @@ class Assignment extends Model
     protected $fillable = [
         'classroom_id',
         'subject_id',
-        'created_by',
+        'user_id',
         'detail',
         'type',
         'start',
@@ -28,7 +28,7 @@ class Assignment extends Model
             AssignmentTimeline::create([
                 'classroom_id' => $assignment->classroom_id,
                 'assignment_id' => $assignment->id,
-                'user_id' => $assignment->created_by,
+                'user_id' => $assignment->user_id,
                 'type' => 'CREATED'
             ]);
         });
@@ -66,9 +66,9 @@ class Assignment extends Model
         return $this->belongsTo(Subject::class);
     }
 
-    public function createdBy()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class);
     }
 
     public function assignmentAttachments()

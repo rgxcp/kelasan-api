@@ -15,7 +15,7 @@ class CreateClassroomsTable extends Migration
     {
         Schema::create('classrooms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('leader')->constrained('users');
+            $table->foreignId('user_id')->constrained();
             $table->string('name', 20);
             $table->string('invitation_code', 12)->unique()->index();
             $table->timestamps();

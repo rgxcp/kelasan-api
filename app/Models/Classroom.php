@@ -11,7 +11,7 @@ class Classroom extends Model
     use HasFactory, SerializeDate;
 
     protected $fillable = [
-        'leader',
+        'user_id',
         'name',
         'invitation_code'
     ];
@@ -26,16 +26,16 @@ class Classroom extends Model
         static::created(function ($classroom) {
             ClassroomUser::create([
                 'classroom_id' => $classroom->id,
-                'user_id' => $classroom->leader,
+                'user_id' => $classroom->user_id,
                 'role' => 'LEADER'
             ]);
         });
     }
 
     // Relationships
-    public function leader()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'leader');
+        return $this->belongsTo(User::class);
     }
 
     public function assignments()

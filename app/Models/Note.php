@@ -13,7 +13,7 @@ class Note extends Model
 
     protected $fillable = [
         'classroom_id',
-        'created_by',
+        'user_id',
         'detail'
     ];
 
@@ -24,7 +24,7 @@ class Note extends Model
             NoteTimeline::create([
                 'classroom_id' => $note->classroom_id,
                 'note_id' => $note->id,
-                'user_id' => $note->created_by,
+                'user_id' => $note->user_id,
                 'type' => 'CREATED'
             ]);
         });
@@ -44,9 +44,9 @@ class Note extends Model
     }
 
     // Relationships
-    public function createdBy()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class);
     }
 
     public function noteAttachments()

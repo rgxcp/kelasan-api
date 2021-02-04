@@ -14,13 +14,13 @@ class AssignmentAttachment extends Model
     protected $fillable = [
         'classroom_id',
         'assignment_id',
-        'uploaded_by',
+        'user_id',
         'direct_link'
     ];
 
     // Relationships
-    public function uploadedBy()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'uploaded_by');
+        return $this->belongsTo(User::class);
     }
 }

@@ -16,9 +16,9 @@ class ClassroomLeader
      */
     public function handle(Request $request, Closure $next)
     {
-        $classLeader = $request->classroom->leader == $request->user()->id;
+        $classroomLeader = $request->classroom->user_id == $request->user()->id;
 
-        if (!$classLeader) {
+        if (!$classroomLeader) {
             return response()->json([
                 'status' => 'Failed',
                 'message' => 'Forbidden'

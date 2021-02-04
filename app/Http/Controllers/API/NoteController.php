@@ -16,8 +16,8 @@ class NoteController extends Controller
             'status' => 'Success',
             'result' => $note
                 ->load([
-                    'createdBy',
-                    'noteAttachments.uploadedBy'
+                    'user',
+                    'noteAttachments.user'
                 ])
         ]);
     }

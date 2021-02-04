@@ -17,10 +17,12 @@ class ClassroomUser
      */
     public function handle(Request $request, Closure $next)
     {
-        $classroomUser = ClassroomUserModel::where([
-            'classroom_id' => $request->classroom->id,
-            'user_id' => $request->user()->id
-        ])->exists();
+        // $classroomUser = ClassroomUserModel::where([
+        //     'classroom_id' => $request->classroom->id,
+        //     'user_id' => $request->user()->id
+        // ])->exists();
+
+        $classroomUser = $request->classroom->classroomUser();
 
         if (!$classroomUser) {
             return response()->json([

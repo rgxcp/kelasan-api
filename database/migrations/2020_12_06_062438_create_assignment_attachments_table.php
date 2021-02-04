@@ -17,7 +17,7 @@ class CreateAssignmentAttachmentsTable extends Migration
             $table->bigIncrements('id');
             $table->foreignId('classroom_id')->constrained();
             $table->foreignId('assignment_id')->constrained()->onDelete('cascade');
-            $table->foreignId('uploaded_by')->constrained('users');
+            $table->foreignId('user_id')->constrained();
             $table->string('direct_link');
             $table->timestamps();
             $table->softDeletes();

@@ -52,7 +52,7 @@ class CreateAssignmentRequest extends FormRequest
         $validator->after(function () {
             $this->merge([
                 'classroom_id' => $this->classroom->id,
-                'created_by' => $this->user()->id
+                'user_id' => $this->user()->id
             ]);
         });
     }

@@ -13,7 +13,7 @@ class Subject extends Model
 
     protected $fillable = [
         'classroom_id',
-        'created_by',
+        'user_id',
         'name'
     ];
 
@@ -31,9 +31,9 @@ class Subject extends Model
         return $this->belongsTo(Classroom::class);
     }
 
-    public function createdBy()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class);
     }
 
     public function assignments()

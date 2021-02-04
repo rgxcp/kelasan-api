@@ -30,7 +30,7 @@ class CreateClassroomRequest extends FormRequest
     {
         $validator->after(function () {
             $this->merge([
-                'leader' => $this->user()->id,
+                'user_id' => $this->user()->id,
                 'invitation_code' => $this->generateInvitationCode()
             ]);
         });

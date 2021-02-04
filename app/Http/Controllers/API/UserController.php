@@ -53,7 +53,7 @@ class UserController extends Controller
                     ->with([
                         'classroom',
                         'subject',
-                        'createdBy',
+                        'user',
                         'assignmentStatus' => function ($query) use ($request) {
                             $query->where('user_id', $request->user()->id);
                         }
@@ -74,7 +74,7 @@ class UserController extends Controller
                 ->with([
                     'classroom',
                     'subject',
-                    'createdBy',
+                    'user',
                     'assignmentStatus' => function ($query) use ($request) {
                         $query->where('user_id', $request->user()->id);
                     }
@@ -91,7 +91,7 @@ class UserController extends Controller
             'result' => $request
                 ->user()
                 ->classrooms()
-                ->with('leader')
+                ->with('user')
                 ->orderBy('name')
                 ->paginate(30)
         ]);

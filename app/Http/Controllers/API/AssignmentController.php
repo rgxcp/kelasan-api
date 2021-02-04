@@ -17,8 +17,8 @@ class AssignmentController extends Controller
             'result' => $assignment
                 ->load([
                     'subject',
-                    'createdBy',
-                    'assignmentAttachments.uploadedBy'
+                    'user',
+                    'assignmentAttachments.user'
                 ])
                 ->loadCount([
                     'assignmentStatuses as uncompleted_classroom_users_count' => function ($query) {

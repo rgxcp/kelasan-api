@@ -16,7 +16,7 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('classroom_id')->constrained();
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('user_id')->constrained();
             $table->string('name', 50);
             $table->timestamps();
             $table->softDeletes();

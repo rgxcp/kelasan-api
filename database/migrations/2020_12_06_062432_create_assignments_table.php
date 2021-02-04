@@ -17,7 +17,7 @@ class CreateAssignmentsTable extends Migration
             $table->bigIncrements('id');
             $table->foreignId('classroom_id')->constrained();
             $table->foreignId('subject_id')->constrained()->onDelete('cascade');
-            $table->foreignId('created_by')->constrained('users');
+            $table->foreignId('user_id')->constrained();
             $table->longText('detail');
             $table->enum('type', ['INDIVIDUAL', 'GROUP'])->default('INDIVIDUAL');
             $table->dateTime('start')->nullable();

@@ -16,7 +16,7 @@ class SubjectController extends Controller
         return response()->json([
             'status' => 'Success',
             'result' => $subject
-                ->load('createdBy')
+                ->load('user')
                 ->loadCount('assignments')
         ]);
     }
@@ -28,7 +28,7 @@ class SubjectController extends Controller
             'result' => $subject
                 ->assignments()
                 ->with([
-                    'createdBy',
+                    'user',
                     'assignmentStatus' => function ($query) use ($request) {
                         $query->where('user_id', $request->user()->id);
                     }

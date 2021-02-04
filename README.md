@@ -251,7 +251,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] AssignmentAttachment
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -259,7 +259,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] AssignmentStatus
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -267,7 +267,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] AssignmentTimeline
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -275,7 +275,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] ClassMember
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -283,7 +283,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] Classroom
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -291,7 +291,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] Note
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -299,7 +299,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] NoteAttachment
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -307,7 +307,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] NoteTimeline
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -315,7 +315,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] Subject
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -323,7 +323,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
   - [x] User
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
@@ -331,7 +331,7 @@ Progress : `90.74%`
     - [x] Events
     - [x] Relationships
     - [x] Accessors
-    - [x] Mutators
+    - [x] Mutator
 - [x] Handle AuthenticationException class
 - [x] Handle NotFoundHttpException class
 - [x] Configure `$dontFlash` attributes on exception handler & `$except` attributes on TrimStrings middleware

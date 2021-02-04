@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Version 1
-Route::middleware('json')->prefix('v1')->group(function () {
+Route::middleware('json.header')->prefix('v1')->group(function () {
     // Classroom
     Route::middleware('auth:sanctum')->prefix('classrooms')->group(function () {
         Route::post('', [ClassroomController::class, 'create']);
@@ -37,35 +37,35 @@ Route::middleware('json')->prefix('v1')->group(function () {
             // Assignment
             Route::prefix('assignments')->group(function () {
                 Route::post('', [AssignmentController::class, 'create']);
-                Route::middleware('owner')->prefix('{assignment}')->group(function () {
+                Route::middleware('belong.to.class')->prefix('{assignment}')->group(function () {
                     Route::get('', [AssignmentController::class, 'detail']);
                     Route::get('statuses', [AssignmentController::class, 'statuses']);
                     Route::get('timelines', [AssignmentController::class, 'timelines']);
                     Route::put('', [AssignmentController::class, 'update']);
                     Route::put('change-status', AssignmentStatusController::class);
-                    Route::middleware('leader')->delete('', [AssignmentController::class, 'delete']);
+                    Route::middleware('classroom.leader')->delete('', [AssignmentController::class, 'delete']);
                 });
             });
 
             // Note
             Route::prefix('notes')->group(function () {
                 Route::post('', [NoteController::class, 'create']);
-                Route::middleware('owner')->prefix('{note}')->group(function () {
+                Route::middleware('belong.to.class')->prefix('{note}')->group(function () {
                     Route::get('', [NoteController::class, 'detail']);
                     Route::get('timelines', [NoteController::class, 'timelines']);
                     Route::put('', [NoteController::class, 'update']);
-                    Route::middleware('leader')->delete('', [NoteController::class, 'delete']);
+                    Route::middleware('classroom.leader')->delete('', [NoteController::class, 'delete']);
                 });
             });
 
             // Subject
             Route::prefix('subjects')->group(function () {
                 Route::post('', [SubjectController::class, 'create']);
-                Route::middleware('owner')->prefix('{subject}')->group(function () {
+                Route::middleware('belong.to.class')->prefix('{subject}')->group(function () {
                     Route::get('', [SubjectController::class, 'detail']);
                     Route::get('assignments', [SubjectController::class, 'assignments']);
                     Route::put('', [SubjectController::class, 'rename']);
-                    Route::middleware('leader')->delete('', [SubjectController::class, 'delete']);
+                    Route::middleware('classroom.leader')->delete('', [SubjectController::class, 'delete']);
                 });
             });
         });

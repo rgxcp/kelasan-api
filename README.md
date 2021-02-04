@@ -41,7 +41,6 @@ DEVELOPING
 | `/api/v1/classrooms/{classroom}/notes/{note}/timelines`             | Show note timelines            |
 | `/api/v1/classrooms/{classroom}/subjects/{subject}`                 | Show subject detail            |
 | `/api/v1/classrooms/{classroom}/subjects/{subject}/assignments`     | Show subject assignments       |
-| `/api/v1/search`                                                    | Search data                    |
 | `/api/v1/users/self`                                                | Show self profile detail       |
 | `/api/v1/users/self/assignments`                                    | Show self profile assignments  |
 | `/api/v1/users/self/classrooms`                                     | Show self profile classrooms   |
@@ -79,11 +78,11 @@ DEVELOPING
 | `/api/v1/users/self/sign-out-all`                         | Sign out all devices    |
 
 ## TODOs
-Total Tasks : `324`
+Total Tasks : `318`
 
-Completed Tasks : `294`
+Completed Tasks : `293`
 
-Progress : `90.74%`
+Progress : `92.13%`
 
 - [x] Configure app .env
 - [x] Change app timezone & locale
@@ -123,7 +122,6 @@ Progress : `90.74%`
   - [x] AssignmentController
   - [x] ClassroomController
   - [x] NoteController
-  - [x] SearchController
   - [x] SubjectController
   - [x] UserController
 - [x] Create base factories
@@ -164,12 +162,10 @@ Progress : `90.74%`
   - [x] GET Note timelines
   - [x] GET Subject detail
   - [x] GET Subject assignments
-  - [x] GET Search data
   - [x] GET Self profile detail
   - [x] GET Self profile assignments
   - [x] GET Self profile classrooms
   - [x] GET Self profile subjects
-  - [ ] GET Signed in devices
   - [x] POST Create classroom
   - [x] POST Join classroom
   - [x] POST Create assignment
@@ -189,7 +185,6 @@ Progress : `90.74%`
   - [x] DELETE Remove subject
   - [x] DELETE Sign out current device
   - [x] DELETE Sign out all devices
-  - [ ] DELETE Sign out specific devices
 - [x] Create base middleware
   - [x] BelongToClass
   - [x] ClassroomLeader
@@ -339,7 +334,7 @@ Progress : `90.74%`
   - [x] FailedFormValidation
   - [x] InvitationCode
   - [x] SerializeDate
-- [ ] Fill base controllers
+- [x] Fill base controllers
   - [x] AssignmentController
     - [x] `detail()`
     - [x] `statuses()`
@@ -365,8 +360,6 @@ Progress : `90.74%`
     - [x] `create()`
     - [x] `update()`
     - [x] `delete()`
-  - [ ] SearchController
-    - [ ] `__invoke()`
   - [x] SubjectController
     - [x] `detail()`
     - [x] `assignments()`

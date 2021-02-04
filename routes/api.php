@@ -4,7 +4,6 @@ use App\Http\Controllers\API\AssignmentController;
 use App\Http\Controllers\API\AssignmentStatusController;
 use App\Http\Controllers\API\ClassroomController;
 use App\Http\Controllers\API\NoteController;
-use App\Http\Controllers\API\SearchController;
 use App\Http\Controllers\API\SubjectController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
@@ -71,9 +70,6 @@ Route::middleware('json')->prefix('v1')->group(function () {
             });
         });
     });
-
-    // Search
-    Route::middleware('auth:sanctum')->get('search', [SearchController::class, 'search']);
 
     // User
     Route::prefix('users')->group(function () {

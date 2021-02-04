@@ -44,7 +44,7 @@ class Handler extends ExceptionHandler
             if ($request->expectsJson()) {
                 return response()->json([
                     'status' => 'Failed',
-                    'reason' => 'Unauthorized'
+                    'message' => 'Unauthorized'
                 ], 401);
             }
         });
@@ -53,7 +53,7 @@ class Handler extends ExceptionHandler
             if ($request->expectsJson()) {
                 return response()->json([
                     'status' => 'Failed',
-                    'reason' => 'Record Not Found'
+                    'message' => 'Record Not Found'
                 ], 404);
             }
         });

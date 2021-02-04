@@ -22,7 +22,7 @@ class ClassroomLeader
         if (!$classLeader) {
             return response()->json([
                 'status' => 'Failed',
-                'reason' => 'Forbidden'
+                'message' => 'Forbidden'
             ], 403);
         }
 

@@ -25,7 +25,7 @@ class ClassroomUser
         if (!$classroomUser) {
             return response()->json([
                 'status' => 'Failed',
-                'reason' => 'Forbidden'
+                'message' => 'Forbidden'
             ], 403);
         }
 

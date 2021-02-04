@@ -127,7 +127,7 @@ class UserController extends Controller
         if (!Auth::attempt($request->except('device'))) {
             return response()->json([
                 'status' => 'Failed',
-                'reason' => 'Unauthorized'
+                'message' => 'Unauthorized'
             ], 401);
         }
 

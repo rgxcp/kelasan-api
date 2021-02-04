@@ -12,7 +12,7 @@ trait FailedFormValidation
         throw new HttpResponseException(
             response()->json([
                 'status' => 'Failed',
-                'reasons' => $validator->errors()
+                'message' => $validator->errors()
             ], 422)
         );
     }

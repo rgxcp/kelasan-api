@@ -18,8 +18,7 @@ class BelongToClass
     {
         $resources = $request->route()->parameterNames[1];
 
-        $belongToClass = $request->$resources->classroom_id
-            == $request->classroom->id;
+        $belongToClass = $request->$resources->classroom_id == $request->classroom->id;
 
         if (!$belongToClass) {
             return response()->json([

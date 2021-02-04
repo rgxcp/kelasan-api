@@ -21,13 +21,13 @@ class AssignmentController extends Controller
                     'assignmentAttachments.uploadedBy'
                 ])
                 ->loadCount([
-                    'assignmentStatuses as uncompleted_class_members_count' => function ($query) {
+                    'assignmentStatuses as uncompleted_classroom_users_count' => function ($query) {
                         $query->where('state', 'UNCOMPLETED');
                     },
-                    'assignmentStatuses as doing_class_members_count' => function ($query) {
+                    'assignmentStatuses as doing_classroom_users_count' => function ($query) {
                         $query->where('state', 'DOING');
                     },
-                    'assignmentStatuses as completed_class_members_count' => function ($query) {
+                    'assignmentStatuses as completed_classroom_users_count' => function ($query) {
                         $query->where('state', 'COMPLETED');
                     }
                 ])

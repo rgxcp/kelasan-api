@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateClassroomRequest;
 use App\Http\Requests\JoinClassroomRequest;
 use App\Http\Requests\RenameClassroomRequest;
-use App\Models\ClassMember;
 use App\Models\Classroom;
+use App\Models\ClassroomUser;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
@@ -20,7 +20,7 @@ class ClassroomController extends Controller
                 ->load('leader')
                 ->loadCount([
                     'assignments',
-                    'classMembers',
+                    'classroomUsers',
                     'notes',
                     'subjects'
                 ])
@@ -53,17 +53,6 @@ class ClassroomController extends Controller
         ]);
     }
 
-    public function members(Classroom $classroom)
-    {
-        return response()->json([
-            'status' => 'Success',
-            'result' => $classroom
-                ->classMembers()
-                ->with('user')
-                ->paginate(30)
-        ]);
-    }
-
     public function notes(Classroom $classroom)
     {
         return response()->json([
@@ -89,6 +78,17 @@ class ClassroomController extends Controller
         ]);
     }
 
+    public function users(Classroom $classroom)
+    {
+        return response()->json([
+            'status' => 'Success',
+            'result' => $classroom
+                ->classroomUsers()
+                ->with('user')
+                ->paginate(30)
+        ]);
+    }
+
     public function create(CreateClassroomRequest $request)
     {
         $classroom = Classroom::create($request->all());
@@ -103,7 +103,7 @@ class ClassroomController extends Controller
     {
         $classroom = Classroom::firstWhere('invitation_code', $request->invitation_code);
 
-        ClassMember::firstOrCreate([
+        ClassroomUser::firstOrCreate([
             'classroom_id' => $classroom->id,
             'user_id' => $request->user()->id
         ]);

@@ -25,13 +25,13 @@ Route::middleware('json')->prefix('v1')->group(function () {
     Route::middleware('auth:sanctum')->prefix('classrooms')->group(function () {
         Route::post('', [ClassroomController::class, 'create']);
         Route::post('join', [ClassroomController::class, 'join']);
-        Route::middleware('member')->prefix('{classroom}')->group(function () {
+        Route::middleware('classroom.user')->prefix('{classroom}')->group(function () {
             Route::get('', [ClassroomController::class, 'detail']);
             Route::get('invitation-code', [ClassroomController::class, 'invitationCode']);
             Route::get('assignments', [ClassroomController::class, 'assignments']);
-            Route::get('members', [ClassroomController::class, 'members']);
             Route::get('notes', [ClassroomController::class, 'notes']);
             Route::get('subjects', [ClassroomController::class, 'subjects']);
+            Route::get('users', [ClassroomController::class, 'users']);
             Route::put('', [ClassroomController::class, 'rename']);
 
             // Assignment

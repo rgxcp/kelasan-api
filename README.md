@@ -97,7 +97,7 @@ Progress : `92.13%`
 - [x] Create base migrations
   - [x] users
   - [x] classrooms
-  - [x] class_members
+  - [x] classroom_user
   - [x] subjects
   - [x] assignments
   - [x] assignment_attachments
@@ -111,8 +111,8 @@ Progress : `92.13%`
   - [x] AssignmentAttachment
   - [x] AssignmentStatus
   - [x] AssignmentTimeline
-  - [x] ClassMember
   - [x] Classroom
+  - [x] ClassroomUser
   - [x] Note
   - [x] NoteAttachment
   - [x] NoteTimeline
@@ -129,8 +129,8 @@ Progress : `92.13%`
   - [x] AssignmentFactory
   - [x] AssignmentStatusFactory
   - [x] AssignmentTimelineFactory
-  - [x] ClassMemberFactory
   - [x] ClassroomFactory
+  - [x] ClassroomUserFactory
   - [x] NoteAttachmentFactory
   - [x] NoteFactory
   - [x] NoteTimelineFactory
@@ -141,8 +141,8 @@ Progress : `92.13%`
   - [x] AssignmentSeeder
   - [x] AssignmentStatusSeeder
   - [x] AssignmentTimelineSeeder
-  - [x] ClassMemberSeeder
   - [x] ClassroomSeeder
+  - [x] ClassroomUserSeeder
   - [x] NoteAttachmentSeeder
   - [x] NoteSeeder
   - [x] NoteTimelineSeeder
@@ -188,7 +188,7 @@ Progress : `92.13%`
 - [x] Create base middleware
   - [x] BelongToClass
   - [x] ClassroomLeader
-  - [x] ClassroomMember
+  - [x] ClassroomUser
   - [x] JSONHeader
 - [x] Register middleware on kernel
 - [x] Assign middleware on route
@@ -209,7 +209,7 @@ Progress : `92.13%`
 - [x] Fill base migrations
   - [x] users
   - [x] classrooms
-  - [x] class_members
+  - [x] classroom_user
   - [x] subjects
   - [x] assignments
   - [x] assignment_attachments
@@ -221,7 +221,7 @@ Progress : `92.13%`
 - [x] Fill base middleware
   - [x] BelongToClass
   - [x] ClassroomLeader
-  - [x] ClassroomMember
+  - [x] ClassroomUser
   - [x] JSONHeader
 - [x] Fill base requests
   - [x] ChangeAssignmentStatusRequest
@@ -271,7 +271,7 @@ Progress : `92.13%`
     - [x] Relationships
     - [x] Accessors
     - [x] Mutator
-  - [x] ClassMember
+  - [x] Classroom
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
@@ -279,7 +279,7 @@ Progress : `92.13%`
     - [x] Relationships
     - [x] Accessors
     - [x] Mutator
-  - [x] Classroom
+  - [x] ClassroomUser
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
@@ -382,8 +382,8 @@ Progress : `92.13%`
   - [ ] AssignmentFactory
   - [ ] AssignmentStatusFactory
   - [ ] AssignmentTimelineFactory
-  - [ ] ClassMemberFactory
   - [ ] ClassroomFactory
+  - [ ] ClassroomUserFactory
   - [ ] NoteAttachmentFactory
   - [ ] NoteFactory
   - [ ] NoteTimelineFactory
@@ -394,8 +394,8 @@ Progress : `92.13%`
   - [ ] AssignmentSeeder
   - [ ] AssignmentStatusSeeder
   - [ ] AssignmentTimelineSeeder
-  - [ ] ClassMemberSeeder
   - [ ] ClassroomSeeder
+  - [ ] ClassroomUserSeeder
   - [ ] NoteAttachmentSeeder
   - [ ] NoteSeeder
   - [ ] NoteTimelineSeeder

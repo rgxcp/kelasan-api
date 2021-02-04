@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function classrooms()
     {
-        return $this->belongsToMany(Classroom::class, 'class_members')->withPivot('role');
+        return $this->belongsToMany(Classroom::class)->withPivot('role');
     }
 
     public function assignments()

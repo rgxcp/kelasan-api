@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\ClassMember;
+use App\Models\ClassroomUser as ClassroomUserModel;
 use Closure;
 use Illuminate\Http\Request;
 
-class ClassroomMember
+class ClassroomUser
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,12 @@ class ClassroomMember
      */
     public function handle(Request $request, Closure $next)
     {
-        $classMember = ClassMember::where([
+        $classroomUser = ClassroomUserModel::where([
             'classroom_id' => $request->classroom->id,
             'user_id' => $request->user()->id
         ])->exists();
 
-        if (!$classMember) {
+        if (!$classroomUser) {
             return response()->json([
                 'status' => 'Failed',
                 'reason' => 'Forbidden'

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\ClassMember;
+use App\Models\ClassroomUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ClassMemberFactory extends Factory
+class ClassroomUserFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = ClassMember::class;
+    protected $model = ClassroomUser::class;
 
     /**
      * Define the model's default state.

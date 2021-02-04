@@ -24,7 +24,7 @@ class Classroom extends Model
     protected static function booted()
     {
         static::created(function ($classroom) {
-            ClassMember::create([
+            ClassroomUser::create([
                 'classroom_id' => $classroom->id,
                 'user_id' => $classroom->leader,
                 'role' => 'LEADER'
@@ -43,9 +43,9 @@ class Classroom extends Model
         return $this->hasMany(Assignment::class);
     }
 
-    public function classMembers()
+    public function classroomUsers()
     {
-        return $this->hasMany(ClassMember::class);
+        return $this->hasMany(ClassroomUser::class);
     }
 
     public function notes()

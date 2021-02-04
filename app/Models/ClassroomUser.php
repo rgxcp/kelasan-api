@@ -6,7 +6,7 @@ use App\Http\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClassMember extends Model
+class ClassroomUser extends Model
 {
     use HasFactory, SerializeDate;
 

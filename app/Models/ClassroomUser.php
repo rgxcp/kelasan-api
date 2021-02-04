@@ -10,6 +10,8 @@ class ClassroomUser extends Model
 {
     use HasFactory, SerializeDate;
 
+    protected $table = 'classroom_user';
+
     protected $fillable = [
         'classroom_id',
         'user_id',

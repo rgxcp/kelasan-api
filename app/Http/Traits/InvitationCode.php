@@ -6,12 +6,12 @@ trait InvitationCode
 {
     protected function generateInvitationCode()
     {
-        $randomString = bin2hex(random_bytes(5));
+        $randomBytes = bin2hex(random_bytes(5));
 
-        return substr($randomString, 0, 3)
+        return substr($randomBytes, 0, 3)
             . '-'
-            . substr($randomString, 3, 4)
+            . substr($randomBytes, 3, 4)
             . '-'
-            . substr($randomString, 7, 3);
+            . substr($randomBytes, 7, 3);
     }
 }

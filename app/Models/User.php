@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Http\Traits\SerializeDate;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -32,7 +31,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'email',
-        'email_verified_at',
         'password'
     ];
 

@@ -4,7 +4,7 @@
 **ID**: API untuk mengelola tugas dan catatan kelas.
 
 ## Status
-DEVELOPING
+MAINTAINING
 
 ## Requirements
 1. PHP

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\NoteAttachment;
+use App\Models\AssignmentImage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class NoteAttachmentFactory extends Factory
+class AssignmentImageFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = NoteAttachment::class;
+    protected $model = AssignmentImage::class;
 
     /**
      * Define the model's default state.

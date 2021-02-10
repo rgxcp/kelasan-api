@@ -22,6 +22,9 @@ class Subject extends Model
     {
         static::deleted(function ($subject) {
             $subject->assignments()->delete();
+            $subject->assignmentImages()->delete();
+            $subject->assignmentStatuses()->delete();
+            $subject->assignmentTimelines()->delete();
         });
     }
 
@@ -39,5 +42,20 @@ class Subject extends Model
     public function assignments()
     {
         return $this->hasMany(Assignment::class);
+    }
+
+    public function assignmentImages()
+    {
+        return $this->hasMany(AssignmentImage::class);
+    }
+
+    public function assignmentStatuses()
+    {
+        return $this->hasMany(AssignmentStatus::class);
+    }
+
+    public function assignmentTimelines()
+    {
+        return $this->hasMany(AssignmentTimeline::class);
     }
 }

@@ -3,22 +3,23 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateNoteRequest;
+use App\Http\Requests\StoreNoteRequest;
 use App\Http\Requests\UpdateNoteRequest;
 use App\Models\Classroom;
 use App\Models\Note;
 
 class NoteController extends Controller
 {
-    public function detail(Classroom $classroom, Note $note)
+    public function show(Classroom $classroom, Note $note)
     {
+        $note->classroom = $classroom;
+
         return response()->json([
             'status' => 'Success',
-            'result' => $note
-                ->load([
-                    'user',
-                    'noteAttachments.user'
-                ])
+            'result' => $note->load([
+                'user',
+                'noteImages.user'
+            ])
         ]);
     }
 
@@ -34,27 +35,31 @@ class NoteController extends Controller
         ]);
     }
 
-    public function create(CreateNoteRequest $request, Classroom $classroom)
+    public function store(StoreNoteRequest $request, Classroom $classroom)
     {
-        $note = Note::create($request->all());
+        $note = $classroom->notes()->create($request->except('images'));
 
         return response()->json([
             'status' => 'Success',
-            'result' => $note
+            'result' => $request->hasFile('images')
+                ? $note->load('noteImages')
+                : $note
         ], 201);
     }
 
     public function update(UpdateNoteRequest $request, Classroom $classroom, Note $note)
     {
-        $note->update($request->all());
+        $note->update($request->except('images'));
 
         return response()->json([
             'status' => 'Success',
-            'result' => $note
+            'result' => $request->hasFile('images')
+                ? $note->load('noteImages')
+                : $note
         ]);
     }
 
-    public function delete(Classroom $classroom, Note $note)
+    public function destroy(Classroom $classroom, Note $note)
     {
         $note->delete();
 

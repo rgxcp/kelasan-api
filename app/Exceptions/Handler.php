@@ -25,6 +25,7 @@ class Handler extends ExceptionHandler
      */
     protected $dontFlash = [
         'confirm_password',
+        'current_password',
         'new_password',
         'password'
     ];
@@ -53,7 +54,7 @@ class Handler extends ExceptionHandler
             if ($request->expectsJson()) {
                 return response()->json([
                     'status' => 'Failed',
-                    'message' => 'Record Not Found'
+                    'message' => 'Not Found'
                 ], 404);
             }
         });

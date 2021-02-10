@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Traits\FailedFormValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RenameSubjectRequest extends FormRequest
+class StoreSubjectRequest extends FormRequest
 {
     use FailedFormValidation;
 
@@ -20,8 +20,17 @@ class RenameSubjectRequest extends FormRequest
             'name' => [
                 'required',
                 'string',
-                'max:50'
+                'max:30'
             ]
         ];
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function () {
+            $this->merge([
+                'user_id' => $this->user()->id
+            ]);
+        });
     }
 }

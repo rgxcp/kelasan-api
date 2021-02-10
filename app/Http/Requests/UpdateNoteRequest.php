@@ -18,8 +18,19 @@ class UpdateNoteRequest extends FormRequest
     {
         return [
             'detail' => [
-                'required',
+                'filled',
                 'string'
+            ],
+            'images' => [
+                'filled',
+                'array',
+                'max:3'
+            ],
+            'images.*' => [
+                'filled',
+                'image',
+                'max:3072',
+                'distinct'
             ]
         ];
     }

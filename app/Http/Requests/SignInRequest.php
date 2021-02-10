@@ -19,11 +19,15 @@ class SignInRequest extends FormRequest
         return [
             'email' => [
                 'required',
-                'email'
+                'email',
+                'max:50',
+                'exists:users,email'
             ],
             'password' => [
                 'required',
-                'string'
+                'string',
+                'min:8',
+                'max:72'
             ]
         ];
     }

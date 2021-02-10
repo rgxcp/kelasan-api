@@ -15,7 +15,7 @@ class CreateNoteTimelinesTable extends Migration
     {
         Schema::create('note_timelines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('classroom_id')->constrained()->onDelete('cascade');
             $table->foreignId('note_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
             $table->enum('type', ['CREATED', 'UPDATED'])->default('UPDATED');

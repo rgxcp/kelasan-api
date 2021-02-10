@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Traits\FailedFormValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ChangeAssignmentStatusRequest extends FormRequest
+class UpdateAssignmentStatusRequest extends FormRequest
 {
     use FailedFormValidation;
 
@@ -23,16 +23,5 @@ class ChangeAssignmentStatusRequest extends FormRequest
                 'in:UNCOMPLETED,DOING,COMPLETED'
             ]
         ];
-    }
-
-    public function withValidator($validator)
-    {
-        $validator->after(function () {
-            $this->merge([
-                'classroom_id' => $this->classroom->id,
-                'assignment_id' => $this->assignment->id,
-                'user_id' => $this->user()->id
-            ]);
-        });
     }
 }

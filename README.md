@@ -16,13 +16,15 @@ DEVELOPING
 
 ## How to Use
 1. Clone this repository to your desired location.
-2. Generate application key `php artisan key:generate` and configure it on `.env` file.
-3. Create database `kelasan_sandbox` and configure it on `.env` file.
-4. Run migration `php artisan migrate`.
-5. Run seeder `php artisan db:seed`.
-6. Run server `bash server.sh --start`.
-7. Fire-up Postman.
-8. Do-what-you-want-with-it!
+2. Copy `.env.example` file to `.env`.
+3. Generate application key `php artisan key:generate`.
+4. Generate storage symbolic link `php artisan storage:link`.
+5. Create database `kelasan_sandbox` and configure it on `.env` file.
+6. Run migration `php artisan migrate`.
+7. Run seeder `php artisan db:seed`.
+8. Run server `bash server.sh --start`.
+9. Fire-up Postman.
+10. Do-what-you-want-with-it!
 
 ## Endpoints
 ### GET
@@ -31,9 +33,9 @@ DEVELOPING
 | `/api/v1/classrooms/{classroom}`                                    | Show classroom detail          |
 | `/api/v1/classrooms/{classroom}/invitation-code`                    | Show classroom invitation code |
 | `/api/v1/classrooms/{classroom}/assignments`                        | Show classroom assignments     |
-| `/api/v1/classrooms/{classroom}/members`                            | Show classroom members         |
 | `/api/v1/classrooms/{classroom}/notes`                              | Show classroom notes           |
 | `/api/v1/classrooms/{classroom}/subjects`                           | Show classroom subjects        |
+| `/api/v1/classrooms/{classroom}/users`                              | Show classroom users           |
 | `/api/v1/classrooms/{classroom}/assignments/{assignment}`           | Show assignment detail         |
 | `/api/v1/classrooms/{classroom}/assignments/{assignment}/statuses`  | Show assignment statuses       |
 | `/api/v1/classrooms/{classroom}/assignments/{assignment}/timelines` | Show assignment timelines      |
@@ -41,10 +43,11 @@ DEVELOPING
 | `/api/v1/classrooms/{classroom}/notes/{note}/timelines`             | Show note timelines            |
 | `/api/v1/classrooms/{classroom}/subjects/{subject}`                 | Show subject detail            |
 | `/api/v1/classrooms/{classroom}/subjects/{subject}/assignments`     | Show subject assignments       |
-| `/api/v1/users/self`                                                | Show self profile detail       |
-| `/api/v1/users/self/assignments`                                    | Show self profile assignments  |
-| `/api/v1/users/self/classrooms`                                     | Show self profile classrooms   |
-| `/api/v1/users/self/subjects`                                       | Show self profile subjects     |
+| `/api/v1/users/self`                                                | Show self detail               |
+| `/api/v1/users/self/assignments`                                    | Show self assignments          |
+| `/api/v1/users/self/classrooms`                                     | Show self classrooms           |
+| `/api/v1/users/self/notes`                                          | Show self notes                |
+| `/api/v1/users/self/subjects`                                       | Show self subjects             |
 
 ### POST
 | URL                                          | Description       |
@@ -60,34 +63,38 @@ DEVELOPING
 ### PUT
 | URL                                                                     | Description              |
 |-------------------------------------------------------------------------|--------------------------|
-| `/api/v1/classrooms/{classroom}`                                        | Rename classroom         |
+| `/api/v1/classrooms/{classroom}`                                        | Update classroom         |
 | `/api/v1/classrooms/{classroom}/assignments/{assignment}`               | Update assignment        |
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}/change-status` | Change assignment status |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}/change-status` | Update assignment status |
 | `/api/v1/classrooms/{classroom}/notes/{note}`                           | Update note              |
-| `/api/v1/classrooms/{classroom}/subjects/{subject}`                     | Rename subject           |
-| `/api/v1/users/self`                                                    | Update self profile      |
-| `/api/v1/users/self/change-password`                                    | Change self password     |
+| `/api/v1/classrooms/{classroom}/subjects/{subject}`                     | Update subject           |
+| `/api/v1/users/self`                                                    | Update profile           |
+| `/api/v1/users/self/change-password`                                    | Update password          |
 
 ### DELETE
 | URL                                                       | Description             |
 |-----------------------------------------------------------|-------------------------|
-| `/api/v1/classrooms/{classroom}/assignments/{assignment}` | Remove assignment       |
-| `/api/v1/classrooms/{classroom}/notes/{note}`             | Remove note             |
-| `/api/v1/classrooms/{classroom}/subjects/{subject}`       | Remove subject          |
+| `/api/v1/classrooms/{classroom}`                          | Delete classroom        |
+| `/api/v1/classrooms/{classroom}/assignments/{assignment}` | Delete assignment       |
+| `/api/v1/classrooms/{classroom}/notes/{note}`             | Delete note             |
+| `/api/v1/classrooms/{classroom}/subjects/{subject}`       | Delete subject          |
 | `/api/v1/users/self/sign-out`                             | Sign out current device |
 | `/api/v1/users/self/sign-out-all`                         | Sign out all devices    |
 
 ## TODOs
-Total Tasks : `318`
+Total Tasks : `324`
 
-Completed Tasks : `293`
+Completed Tasks : `299`
 
-Progress : `92.13%`
+Progress : `92.28%`
 
-- [x] Configure app .env
-- [x] Change app timezone & locale
+- [x] Configure app `.env`
+- [x] Change app timezone & locale to Indonesian
 - [x] Install auth package (Sanctum)
 - [x] Log SQL queries
+- [x] Configure `$dontFlash` attributes on exception handler & `$except` attributes on TrimStrings middleware
+- [x] Handle AuthenticationException class
+- [x] Handle NotFoundHttpException class
 - [x] Delete user related boilerplate
   - [x] User model
   - [x] User factory
@@ -100,91 +107,94 @@ Progress : `92.13%`
   - [x] classroom_user
   - [x] subjects
   - [x] assignments
-  - [x] assignment_attachments
+  - [x] assignment_images
   - [x] assignment_statuses
   - [x] assignment_timelines
   - [x] notes
-  - [x] note_attachments
+  - [x] note_images
   - [x] note_timelines
 - [x] Create base models
   - [x] Assignment
-  - [x] AssignmentAttachment
+  - [x] AssignmentImage
   - [x] AssignmentStatus
   - [x] AssignmentTimeline
   - [x] Classroom
   - [x] ClassroomUser
   - [x] Note
-  - [x] NoteAttachment
+  - [x] NoteImage
   - [x] NoteTimeline
   - [x] Subject
   - [x] User
 - [x] Create base controllers
   - [x] AssignmentController
+  - [x] AssignmentStatusController
   - [x] ClassroomController
   - [x] NoteController
   - [x] SubjectController
   - [x] UserController
 - [x] Create base factories
-  - [x] AssignmentAttachmentFactory
   - [x] AssignmentFactory
+  - [x] AssignmentImageFactory
   - [x] AssignmentStatusFactory
   - [x] AssignmentTimelineFactory
   - [x] ClassroomFactory
   - [x] ClassroomUserFactory
-  - [x] NoteAttachmentFactory
   - [x] NoteFactory
+  - [x] NoteImageFactory
   - [x] NoteTimelineFactory
   - [x] SubjectFactory
   - [x] UserFactory
 - [x] Create base seeders
-  - [x] AssignmentAttachmentSeeder
+  - [x] AssignmentImageSeeder
   - [x] AssignmentSeeder
   - [x] AssignmentStatusSeeder
   - [x] AssignmentTimelineSeeder
   - [x] ClassroomSeeder
   - [x] ClassroomUserSeeder
-  - [x] NoteAttachmentSeeder
+  - [x] NoteImageSeeder
   - [x] NoteSeeder
   - [x] NoteTimelineSeeder
   - [x] SubjectSeeder
   - [x] UserSeeder
 - [x] Create endpoints
-  - [x] GET Classroom detail
-  - [x] GET Classroom invitation code
-  - [x] GET Classroom assignments
-  - [x] GET Classroom members
-  - [x] GET Classroom notes
-  - [x] GET Classroom subjects
-  - [x] GET Assignment detail
-  - [x] GET Assignment statuses
-  - [x] GET Assignment timelines
-  - [x] GET Note detail
-  - [x] GET Note timelines
-  - [x] GET Subject detail
-  - [x] GET Subject assignments
-  - [x] GET Self profile detail
-  - [x] GET Self profile assignments
-  - [x] GET Self profile classrooms
-  - [x] GET Self profile subjects
-  - [x] POST Create classroom
-  - [x] POST Join classroom
-  - [x] POST Create assignment
-  - [x] POST Create note
-  - [x] POST Create subject
-  - [x] POST Sign up
-  - [x] POST Sign in
-  - [x] PUT Rename classroom
-  - [x] PUT Update assignment
-  - [x] PUT Change assignment status
-  - [x] PUT Update note
-  - [x] PUT Rename subject
-  - [x] PUT Update self profile
-  - [x] PUT Change self password
-  - [x] DELETE Remove assignment
-  - [x] DELETE Remove note
-  - [x] DELETE Remove subject
-  - [x] DELETE Sign out current device
-  - [x] DELETE Sign out all devices
+  - [x] `GET` Show classroom detail
+  - [x] `GET` Show classroom invitation code
+  - [x] `GET` Show classroom assignments
+  - [x] `GET` Show classroom notes
+  - [x] `GET` Show classroom subjects
+  - [x] `GET` Show classroom users
+  - [x] `GET` Show assignment detail
+  - [x] `GET` Show assignment statuses
+  - [x] `GET` Show assignment timelines
+  - [x] `GET` Show note detail
+  - [x] `GET` Show note timelines
+  - [x] `GET` Show subject detail
+  - [x] `GET` Show subject assignments
+  - [x] `GET` Show self detail
+  - [x] `GET` Show self assignments
+  - [x] `GET` Show self classrooms
+  - [x] `GET` Show self notes
+  - [x] `GET` Show self subjects
+  - [x] `POST` Create classroom
+  - [x] `POST` Join classroom
+  - [x] `POST` Create assignment
+  - [x] `POST` Create note
+  - [x] `POST` Create subject
+  - [x] `POST` Sign up
+  - [x] `POST` Sign in
+  - [x] `PUT` Update classroom
+  - [x] `PUT` Update assignment
+  - [x] `PUT` Update assignment status
+  - [x] `PUT` Update note
+  - [x] `PUT` Update subject
+  - [x] `PUT` Update profile
+  - [x] `PUT` Update password
+  - [x] `DELETE` Delete classroom
+  - [x] `DELETE` Delete assignment
+  - [x] `DELETE` Delete note
+  - [x] `DELETE` Delete subject
+  - [x] `DELETE` Sign out current device
+  - [x] `DELETE` Sign out all devices
 - [x] Create base middleware
   - [x] BelongToClass
   - [x] ClassroomLeader
@@ -193,30 +203,35 @@ Progress : `92.13%`
 - [x] Register middleware on kernel
 - [x] Assign middleware on route
 - [x] Create base requests
-  - [x] ChangePasswordRequest
-  - [x] CreateAssignmentRequest
-  - [x] CreateClassroomRequest
-  - [x] CreateNoteRequest
-  - [x] CreateSubjectRequest
   - [x] JoinClassroomRequest
-  - [x] RenameClassroomRequest
-  - [x] RenameSubjectRequest
   - [x] SignInRequest
   - [x] SignUpRequest
+  - [x] StoreAssignmentRequest
+  - [x] StoreClassroomRequest
+  - [x] StoreNoteRequest
+  - [x] StoreSubjectRequest
   - [x] UpdateAssignmentRequest
+  - [x] UpdateAssignmentStatusRequest
+  - [x] UpdateClassroomRequest
   - [x] UpdateNoteRequest
+  - [x] UpdatePasswordRequest
   - [x] UpdateProfileRequest
+  - [x] UpdateSubjectRequest
+- [x] Create traits
+  - [x] FailedFormValidation
+  - [x] InvitationCode
+  - [x] SerializeDate
 - [x] Fill base migrations
   - [x] users
   - [x] classrooms
   - [x] classroom_user
   - [x] subjects
   - [x] assignments
-  - [x] assignment_attachments
+  - [x] assignment_images
   - [x] assignment_statuses
   - [x] assignment_timelines
   - [x] notes
-  - [x] note_attachments
+  - [x] note_images
   - [x] note_timelines
 - [x] Fill base middleware
   - [x] BelongToClass
@@ -224,20 +239,20 @@ Progress : `92.13%`
   - [x] ClassroomUser
   - [x] JSONHeader
 - [x] Fill base requests
-  - [x] ChangeAssignmentStatusRequest
-  - [x] ChangePasswordRequest
-  - [x] CreateAssignmentRequest
-  - [x] CreateClassroomRequest
-  - [x] CreateNoteRequest
-  - [x] CreateSubjectRequest
   - [x] JoinClassroomRequest
-  - [x] RenameClassroomRequest
-  - [x] RenameSubjectRequest
   - [x] SignInRequest
   - [x] SignUpRequest
+  - [x] StoreAssignmentRequest
+  - [x] StoreClassroomRequest
+  - [x] StoreNoteRequest
+  - [x] StoreSubjectRequest
   - [x] UpdateAssignmentRequest
+  - [x] UpdateAssignmentStatusRequest
+  - [x] UpdateClassroomRequest
   - [x] UpdateNoteRequest
+  - [x] UpdatePasswordRequest
   - [x] UpdateProfileRequest
+  - [x] UpdateSubjectRequest
 - [x] Fill base models
   - [x] Assignment
     - [x] SoftDeletes trait
@@ -247,7 +262,7 @@ Progress : `92.13%`
     - [x] Relationships
     - [x] Accessors
     - [x] Mutator
-  - [x] AssignmentAttachment
+  - [x] AssignmentImage
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
@@ -295,7 +310,7 @@ Progress : `92.13%`
     - [x] Relationships
     - [x] Accessors
     - [x] Mutator
-  - [x] NoteAttachment
+  - [x] NoteImage
     - [x] SoftDeletes trait
     - [x] `$fillable` attributes
     - [x] `$hidden` attributes
@@ -327,49 +342,44 @@ Progress : `92.13%`
     - [x] Relationships
     - [x] Accessors
     - [x] Mutator
-- [x] Handle AuthenticationException class
-- [x] Handle NotFoundHttpException class
-- [x] Configure `$dontFlash` attributes on exception handler & `$except` attributes on TrimStrings middleware
-- [x] Create traits
-  - [x] FailedFormValidation
-  - [x] InvitationCode
-  - [x] SerializeDate
 - [x] Fill base controllers
   - [x] AssignmentController
-    - [x] `detail()`
+    - [x] `show()`
     - [x] `statuses()`
     - [x] `timelines()`
-    - [x] `create()`
+    - [x] `store()`
     - [x] `update()`
-    - [x] `delete()`
+    - [x] `destroy()`
   - [x] AssignmentStatusController
     - [x] `__invoke()`
   - [x] ClassroomController
-    - [x] `detail()`
+    - [x] `show()`
     - [x] `invitationCode()`
     - [x] `assignments()`
-    - [x] `members()`
     - [x] `notes()`
     - [x] `subjects()`
-    - [x] `create()`
+    - [x] `users()`
+    - [x] `store()`
     - [x] `join()`
-    - [x] `rename()`
-  - [x] NoteController
-    - [x] `detail()`
-    - [x] `timelines()`
-    - [x] `create()`
     - [x] `update()`
-    - [x] `delete()`
+    - [x] `destroy()`
+  - [x] NoteController
+    - [x] `show()`
+    - [x] `timelines()`
+    - [x] `store()`
+    - [x] `update()`
+    - [x] `destroy()`
   - [x] SubjectController
-    - [x] `detail()`
+    - [x] `show()`
     - [x] `assignments()`
-    - [x] `create()`
-    - [x] `rename()`
-    - [x] `delete()`
+    - [x] `store()`
+    - [x] `update()`
+    - [x] `destroy()`
   - [x] UserController
-    - [x] `detail()`
+    - [x] `show()`
     - [x] `assignments()`
     - [x] `classrooms()`
+    - [x] `notes()`
     - [x] `subjects()`
     - [x] `signUp()`
     - [x] `signIn()`
@@ -378,25 +388,25 @@ Progress : `92.13%`
     - [x] `signOut()`
     - [x] `signOutAll()`
 - [ ] Fill base factories
-  - [ ] AssignmentAttachmentFactory
   - [ ] AssignmentFactory
+  - [ ] AssignmentImageFactory
   - [ ] AssignmentStatusFactory
   - [ ] AssignmentTimelineFactory
   - [ ] ClassroomFactory
   - [ ] ClassroomUserFactory
-  - [ ] NoteAttachmentFactory
   - [ ] NoteFactory
+  - [ ] NoteImageFactory
   - [ ] NoteTimelineFactory
   - [ ] SubjectFactory
   - [ ] UserFactory
 - [ ] Fill base seeders
-  - [ ] AssignmentAttachmentSeeder
+  - [ ] AssignmentImageSeeder
   - [ ] AssignmentSeeder
   - [ ] AssignmentStatusSeeder
   - [ ] AssignmentTimelineSeeder
   - [ ] ClassroomSeeder
   - [ ] ClassroomUserSeeder
-  - [ ] NoteAttachmentSeeder
+  - [ ] NoteImageSeeder
   - [ ] NoteSeeder
   - [ ] NoteTimelineSeeder
   - [ ] SubjectSeeder

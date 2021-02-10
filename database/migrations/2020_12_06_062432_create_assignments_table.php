@@ -15,10 +15,10 @@ class CreateAssignmentsTable extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('classroom_id')->constrained()->onDelete('cascade');
             $table->foreignId('subject_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
-            $table->longText('detail');
+            $table->text('detail');
             $table->enum('type', ['INDIVIDUAL', 'GROUP'])->default('INDIVIDUAL');
             $table->dateTime('start')->nullable();
             $table->dateTime('deadline')->nullable();

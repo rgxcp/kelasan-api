@@ -21,37 +21,66 @@ class Note extends Model
     protected static function booted()
     {
         static::created(function ($note) {
-            NoteTimeline::create([
+            // Images
+            if (request()->hasFile('images')) {
+                $images = request()->images;
+                foreach ($images as $image) {
+                    $note->noteImages()->create([
+                        'classroom_id' => $note->classroom_id,
+                        'user_id' => $note->user_id,
+                        'image' => $image->store('images')
+                    ]);
+                }
+            }
+
+            // Timelines
+            $note->noteTimelines()->create([
                 'classroom_id' => $note->classroom_id,
-                'note_id' => $note->id,
                 'user_id' => $note->user_id,
                 'type' => 'CREATED'
             ]);
         });
 
         static::updated(function ($note) {
-            NoteTimeline::create([
+            // Images
+            if (request()->hasFile('images')) {
+                $images = request()->images;
+                foreach ($images as $image) {
+                    $note->noteImages()->create([
+                        'classroom_id' => $note->classroom_id,
+                        'user_id' => request()->user()->id,
+                        'image' => $image->store('images')
+                    ]);
+                }
+            }
+
+            // Timelines
+            $note->noteTimelines()->create([
                 'classroom_id' => $note->classroom_id,
-                'note_id' => $note->id,
                 'user_id' => request()->user()->id
             ]);
         });
 
         static::deleted(function ($note) {
-            $note->noteAttachments()->delete();
+            $note->noteImages()->delete();
             $note->noteTimelines()->delete();
         });
     }
 
     // Relationships
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function noteAttachments()
+    public function noteImages()
     {
-        return $this->hasMany(NoteAttachment::class);
+        return $this->hasMany(NoteImage::class);
     }
 
     public function noteTimelines()

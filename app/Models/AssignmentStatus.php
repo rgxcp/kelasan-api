@@ -13,6 +13,7 @@ class AssignmentStatus extends Model
 
     protected $fillable = [
         'classroom_id',
+        'subject_id',
         'assignment_id',
         'user_id',
         'state'

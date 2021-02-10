@@ -15,7 +15,8 @@ class CreateAssignmentTimelinesTable extends Migration
     {
         Schema::create('assignment_timelines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('classroom_id')->constrained()->onDelete('cascade');
+            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
             $table->foreignId('assignment_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
             $table->enum('type', ['CREATED', 'UPDATED'])->default('UPDATED');

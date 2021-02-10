@@ -19,14 +19,17 @@ class UpdateAssignmentRequest extends FormRequest
     {
         return [
             'subject_id' => [
-                'required',
+                'filled',
                 'integer',
                 Rule::exists('subjects', 'id')->where(function ($query) {
-                    return $query->where('classroom_id', $this->classroom->id);
+                    return $query->where([
+                        'classroom_id' => $this->classroom->id,
+                        'deleted_at' => null
+                    ]);
                 })
             ],
             'detail' => [
-                'required',
+                'filled',
                 'string'
             ],
             'type' => [
@@ -43,6 +46,17 @@ class UpdateAssignmentRequest extends FormRequest
                 'filled',
                 'date',
                 'after:start'
+            ],
+            'images' => [
+                'filled',
+                'array',
+                'max:3'
+            ],
+            'images.*' => [
+                'filled',
+                'image',
+                'max:3072',
+                'distinct'
             ]
         ];
     }

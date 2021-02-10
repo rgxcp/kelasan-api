@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Traits\FailedFormValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RenameClassroomRequest extends FormRequest
+class UpdateClassroomRequest extends FormRequest
 {
     use FailedFormValidation;
 
@@ -18,9 +18,9 @@ class RenameClassroomRequest extends FormRequest
     {
         return [
             'name' => [
-                'required',
+                'filled',
                 'string',
-                'max:20'
+                'max:30'
             ]
         ];
     }

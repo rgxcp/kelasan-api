@@ -3,21 +3,42 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateSubjectRequest;
-use App\Http\Requests\RenameSubjectRequest;
+use App\Http\Requests\StoreSubjectRequest;
+use App\Http\Requests\UpdateSubjectRequest;
 use App\Models\Classroom;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
-    public function detail(Classroom $classroom, Subject $subject)
+    public function show(Request $request, Classroom $classroom, Subject $subject)
     {
+        $subject->classroom = $classroom;
+
         return response()->json([
             'status' => 'Success',
             'result' => $subject
                 ->load('user')
-                ->loadCount('assignments')
+                ->loadCount([
+                    'assignmentStatuses as uncompleted_assignments_count' => function ($query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => 'UNCOMPLETED'
+                        ]);
+                    },
+                    'assignmentStatuses as doing_assignments_count' => function ($query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => 'DOING'
+                        ]);
+                    },
+                    'assignmentStatuses as completed_assignments_count' => function ($query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => 'COMPLETED'
+                        ]);
+                    }
+                ])
         ]);
     }
 
@@ -25,22 +46,25 @@ class SubjectController extends Controller
     {
         return response()->json([
             'status' => 'Success',
-            'result' => $subject
+            'result' => $request->state
+                ? $subject
                 ->assignments()
-                ->with([
-                    'user',
-                    'assignmentStatus' => function ($query) use ($request) {
-                        $query->where('user_id', $request->user()->id);
-                    }
-                ])
-                ->orderBy('deadline')
+                ->whereHas('assignmentStatus', function ($query) use ($request) {
+                    $query->where('state', $request->state);
+                })
+                ->orderByDesc('deadline')
+                ->paginate(30)
+                : $subject
+                ->assignments()
+                ->with('assignmentStatus')
+                ->orderByDesc('deadline')
                 ->paginate(30)
         ]);
     }
 
-    public function create(CreateSubjectRequest $request, Classroom $classroom)
+    public function store(StoreSubjectRequest $request, Classroom $classroom)
     {
-        $subject = Subject::firstOrCreate($request->all());
+        $subject = $classroom->subjects()->firstOrCreate($request->all());
 
         return response()->json([
             'status' => 'Success',
@@ -48,7 +72,7 @@ class SubjectController extends Controller
         ], 201);
     }
 
-    public function rename(RenameSubjectRequest $request, Classroom $classroom, Subject $subject)
+    public function update(UpdateSubjectRequest $request, Classroom $classroom, Subject $subject)
     {
         $subject->update($request->all());
 
@@ -58,7 +82,7 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function delete(Classroom $classroom, Subject $subject)
+    public function destroy(Classroom $classroom, Subject $subject)
     {
         $subject->delete();
 

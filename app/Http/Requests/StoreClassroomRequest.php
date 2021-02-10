@@ -3,11 +3,12 @@
 namespace App\Http\Requests;
 
 use App\Http\Traits\FailedFormValidation;
+use App\Http\Traits\InvitationCode;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateNoteRequest extends FormRequest
+class StoreClassroomRequest extends FormRequest
 {
-    use FailedFormValidation;
+    use FailedFormValidation, InvitationCode;
 
     /**
      * Get the validation rules that apply to the request.
@@ -17,9 +18,10 @@ class CreateNoteRequest extends FormRequest
     public function rules()
     {
         return [
-            'detail' => [
+            'name' => [
                 'required',
-                'string'
+                'string',
+                'max:30'
             ]
         ];
     }
@@ -28,8 +30,8 @@ class CreateNoteRequest extends FormRequest
     {
         $validator->after(function () {
             $this->merge([
-                'classroom_id' => $this->classroom->id,
-                'user_id' => $this->user()->id
+                'user_id' => $this->user()->id,
+                'invitation_code' => $this->generateInvitationCode()
             ]);
         });
     }

@@ -3,12 +3,11 @@
 namespace App\Http\Requests;
 
 use App\Http\Traits\FailedFormValidation;
-use App\Http\Traits\InvitationCode;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateClassroomRequest extends FormRequest
+class StoreNoteRequest extends FormRequest
 {
-    use FailedFormValidation, InvitationCode;
+    use FailedFormValidation;
 
     /**
      * Get the validation rules that apply to the request.
@@ -18,10 +17,20 @@ class CreateClassroomRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
+            'detail' => [
                 'required',
-                'string',
-                'max:20'
+                'string'
+            ],
+            'images' => [
+                'filled',
+                'array',
+                'max:3'
+            ],
+            'images.*' => [
+                'filled',
+                'image',
+                'max:3072',
+                'distinct'
             ]
         ];
     }
@@ -30,8 +39,7 @@ class CreateClassroomRequest extends FormRequest
     {
         $validator->after(function () {
             $this->merge([
-                'user_id' => $this->user()->id,
-                'invitation_code' => $this->generateInvitationCode()
+                'user_id' => $this->user()->id
             ]);
         });
     }

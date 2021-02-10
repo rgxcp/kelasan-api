@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Traits\FailedFormValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateSubjectRequest extends FormRequest
+class UpdateSubjectRequest extends FormRequest
 {
     use FailedFormValidation;
 
@@ -18,20 +18,10 @@ class CreateSubjectRequest extends FormRequest
     {
         return [
             'name' => [
-                'required',
+                'filled',
                 'string',
-                'max:50'
+                'max:30'
             ]
         ];
-    }
-
-    public function withValidator($validator)
-    {
-        $validator->after(function () {
-            $this->merge([
-                'classroom_id' => $this->classroom->id,
-                'user_id' => $this->user()->id
-            ]);
-        });
     }
 }

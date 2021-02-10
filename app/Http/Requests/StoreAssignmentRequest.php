@@ -6,7 +6,7 @@ use App\Http\Traits\FailedFormValidation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateAssignmentRequest extends FormRequest
+class StoreAssignmentRequest extends FormRequest
 {
     use FailedFormValidation;
 
@@ -22,7 +22,10 @@ class CreateAssignmentRequest extends FormRequest
                 'required',
                 'integer',
                 Rule::exists('subjects', 'id')->where(function ($query) {
-                    return $query->where('classroom_id', $this->classroom->id);
+                    return $query->where([
+                        'classroom_id' => $this->classroom->id,
+                        'deleted_at' => null
+                    ]);
                 })
             ],
             'detail' => [
@@ -43,6 +46,17 @@ class CreateAssignmentRequest extends FormRequest
                 'filled',
                 'date',
                 'after:start'
+            ],
+            'images' => [
+                'filled',
+                'array',
+                'max:3'
+            ],
+            'images.*' => [
+                'filled',
+                'image',
+                'max:3072',
+                'distinct'
             ]
         ];
     }
@@ -51,7 +65,6 @@ class CreateAssignmentRequest extends FormRequest
     {
         $validator->after(function () {
             $this->merge([
-                'classroom_id' => $this->classroom->id,
                 'user_id' => $this->user()->id
             ]);
         });

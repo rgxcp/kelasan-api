@@ -18,12 +18,12 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'full_name' => [
-                'required',
+                'filled',
                 'string',
                 'max:30'
             ],
             'email' => [
-                'required',
+                'filled',
                 'email',
                 'max:50',
                 'unique:users,email,' . $this->user()->id

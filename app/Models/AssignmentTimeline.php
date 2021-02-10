@@ -13,6 +13,7 @@ class AssignmentTimeline extends Model
 
     protected $fillable = [
         'classroom_id',
+        'subject_id',
         'assignment_id',
         'user_id',
         'type'

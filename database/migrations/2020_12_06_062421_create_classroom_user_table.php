@@ -15,10 +15,11 @@ class CreateClassroomUserTable extends Migration
     {
         Schema::create('classroom_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('classroom_id')->constrained();
+            $table->foreignId('classroom_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
             $table->enum('role', ['LEADER', 'STUDENT'])->default('STUDENT');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

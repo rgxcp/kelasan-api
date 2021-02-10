@@ -3,26 +3,42 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateClassroomRequest;
 use App\Http\Requests\JoinClassroomRequest;
-use App\Http\Requests\RenameClassroomRequest;
+use App\Http\Requests\StoreClassroomRequest;
+use App\Http\Requests\UpdateClassroomRequest;
 use App\Models\Classroom;
-use App\Models\ClassroomUser;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
 {
-    public function detail(Classroom $classroom)
+    public function show(Request $request, Classroom $classroom)
     {
         return response()->json([
             'status' => 'Success',
             'result' => $classroom
                 ->load('user')
                 ->loadCount([
-                    'assignments',
-                    'classroomUsers',
+                    'assignmentStatuses as uncompleted_assignments_count' => function ($query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => 'UNCOMPLETED'
+                        ]);
+                    },
+                    'assignmentStatuses as doing_assignments_count' => function ($query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => 'DOING'
+                        ]);
+                    },
+                    'assignmentStatuses as completed_assignments_count' => function ($query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => 'COMPLETED'
+                        ]);
+                    },
                     'notes',
-                    'subjects'
+                    'subjects',
+                    'users'
                 ])
         ]);
     }
@@ -39,16 +55,18 @@ class ClassroomController extends Controller
     {
         return response()->json([
             'status' => 'Success',
-            'result' => $classroom
+            'result' => $request->state
+                ? $classroom
                 ->assignments()
-                ->with([
-                    'subject',
-                    'user',
-                    'assignmentStatus' => function ($query) use ($request) {
-                        $query->where('user_id', $request->user()->id);
-                    }
-                ])
-                ->orderBy('deadline')
+                ->whereHas('assignmentStatus', function ($query) use ($request) {
+                    $query->where('state', $request->state);
+                })
+                ->orderByDesc('deadline')
+                ->paginate(30)
+                : $classroom
+                ->assignments()
+                ->with('assignmentStatus')
+                ->orderByDesc('deadline')
                 ->paginate(30)
         ]);
     }
@@ -59,20 +77,37 @@ class ClassroomController extends Controller
             'status' => 'Success',
             'result' => $classroom
                 ->notes()
-                ->with('user')
                 ->orderByDesc('updated_at')
                 ->paginate(30)
         ]);
     }
 
-    public function subjects(Classroom $classroom)
+    public function subjects(Request $request, Classroom $classroom)
     {
         return response()->json([
             'status' => 'Success',
             'result' => $classroom
                 ->subjects()
-                ->with('user')
-                ->withCount('assignments')
+                ->withCount([
+                    'assignmentStatuses as uncompleted_assignments_count' => function ($query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => 'UNCOMPLETED'
+                        ]);
+                    },
+                    'assignmentStatuses as doing_assignments_count' => function ($query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => 'DOING'
+                        ]);
+                    },
+                    'assignmentStatuses as completed_assignments_count' => function ($query) use ($request) {
+                        $query->where([
+                            'user_id' => $request->user()->id,
+                            'state' => 'COMPLETED'
+                        ]);
+                    }
+                ])
                 ->orderBy('name')
                 ->paginate(30)
         ]);
@@ -83,13 +118,14 @@ class ClassroomController extends Controller
         return response()->json([
             'status' => 'Success',
             'result' => $classroom
-                ->classroomUsers()
-                ->with('user')
+                ->users()
+                ->orderBy('pivot_role')
+                ->orderBy('full_name')
                 ->paginate(30)
         ]);
     }
 
-    public function create(CreateClassroomRequest $request)
+    public function store(StoreClassroomRequest $request)
     {
         $classroom = Classroom::create($request->all());
 
@@ -103,23 +139,32 @@ class ClassroomController extends Controller
     {
         $classroom = Classroom::firstWhere('invitation_code', $request->invitation_code);
 
-        ClassroomUser::firstOrCreate([
-            'classroom_id' => $classroom->id,
+        $classroom->classroomUsers()->firstOrCreate([
             'user_id' => $request->user()->id
         ]);
 
         return response()->json([
-            'status' => 'Success'
+            'status' => 'Success',
+            'result' => $classroom
         ]);
     }
 
-    public function rename(RenameClassroomRequest $request, Classroom $classroom)
+    public function update(UpdateClassroomRequest $request, Classroom $classroom)
     {
         $classroom->update($request->all());
 
         return response()->json([
             'status' => 'Success',
             'result' => $classroom
+        ]);
+    }
+
+    public function destroy(Classroom $classroom)
+    {
+        $classroom->delete();
+
+        return response()->json([
+            'status' => 'Success'
         ]);
     }
 }

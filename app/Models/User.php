@@ -53,16 +53,22 @@ class User extends Authenticatable
         return $this->belongsToMany(Classroom::class)->withPivot('role');
     }
 
+    // TODO: Find a better solution
     public function assignments()
     {
-        // TODO: Find a better solution
-        return Assignment::whereIn('classroom_id', $this->classrooms()->get()->pluck('id'));
+        return Assignment::whereIn('classroom_id', $this->classrooms->pluck('id'));
     }
 
+    // TODO: Find a better solution
+    public function notes()
+    {
+        return Note::whereIn('classroom_id', $this->classrooms->pluck('id'));
+    }
+
+    // TODO: Find a better solution
     public function subjects()
     {
-        // TODO: Find a better solution
-        return Subject::whereIn('classroom_id', $this->classrooms()->get()->pluck('id'));
+        return Subject::whereIn('classroom_id', $this->classrooms->pluck('id'));
     }
 
     // Accessors

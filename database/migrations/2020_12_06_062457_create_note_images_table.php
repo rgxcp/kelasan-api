@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssignmentAttachmentsTable extends Migration
+class CreateNoteImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateAssignmentAttachmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assignment_attachments', function (Blueprint $table) {
+        Schema::create('note_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('classroom_id')->constrained();
-            $table->foreignId('assignment_id')->constrained()->onDelete('cascade');
+            $table->foreignId('classroom_id')->constrained()->onDelete('cascade');
+            $table->foreignId('note_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
-            $table->string('direct_link');
+            $table->string('image');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ class CreateAssignmentAttachmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assignment_attachments');
+        Schema::dropIfExists('note_images');
     }
 }

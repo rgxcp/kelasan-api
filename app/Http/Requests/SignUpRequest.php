@@ -32,6 +32,8 @@ class SignUpRequest extends FormRequest
                 'required',
                 'string',
                 'min:8',
+                'max:72',
+                'different:full_name',
                 'different:email'
             ]
         ];
